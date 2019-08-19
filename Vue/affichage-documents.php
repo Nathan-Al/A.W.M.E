@@ -1,7 +1,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
-        <LINK REL="SHORTCUT ICON" href="../Media/Image/icone.jpg" /> <!-- Icone de l'onglet de la page web -->
+        <LINK rel="icon" type="image/png" href="../media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
 
         <link rel="stylesheet" href="../Css/documents.css" /> <!-- Importations du css -->
             

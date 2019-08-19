@@ -1,7 +1,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
-        <LINK REL="SHORTCUT ICON" href="../Media/Image/icone.jpg" /> <!-- Icone de l'onglet de la page web -->
+        <LINK rel="icon" type="image/png" href="media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
 
         <link rel="stylesheet" href="Css/Menu.css" /> <!-- Importations du css -->
         
@@ -27,8 +27,8 @@
                             <img src="media-site/vid.jpg" class="Nav-Image"/>
                         </nav>
                         <nav class="Nav-Liens">
-                            <a href="" class="Liens-Accueil">Disque Durs</a>
-                            <img src="media-site/ddd.jpg" class="Nav-Image"/>
+                            <a href="Controller/controll-musique.php" class="Liens-Accueil">Musique</a>
+                            <img src="media-site/ms.jpg" class="Nav-Image"/>
                         </nav>
                     </div>
                 </div>
