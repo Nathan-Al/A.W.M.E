@@ -39,16 +39,25 @@ h1:hover{
 }
 
 a
-{	
-    color: aliceblue;
-	text-decoration: none;
+{
+    text-decoration: none;
 }
 
-a:hover
+.a-doc
+{	
+    color: aliceblue;
+	
+}
+
+.a-doc:hover
 {
 	color: blue;
 }
 
+.a-doc:visited
+{
+    color: #7296d8;
+}
 
 .div-headers-1
 {
@@ -81,8 +90,6 @@ a:hover
 {
     transition: 0.2s all;
 }
-
-
 
 
 .div-liens-video
@@ -144,6 +151,16 @@ a:hover
 }
 
 .a-separation:hover
+{
+    color: aquamarine;
+}
+
+.a-separation:visited
+{
+    color: white;
+}
+
+.a-separation:visited:hover
 {
     color: aquamarine;
 }

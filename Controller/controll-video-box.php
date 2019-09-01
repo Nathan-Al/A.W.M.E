@@ -1,7 +1,9 @@
 <?php
 require "../Outil/lecteur-fichier.php";
 require "../Outil/lecteur-video.php";
-    if(isset($_GET["video"]))
+
+
+if(isset($_GET["video"]))
     {
         if(isset($_GET["dossier"]))
         {
@@ -19,14 +21,13 @@ require "../Outil/lecteur-video.php";
         {
             $fichiers = ScanFichiers($meza);
             $dossier = ScanDossier($meza);
-            require "../Vue/affichage-video.php";  
+            require "../Vue/affichage-video-box.php";  
         }
         elseif($_GET["video"]!="" && $_GET["video"]!=null)
         {
             $video = $_GET["video"];
-            $fichiers = ScanFichiers($meza);
-            $dossier = ScanDossier($meza);
-            require "../Vue/affichage-video.php";
+            $nom = $_GET["dossier"];
+            require "../Vue/affichage-lecteur-video.php";
         }elseif(isset($_GET["dossier"]))
         {
             if($_GET["NomDossierPlus"]!=null && $_GET["NomDossierPlus"]!="")
@@ -37,7 +38,7 @@ require "../Outil/lecteur-video.php";
 
     }
 
-    function BoutonRetour($dosierpressent)
+function BoutonRetour($dosierpressent)
     {
         //echo $dosierpressent." ";
         $ch = "/";

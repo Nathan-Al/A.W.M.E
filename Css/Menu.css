@@ -27,7 +27,7 @@ body
 	border-style: solid;
 	border-color: red;*/
 
-	background-color: rgb(37, 37, 37);
+	background-image: linear-gradient(to bottom, #e1a75b, #c47563, #8c5362, #4d3a4c, #1f1f23);
 }
 
 h1
@@ -53,6 +53,7 @@ h1
 	color: black;
 	
 	display: block;
+	display: -webkit-block;
 	
 	/*box-shadow: 0px 5px 10px;*/
 	
@@ -75,7 +76,7 @@ a:hover
 {/*
 	border-style: solid;
     border-color: rgb(37, 17, 226);*/
-
+	display: -webkit-flex;
 	display: flex;
 	width: auto;
 	height: auto;
@@ -93,7 +94,7 @@ a:hover
 	/*
 	border-style: solid;
 	border-color: rgb(3, 206, 3);*/
-	
+	display: -webkit-flex;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;

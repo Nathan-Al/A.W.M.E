@@ -83,7 +83,7 @@
                             ?>
                                 
                                     <?php
-                                        echo "<a href='../Controller/controll-video.php?video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
+                                        echo "<a class='a-liens-video' href='../Controller/controll-video.php?video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
                                         echo "<br>";
                                         $liens++;
                                     ?>

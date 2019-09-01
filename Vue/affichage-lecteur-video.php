@@ -1,3 +1,10 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
+    <meta charset="UTF-8">
+    <LINK rel="icon" type="image/png" href="media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
+
+    <link rel="stylesheet" href="../Css/affichage-video.css" /> <!-- Importations du css -->
+
 <head>
 	<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
   
@@ -7,9 +14,11 @@
   
   <body>
 	<video id='my-video' class='video-js' controls preload='auto' width='640' height='264'
-	poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
-	  <source src='Video/Ainzawa.mp4' type='video/mp4'>
-	  <source src='MY_VIDEO.webm' type='video/webm'>
+    poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+    <?php
+	  echo "<source src='../Video".$nom."/".$video."' type='video/mp4'>";
+      echo "<source src='../Video".$nom."/".$video."' type='video/webm'>";
+    ?>
 	  <p class='vjs-no-js'>
 		To view this video please enable JavaScript, and consider upgrading to a web browser that
 		<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>

@@ -27,8 +27,16 @@
                             <img src="media-site/vid.jpg" class="Nav-Image"/>
                         </nav>
                         <nav class="Nav-Liens">
+                            <a href="Controller/controll-video-box.php?video=default" class="Liens-Accueil">Video Pour la box</a>
+                            <img src="media-site/vidbox.jpg" class="Nav-Image"/>
+                        </nav>
+                        <nav class="Nav-Liens">
                             <a href="Controller/controll-musique.php" class="Liens-Accueil">Musique</a>
                             <img src="media-site/ms.jpg" class="Nav-Image"/>
+                        </nav>
+                        <nav class="Nav-Liens">
+                            <a href="test.html" class="Liens-Accueil">Test</a>
+                            <img src="media-site/ts.jpg" class="Nav-Image"/>
                         </nav>
                     </div>
                 </div>

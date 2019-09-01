@@ -8,6 +8,7 @@
         */
         require "../../model/manager/".$classe .".php"; 
     }
+    require "../Outil/lecteur-fichier.php";
     spl_autoload_register('chargerModel');
     if(isset($_GET["chgp"]))
     {
@@ -33,42 +34,6 @@
             }
         }
         require "../Vue/affichage-image.php";    
-    }
-
-    function chargeLiens()
-    {
-        $dirname = '/home/Samba/Image/';
-        $dir = opendir($dirname);
-        $ona = 0;
-        $page = 1;
-        while($file[][] = readdir($dir)) 
-        {
-            $liens = 0;
-            for($compteur=0; $compteur<24; $compteur++)
-            {
-                if($file[$liens][$page] != "." && $file[$liens][$page] != ".." && !is_dir($dirname.$file[$liens][$page] && $file[$liens][$page]!="" && $file[$liens][$page]!=false))
-                {
-                    //echo readdir($dir),$page. "<br>";
-                    $file[$liens][$page] = readdir($dir);
-                    //echo "<br> L".$liens."  P".$page."  ".$file[$liens][$page]."<br>";
-                    //echo "<br>"."L".$liens."  P".$page;
-                }
-                if ($file[$liens][$page]=="..")
-                {
-                    $file[$liens][$page] = "0";
-                }
-                $liens++;
-                
-            }
-            //echo "<br>"."fin du for"."<br>";
-            $page++;
-            
-        }
-        //echo "<br>"."fin while"."<br>";
-        
-        rsort($file);
-        
-        return $file;
     }
 
 ?>
