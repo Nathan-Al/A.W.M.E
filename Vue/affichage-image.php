@@ -1,7 +1,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
-        <LINK rel="icon" type="image/png" href="../media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
+        <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
 
         <link rel="stylesheet" href="../Css/image.css" /> <!-- Importations du css -->
             
@@ -15,12 +15,12 @@
                 <div class="div-separation"></div>
             </div>
             <div class="div-headers-2">
-                <a href="../Controller/affichage-image.php?chgp=0 & page=1" class="Lien-nav-Accueil">Première page</a>
+                <a href="<?php echo $controller_affichage_image ?>?chgp=0 & page=1" class="Lien-nav-Accueil">Première page</a>
                 <?php
                     if($page!=1)
                     {
                 ?>
-                    <form action="../Controller/affichage-image.php?chgp=1 & chang=prec" method="post">
+                    <form action="<?php echo $controller_affichage_image ?>?chgp=1 & chang=prec" method="post">
                         <input name="Précédent" value="Précédent" type="submit" />
                         <input name="prec" value ="<?php echo $page?>" type="hidden" class="Lien-nav-Accueil"/>
                     </form>
@@ -30,7 +30,7 @@
                     {
                 ?>
                     <br>
-                    <form action="../Controller/affichage-image.php?chgp=1 & chang=suiv" method="post">
+                    <form action="<?php echo $controller_affichage_image ?>?chgp=1 & chang=suiv" method="post">
                         <input name="Suivante" value="Suivante" type="submit" />
                         <input name="suiv" value ="<?php echo $page?>" type="hidden" class="Lien-nav-Accueil"/>
                     </form>
@@ -59,7 +59,7 @@
                        {
                         ?>
                             <div class="div-image">
-                                <img class="Min-Image" src="<?php echo "../Image/".$tabliens[$liens][$page] ?>"/>
+                                <img class="Min-Image" src="<?php echo $lien_retour_images.$tabliens[$liens][$page] ?>"/>
                             </div>
                         <?php
                        }

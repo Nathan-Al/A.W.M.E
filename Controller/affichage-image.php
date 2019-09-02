@@ -1,27 +1,19 @@
 <?php
-    // Fichier controlleur
-    function chargerModel($classe)
-    {
-        /*
-        On inclut la classe correspondante 
-        au paramètre passé.
-        */
-        require "../../model/manager/".$classe .".php"; 
-    }
-    require "../Outil/lecteur-fichier.php";
-    spl_autoload_register('chargerModel');
+    require "../Outil/lecteur-liens.php";
+    require $require_lecteur_fichier;
+    
     if(isset($_GET["chgp"]))
     {
         if($_GET["chgp"]==0)
         {
             $tabliens = array();
-            $tabliens = chargeLiens();
+            $tabliens = chargeLiens($liensHomeImage);
             $page=$_GET["page"];
         }
         if($_GET["chgp"]==1)
         {
             $tabliens = array();
-            $tabliens = chargeLiens();
+            $tabliens = chargeLiens($liensHomeImage);
             //echo "TAB ".$tabliens[1][2];
 
             if(isset($_POST["suiv"]))
@@ -33,7 +25,7 @@
                $page = $_POST["prec"]-1;
             }
         }
-        require "../Vue/affichage-image.php";    
+        require $require_vue_affichage_images;    
     }
 
 ?>

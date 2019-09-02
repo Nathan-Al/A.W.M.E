@@ -1,7 +1,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
-        <LINK rel="icon" type="image/png" href="../media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
+        <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
 
         <link rel="stylesheet" href="../Css/video.css" /> <!-- Importations du css -->
             
@@ -27,7 +27,7 @@
                             ?>
                                 
                                 <?php
-                                    echo "<a href='../Controller/controll-video.php?video=".$default."&dossier=".$avantdossier."/".$dossier[$liens]."' class='a-doc'>".$dossier[$liens]."</a>";
+                                    echo "<a href='".$controller_video."?video=".$default."&dossier=".$avantdossier."/".$dossier[$liens]."' class='a-doc'>".$dossier[$liens]."</a>";
                                     echo "<br>";
                                     $liens++;
                                 ?>
@@ -45,12 +45,12 @@
             if($dossierRetour!="")
             {
                 
-                echo "<a href='../Controller/controll-video.php?video=default&dossier=".$dossierRetour."' class='a-separation'>Avant</a>";
+                echo "<a href='".$controller_video."?video=default&dossier=".$dossierRetour."' class='a-separation'>Avant</a>";
                
             }else
             {
                 
-                echo "<a href='../Controller/controll-video.php?video=default' class='a-separation'>Avant</a>";
+                echo "<a href='".$controller_video."?video=default' class='a-separation'>Avant</a>";
                 
             }
         
@@ -68,7 +68,7 @@
                         {
                             ?>
                                 <?php
-                                    echo "<a href='../Controller/controll-video.php?dossier=".$NDosier."&video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
+                                    echo "<a href='".$controller_video."?dossier=".$NDosier."&video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
                                     echo "<br>";
                                     $liens++;
                                 ?>
@@ -83,7 +83,7 @@
                             ?>
                                 
                                     <?php
-                                        echo "<a class='a-liens-video' href='../Controller/controll-video.php?video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
+                                        echo "<a class='a-doc' href='".$controller_video."?video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
                                         echo "<br>";
                                         $liens++;
                                     ?>
@@ -109,23 +109,23 @@
             {
                 $nom = $_GET["dossier"];
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurVideoBase("../Video".$nom."/".$video);
+                LecteurVideoBase($lien_retour_video.$nom."/".$video);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW("../Video".$nom."/".$video);
+                LecteurJW($lien_retour_video.$nom."/".$video);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJSCDN("../Video".$nom."/".$video);
+                LecteurJSCDN($lien_retour_video.$nom."/".$video);
                 echo "</nav>";
             }else{
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurVideoBase("../Video/".$video);
+                LecteurVideoBase($lien_retour_video.$video);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW("../Video/".$video);
+                LecteurJW($lien_retour_video.$video);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJSCDN("../Video/".$video);
+                LecteurJSCDN($lien_retour_video.$video);
                 echo "</nav>";
             }
             ?>

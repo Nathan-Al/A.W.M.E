@@ -1,7 +1,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
     <meta charset="UTF-8">
-    <LINK rel="icon" type="image/png" href="media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
+    <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
 
     <link rel="stylesheet" href="../Css/affichage-box.css" /> <!-- Importations du css -->
         
@@ -33,7 +33,7 @@
                             ?>
                                 
                                 <?php
-                                    echo "<a href='../Controller/controll-video-box.php?video=".$default."&dossier=".$avantdossier."/".$dossier[$liens]."' class='a-doc'>".$dossier[$liens]."</a>";
+                                    echo "<a href='".$controller_video_box."?video=".$default."&dossier=".$avantdossier."/".$dossier[$liens]."' class='a-doc'>".$dossier[$liens]."</a>";
                                     echo "<br>";
                                     $liens++;
                                 ?>
@@ -51,12 +51,12 @@
             if($dossierRetour!="")
             {
                 
-                echo "<a href='../Controller/controll-video-box.php?video=default&dossier=".$dossierRetour."' class='a-flo'>Retour</a>";
+                echo "<a href='".$controller_video_box."?video=default&dossier=".$dossierRetour."' class='a-flo'>Retour</a>";
                
             }else
             {
                 
-                echo "<a href='../Controller/controll-video-box.php?video=default' class='a-flo'>Retour</a>";
+                echo "<a href='".$controller_video_box."?video=default' class='a-flo'>Retour</a>";
                 
             }
         
@@ -79,7 +79,7 @@
                         {
                             ?>
                                 <?php
-                                    echo "<a href='../Controller/controll-video-box.php?dossier=".$NDosier."&video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
+                                    echo "<a href='".$controller_video_box."?dossier=".$NDosier."&video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
                                     echo "<br>";
                                     $liens++;
                                 ?>
@@ -94,7 +94,7 @@
                             ?>
                                 
                                     <?php
-                                        echo "<a class='a-liens-video' href='../Controller/controll-video-box.php?video=".$fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
+                                        echo "<a class='a-liens-video' href='".$controller_video_box."?video=".$fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
                                         echo "<br>";
                                         $liens++;
                                     ?>

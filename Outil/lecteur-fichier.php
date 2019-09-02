@@ -55,8 +55,8 @@ function ScanDossier($meza){
 
 //Affichage documents
 
-function ScanFichiersDoc(){
-    $dir = '/home/Samba/Documents/';
+function ScanFichiersDoc($liensfich){
+    $dir = $liensfich;
     if ( is_dir($dir) )  {
         if ( $dh = opendir($dir) ) {
             while ( ($element = readdir($dh)) !== false){{
@@ -80,7 +80,7 @@ function ScanFichiersDoc(){
         }
     for ($i = 0; $i<sizeof($tb_directories);$i++)
     {
-        $dir = "/home/Samba/Documents/".$tb_directories[$i];
+        $dir = $liensfich.$tb_directories[$i];
         if ( is_dir($dir) )  {
             if ( $dh = opendir($dir) ) {
                 while ( ($element = readdir($dh)) !== false){{
@@ -112,8 +112,8 @@ function ScanFichiersDoc(){
     return $tb_files2;
 }
 
-function ScanDossierDoc(){
-    $dir = '/home/Samba/Documents/';
+function ScanDossierDoc($LiensDoc){
+    $dir = $LiensDoc;
     if ( is_dir($dir) )  {
         if ( $dh = opendir($dir) ) {
             while ( ($element = readdir($dh)) !== false){{
@@ -138,9 +138,9 @@ function ScanDossierDoc(){
     return $tb_directories;
 }
 
-function chargeLiens()
+function chargeLiens($liensenv)
 {
-        $dirname = '/home/Samba/Image/';
+        $dirname = $liensenv;
         $dir = opendir($dirname);
         $ona = 0;
         $page = 1;
@@ -174,4 +174,75 @@ function chargeLiens()
     return $file;
 }
 
+require_once("MP3/Id.php");
+ 
+function read_mp3_tags($dir)
+{
+   
+    static $result = array();
+    static $i = 0;
+ 
+    $tag_string = "";
+ 
+    $mp3 = new MP3_Id();
+    
+    // Tags supported by the MP3_Id class
+    $tags = array(
+                  "name", "artists", "album",
+                  "year", "comment", "track",
+                  "genre", "genreno"
+                  );
+    
+ 
+    // Read the current directory
+    $d = dir($dir);
+    
+    // Loop through all the files in the current directory:
+    while (false !== ($file = $d->read()))
+    {
+        echo "while;";
+        // Skip '.' and '..'
+        if (($file == '.') || ($file == '..'))
+        {
+            continue;
+        }
+
+        // If this is a directory, then recursively call it
+        if (is_dir("{$dir}/{$file}"))
+        {
+            echo "Lire dossier !!!";
+            read_mp3_tags("{$dir}/{$file}");
+        }
+        else
+        {
+            echo "Lire Fichier !!!!";
+            // It's a mp3 file so read the tags
+            if(strtolower(substr($file, strlen($file) - 3, 3)) == "mp3") 
+            {
+                $data = $mp3->read("{$dir}/{$file}");
+ 
+                // OOPs, some error occured, just save the filename
+                if (PEAR::isError($data))
+                { 
+                    $result[$i]['filename'] = $file;
+                    $result[$i]['directory'] = $dir;
+                }
+                else
+                {
+                    $result[$i]['filename'] = $file;
+                    $result[$i]['directory'] = $dir;
+ 
+                    // Read all the tags of the particular file
+                    foreach($tags as $tag)
+                    {
+                        $result[$i][$tag] = $mp3->getTag($tag);
+                    }
+                }
+                $i++;
+            }
+        }
+    }
+ 
+    return $result;
+}
 ?>

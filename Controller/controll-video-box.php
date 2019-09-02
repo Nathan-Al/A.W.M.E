@@ -1,6 +1,7 @@
 <?php
-require "../Outil/lecteur-fichier.php";
-require "../Outil/lecteur-video.php";
+require "../Outil/lecteur-liens.php";
+require $require_lecteur_fichier;
+require $require_lecteur_video;
 
 
 if(isset($_GET["video"]))
@@ -10,24 +11,24 @@ if(isset($_GET["video"]))
             if($_GET["dossier"]!=null && $_GET["dossier"]!="")
             {
                 $dos = $dos."/".$_GET["dossier"];
-                $meza = "/home/Samba/Video/".$dos."/";
+                $meza = $liensHomeVideo.$dos."/";
             }
         }else
         {
-            $meza = '/home/Samba/Video/';
+            $meza = $liensHomeVideo;
         }
 
         if($_GET["video"]=="default")
         {
             $fichiers = ScanFichiers($meza);
             $dossier = ScanDossier($meza);
-            require "../Vue/affichage-video-box.php";  
+            require $require_vue_affichage_video_box;  
         }
         elseif($_GET["video"]!="" && $_GET["video"]!=null)
         {
             $video = $_GET["video"];
             $nom = $_GET["dossier"];
-            require "../Vue/affichage-lecteur-video.php";
+            require $require_vue_affichage_lecteur_video;
         }elseif(isset($_GET["dossier"]))
         {
             if($_GET["NomDossierPlus"]!=null && $_GET["NomDossierPlus"]!="")

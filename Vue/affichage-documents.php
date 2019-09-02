@@ -1,7 +1,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
-        <LINK rel="icon" type="image/png" href="../media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
+        <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
 
         <link rel="stylesheet" href="../Css/documents.css" /> <!-- Importations du css -->
             
@@ -26,7 +26,7 @@
                                                 ?>
                                                     <div class="div-documents">
                                                         <?php
-                                                            echo "<a href='../Documents/".$dossier[$liens]."' class='a-doc'>".$o." :".$dossier[$liens]."</a>";
+                                                            echo "<a href='".$lien_retour_documents.$dossier[$liens]."' class='a-doc'>".$o." :".$dossier[$liens]."</a>";
                                                             echo "<br>";
                                                         ?>
                                                     </div>
@@ -56,7 +56,7 @@
                                                 ?>
                                                     <div class="div-documents">
                                                         <?php
-                                                        echo "<a href='../Documents/".$fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
+                                                        echo "<a href='".$lien_retour_documents.$fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
                                                             echo "<br>";
                                                         ?>
                                                     </div>

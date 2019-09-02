@@ -50,6 +50,11 @@ a:hover
 	color: blue;
 }
 
+audio
+{
+    width: 100%;
+}
+
 
 .div-headers-1
 {
@@ -96,8 +101,9 @@ a:hover
 
 .div-liens-musique
 {
+    /*
     border-style: solid;
-    border-color: rgb(216, 203, 21);
+    border-color: rgb(216, 203, 21);*/
 
     width: 20%;
     height: 100%;
@@ -107,8 +113,13 @@ a:hover
 
 .div-lecteur
 {
+    /*
     border-style: solid;
-    border-color: rgb(52, 196, 16);
+    border-color: rgb(52, 196, 16);*/
+    display: flex;
+    flex-direction: column;
     width: 80%;
     height: 100%;
+    justify-content: end;
+    justify-items: end;
 }
