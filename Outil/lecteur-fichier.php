@@ -174,6 +174,84 @@ function chargeLiens($liensenv)
     return $file;
 }
 
+function ListerTotalitefichier($chemindacces)
+{
+    $dossier = ScanDossier($chemindacces);
+    $fichier = ScanFichiers($chemindacces);
+
+    for($p=0;$p<sizeof($dossier);$p++)
+    {
+        $sousfichier = ScanFichiers($chemindacces.$dossier[$p]);
+    }
+
+    $indexmulti = sizeof($fichier)+sizeof($sousfichier);
+    $o=0;
+    for($m=0;$m<$indexmulti;$m++)
+    {
+        if($m<sizeof($fichier))
+        {
+            $fichierfin[$m]=$fichier[$m];
+        }else
+        {
+            $fichierfin[$m]=$sousfichier[$o];
+            
+            $o++;
+        }
+    }
+    return $fichierfin;  
+}
+
+function ChercherFicher($CharactACherh, $liensDossier)
+{
+    $dossier = ScanDossier($liensDossier);
+    $fichier = ScanFichiers($liensDossier);
+
+    for($p=0;$p<sizeof($dossier);$p++)
+    {
+        if($dossier[$p] != "." && $dossier[$p] != ".." && !is_dir($dirname.$dossier[$p] && $dossier[$p]!="" && $dossier[$p]!=false && $dossier[$p]!=null))
+        {
+            $sousfichier = ScanFichiers($liensDossier.$dossier[$p]);
+        }
+        if ($dossier[$p]=="..")
+        {
+            $dossier[$p] = "0";
+        }
+    }
+
+    $indexmulti = sizeof($fichier)+sizeof($sousfichier);
+    $o=0;
+    for($m=0;$m<$indexmulti;$m++)
+    {
+        if($m<sizeof($fichier))
+        {
+            if($fichier[$m] != "." && $fichier[$m] != ".." && !is_dir($dirname.$fichier[$m] && $fichier[$m]!="" && $fichier[$m]!=false && $fichier[$m]!=null))
+            {
+                $fichierfin[$m]=$fichier[$m];
+            }
+            if ($fichier[$m]=="..")
+            {
+                $fichier[$m] = "0";
+            }
+            
+        }else
+        {
+            $fichierfin[$m]=$sousfichier[$o];
+            
+            $o++;
+        }
+    }
+    for($l=0;$l<sizeof($fichierfin);$l++)
+    {
+        
+        if($position = strpos($fichierfin[$l],$CharactACherh))
+        {
+            $lienstrouver[$l] = $fichierfin[$l];
+        }
+    }
+    
+    return $lienstrouver;
+}
+
 require_once("MP3/Id.php");
  
 function read_mp3_tags($dir)

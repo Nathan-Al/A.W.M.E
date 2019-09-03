@@ -15,6 +15,10 @@
                 <div class="div-separation"></div>
             </div>
             <div class="div-headers-2">
+            <form action="<?php echo $controller_affichage_image ?>?chgp=chercher" method="post">
+                <input type="search" name="searchEngine" placeholder="Recherche..." />
+                <input type="submit" value="Valider" />
+            </form>
                 <a href="<?php echo $controller_affichage_image ?>?chgp=0 & page=1" class="Lien-nav-Accueil">Première page</a>
                 <?php
                     if($page!=1)
@@ -71,6 +75,30 @@
                     closedir($dir);
                 }
  
+                ?>
+
+                <?php
+                    if(isset($_GET["chgp"]))
+                    {
+                        if($_GET["chgp"]=="chercher")
+                        {
+                            for($liens=0;$liens<sizeof($tabliens);$liens++)
+                            {
+                                if($tabliens[$liens] != "0")
+                                {
+                                    if($lien_retour_images.$tabliens[$liens]!=$lien_retour_images)
+                                    {
+                           ?>
+                                <div class="div-image">
+                                    <img class="Min-Image" src="<?php echo $lien_retour_images.$tabliens[$liens] ?>"/>
+                                </div>
+                           <?php
+                                    }
+                                } 
+                            }
+                        }
+                    }
+
                 ?>
             </div>
         </div>

@@ -19,9 +19,9 @@
             <div class="div-liens-musique">
                 <?php
                 $iop = 0;
-                    for($i=0; $i<sizeof($fichierfin);$i++)
+                    for($i=0; $i<sizeof($fichier);$i++)
                     {
-                        echo "<a href='".$controller_musique."?musique=".$fichierfin[$iop]."' class='liens-musique'>-".$fichierfin[$iop]."</a>";
+                        echo "<a href='".$controller_musique."?musique=".$fichier[$iop]."' class='liens-musique'>-".$fichier[$iop]."</a>";
                         echo "<br>";
                         $iop++;
                     }
