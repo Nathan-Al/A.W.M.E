@@ -26,6 +26,8 @@
         elseif($_GET["video"]!="" && $_GET["video"]!=null)
         {
             $video = $_GET["video"];
+            $videosansmp4 = str_replace(".mp4",".vtt", $video);
+            
             $fichiers = ScanFichiers($meza);
             $dossier = ScanDossier($meza);
             require $require_vue_affichage_video;

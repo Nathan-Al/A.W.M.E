@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
 
-    <link rel="stylesheet" href="../Css/affichage-box.css" /> <!-- Importations du css -->
+    <link rel="stylesheet" href=<?php echo $lien_css_affichage_box ?> /> <!-- Importations du css -->
         
     <head>
             <title>Accueil</title> <!-- Titre de l'onglet de la page web -->

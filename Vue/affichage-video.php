@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
 
-        <link rel="stylesheet" href="../Css/video.css" /> <!-- Importations du css -->
+        <link rel="stylesheet" href=<?php echo $liens_css_video ?> /> <!-- Importations du css -->
             
             <head>
                 <title>Video</title> <!-- Titre de l'onglet de la page web -->
@@ -102,30 +102,31 @@
             if($_GET["video"]=="default")
             {
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW('../Video/alaylaysAnimation.mp4');
+                LecteurJW($lien_retour_video.'mylivewallpapers.com-Treehouse-Summer-Rain.mp4',"");
                 echo "</nav>";
             }
             elseif($_GET["video"]!="default" && isset($_GET["dossier"]))
             {
                 $nom = $_GET["dossier"];
+                
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurVideoBase($lien_retour_video.$nom."/".$video);
+                LecteurVideoBase($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videosansmp4);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW($lien_retour_video.$nom."/".$video);
+                LecteurJW($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videosansmp4);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJSCDN($lien_retour_video.$nom."/".$video);
+                LecteurJSCDN($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videosansmp4);
                 echo "</nav>";
             }else{
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurVideoBase($lien_retour_video.$video);
+                LecteurVideoBase($lien_retour_video.$video, $liens_dossier_sous_titre.$videosansmp4);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW($lien_retour_video.$video);
+                LecteurJW($lien_retour_video.$video, $liens_dossier_sous_titre.$videosansmp4);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJSCDN($lien_retour_video.$video);
+                LecteurJSCDN($lien_retour_video.$video, $liens_dossier_sous_titre.$videosansmp4);
                 echo "</nav>";
             }
             ?>

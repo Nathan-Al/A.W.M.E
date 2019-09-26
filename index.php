@@ -15,7 +15,7 @@
                 <div id="conteneur">
                     <div class="Menu-comp">
                         <nav class="Nav-Liens">
-                            <a href="Controller/affichage-image.php?chgp=0 & page=1 " class="Liens-Accueil">Image</a>
+                            <a href="Controller/controll-image.php?chgp=0 & page=1 " class="Liens-Accueil">Image</a>
                             <img src="media-site/img.jpg" class="Nav-Image"/>
                         </nav>
                         <nav class="Nav-Liens">
@@ -35,7 +35,11 @@
                             <img src="media-site/ms.jpg" class="Nav-Image"/>
                         </nav>
                         <nav class="Nav-Liens">
-                            <a href="test.html" class="Liens-Accueil">Test</a>
+                            <a href="Controller/controll-upload.php" class="Liens-Accueil">Upload de fichier</a>
+                            <img src="media-site/up.jpg" class="Nav-Image"/>
+                        </nav>
+                        <nav class="Nav-Liens">
+                            <a href="Test/test.php" class="Liens-Accueil">Test</a>
                             <img src="media-site/ts.jpg" class="Nav-Image"/>
                         </nav>
                     </div>

@@ -226,7 +226,7 @@ function ChercherFicher($CharactACherh, $liensDossier)
         {
             if($fichier[$m] != "." && $fichier[$m] != ".." && !is_dir($dirname.$fichier[$m] && $fichier[$m]!="" && $fichier[$m]!=false && $fichier[$m]!=null))
             {
-                $fichierfin[$m]=$fichier[$m];
+                $fichierfin[$m]=strtolower($fichier[$m]);
             }
             if ($fichier[$m]=="..")
             {
@@ -242,14 +242,77 @@ function ChercherFicher($CharactACherh, $liensDossier)
     }
     for($l=0;$l<sizeof($fichierfin);$l++)
     {
-        
-        if($position = strpos($fichierfin[$l],$CharactACherh))
+        $position = similar_text($CharactACherh,$fichierfin[$l], $perc);
+        if($perc>0)
         {
+            echo "Pourcentage de similariter : $position ($perc %)\n";
+            echo "<br>";
             $lienstrouver[$l] = $fichierfin[$l];
+            
         }
     }
     
     return $lienstrouver;
+}
+
+
+function renommerfichier ($chemindossier,$anciennom,$nouveauxnom)
+{
+    rename ($chemindossier."/".$anciennom,$chemindossier."/".$nouveauxnom);
+}
+
+function uploadfichier($chemindossier,$fichier)
+{
+    $nom = strtolower($fichier['name']);
+    $tmpnom = $fichier['tmp_name'];
+    $taille = $fichier['size'];
+    $type = $fichier['type'];
+    $erreurr = $fichier['error'];
+    $dossier = $chemindossier;
+
+    //echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Erreur:".$erreur." - Dossier:".$dossier;
+
+    $fichier = basename($nom);
+    $taille_maxi = 10000000;
+    $taille = filesize($tmpnom);
+    $extensions = array('.png', '.gif', '.jpg', '.jpeg','.mp4', '.mkv', '.avi', '.mpeg','.mp3', '.waw', '.ogg', '.flac','.doc', '.docx', '.pdf', '.txt','.zip','.rar');
+    $extension = strtolower(strrchr($nom, '.')); 
+    //Début des vérifications de sécurité...
+    
+    if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+    {
+        $erreur = 'Mauvais format de fichier';
+    }
+  /*
+    if($taille>$taille_maxi)
+    {
+        $erreur = 'Le fichier est trop gros...';
+    }
+*/
+    if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+    {
+        //On formate le nom du fichier ici...
+        $fichier = strtr($fichier, 
+            'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+            'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+        $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+
+        if(move_uploaded_file($tmpnom, $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+        {
+            return true;
+        }
+        else //Sinon (la fonction renvoie FALSE).
+        {
+            return false;
+        }
+    }
+    elseif(isset($erreur))
+    {
+        if($erreur!=""&&$erreur!=null)
+        echo "Erreur : ".$erreur;
+        return false;
+    } 
+
 }
 
 require_once("MP3/Id.php");

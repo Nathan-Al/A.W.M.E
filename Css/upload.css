@@ -15,8 +15,7 @@ header
     
     display: flex;
 }
-body
-{
+body{
     background-color: rgb(241, 241, 241);
     /*border-style: solid;
     border-color: rgb(253, 0, 0);*/
@@ -40,25 +39,24 @@ h1:hover{
 }
 
 a
-{	
-    color: aliceblue;
-	text-decoration: none;
+{
+    text-decoration: none;
 }
 
-a:hover
+.a-doc
+{	
+    color: aliceblue;
+	
+}
+
+.a-doc:hover
 {
 	color: blue;
 }
 
-audio
+.a-doc:visited
 {
-    width: 100%;
-}
-
-.liens-musique
-{
-    padding-bottom: 10%;
-    margin-bottom: 10%;
+    color: #7296d8;
 }
 
 .div-headers-1
@@ -93,38 +91,12 @@ audio
     transition: 0.2s all;
 }
 
-.div-contenue
+.div-menu
 {
-    display: flex;
-    /*
-    border-style: solid;
-    border-color: rgb(216, 203, 21);*/
-    background-color: #24445C;
-    width: auto;
-    height: 89%;
+
 }
 
-.div-liens-musique
+.nav-upload
 {
-    /*
-    border-style: solid;
-    border-color: rgb(216, 203, 21);*/
-
-    width: 20%;
-    height: 100%;
-
-    overflow-y: scroll;
-}
-
-.div-lecteur
-{
-    /*
-    border-style: solid;
-    border-color: rgb(52, 196, 16);*/
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    height: 100%;
-    justify-content: end;
-    justify-items: end;
+    
 }
