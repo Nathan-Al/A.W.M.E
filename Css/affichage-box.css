@@ -44,6 +44,11 @@ a:hover
     font-size:15px;
 }
 
+.a-separation:visited:hover
+{
+    color: rgb(147, 235, 135);
+}
+
 .h1-sb
 {
     margin-bottom: 0%;

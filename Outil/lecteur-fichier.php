@@ -178,13 +178,16 @@ function ListerTotalitefichier($chemindacces)
 {
     $dossier = ScanDossier($chemindacces);
     $fichier = ScanFichiers($chemindacces);
-
+    if($dossier!="" && $dossier !=null)
     for($p=0;$p<sizeof($dossier);$p++)
     {
         $sousfichier = ScanFichiers($chemindacces.$dossier[$p]);
+        $indexmulti = sizeof($fichier)+sizeof($sousfichier);
     }
+    else
+    $indexmulti = sizeof($fichier);
 
-    $indexmulti = sizeof($fichier)+sizeof($sousfichier);
+
     $o=0;
     for($m=0;$m<$indexmulti;$m++)
     {

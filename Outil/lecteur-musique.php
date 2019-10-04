@@ -3,7 +3,7 @@
     function LecteurAudio($liens)
     {
         echo "
-        <audio controls autoplay>
+        <audio controls >
         <source src='".$liens."' type='audio/mpeg'>
         <source src='".$liens."' type='audio/ogg'>
         <p>Votre navigateur ne prend pas en charge l'audio HTML. Voici un

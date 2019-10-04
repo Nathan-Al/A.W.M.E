@@ -22,10 +22,11 @@
                     $liens = 0;
                     $default ="default";
                     $avantdossier = $_GET["dossier"];
-                    for($o = 0; $o < sizeof($dossier); $o++)  
+                    if(isset($dossier))
+                    {
+                        for($o = 0; $o < sizeof($dossier); $o++)  
                         {
                             ?>
-                                
                                 <?php
                                     echo "<a href='".$controller_video."?video=".$default."&dossier=".$avantdossier."/".$dossier[$liens]."' class='a-doc'>".$dossier[$liens]."</a>";
                                     echo "<br>";
@@ -34,6 +35,8 @@
                             <?php
 
                         }
+                    }
+
                 ?>
             </div>
 

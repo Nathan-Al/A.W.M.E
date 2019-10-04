@@ -5,12 +5,15 @@
     $liensHomeImage = '/home/Samba/Image/';
     $liensHomeVideo = "/home/Samba/Video/";
     $liensHomeMusique = "/home/Samba/Musique/";
+    $liensMediaSite = "../media-site/";
 
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL *///----------------------------------
 
     $require_lecteur_fichier = "../Outil/lecteur-fichier.php";
     $require_lecteur_video = "../Outil/lecteur-video.php";
     $require_lecteur_musique = "../Outil/lecteur-musique.php";
+    $require_decodeur_id3 = "../getID3-1.9.18/getid3/getid3.php";
+    $require_write_id3 = "../getID3-1.9.18/getid3/write.php";
 
     // REQUIRE VUE-----
 
@@ -21,6 +24,9 @@
     $require_vue_affichage_musique = "../Vue/affichage-musique.php";
     $require_vue_affichage_images = "../Vue/affichage-image.php";
     $require_vue_affichage_upload = "../Vue/affichage-upload.php";
+
+    // REQUIRE MODEL
+    $require_model_musique = "../Model/musique.php";
 
 /* LIENS TYPE a CONTROLLER */
 

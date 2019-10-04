@@ -19,12 +19,14 @@
 
         if($_GET["video"]=="default")
         {
+            $dossier= array();
             $fichiers = ScanFichiers($meza);
             $dossier = ScanDossier($meza);
             require $require_vue_affichage_video;  
         }
         elseif($_GET["video"]!="" && $_GET["video"]!=null)
         {
+            $dossier= array();
             $video = $_GET["video"];
             $videosansmp4 = str_replace(".mp4",".vtt", $video);
             
