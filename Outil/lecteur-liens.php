@@ -12,8 +12,6 @@
     $require_lecteur_fichier = "../Outil/lecteur-fichier.php";
     $require_lecteur_video = "../Outil/lecteur-video.php";
     $require_lecteur_musique = "../Outil/lecteur-musique.php";
-    $require_decodeur_id3 = "../getID3-1.9.18/getid3/getid3.php";
-    $require_write_id3 = "../getID3-1.9.18/getid3/write.php";
 
     // REQUIRE VUE-----
 
@@ -52,6 +50,9 @@
 
 /* LIENS DOSSIER */
     $liens_dossier_sous_titre = "../Video/SousTitre/";
+    $require_decodeur_id3 = "../getID3-1.9.18/getid3/getid3.php";
+    $require_write_id3 = "../getID3-1.9.18/getid3/write.php";
+    $require_javaScript = "../JavaScript/";
 
 /* ICONE PAGE DU SITE */
     $IconeSite = "../media-site/icone.png";

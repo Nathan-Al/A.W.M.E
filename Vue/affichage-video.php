@@ -6,12 +6,26 @@
         <link rel="stylesheet" href=<?php echo $liens_css_video ?> /> <!-- Importations du css -->
             
             <head>
-                <title>Video</title> <!-- Titre de l'onglet de la page web -->
+                <?php
+                    if($_GET["video"]!="default" && isset($_GET["dossier"]))
+                    {
+                        $nom = $_GET["dossier"];
+                        echo '<title> Video : '.$videoenvtt.'</title>';
+
+                    }else
+                    {
+                        echo '<title>Video</title>';
+                    }
+                ?>
+                
             </head>
     <body>
         <header>
             <div class="div-headers-1">
                 <a href="../" class="Lien-nav-Accueil"><h1>Samba</h1></a>
+            </div>
+            <div class="div-headers-2">
+                    <p>Vous regardez :  <?php echo $videosansmp4 ?></p>
             </div>
         </header>
 <div class="div-contenue">
@@ -113,23 +127,23 @@
                 $nom = $_GET["dossier"];
                 
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurVideoBase($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videosansmp4);
+                LecteurVideoBase($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videoenvtt);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videosansmp4);
+                LecteurJW($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videoenvtt);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJSCDN($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videosansmp4);
+                LecteurJSCDN($lien_retour_video.$nom."/".$video, $liens_dossier_sous_titre.$videoenvtt);
                 echo "</nav>";
             }else{
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurVideoBase($lien_retour_video.$video, $liens_dossier_sous_titre.$videosansmp4);
+                LecteurVideoBase($lien_retour_video.$video, $liens_dossier_sous_titre.$videoenvtt);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW($lien_retour_video.$video, $liens_dossier_sous_titre.$videosansmp4);
+                LecteurJW($lien_retour_video.$video, $liens_dossier_sous_titre.$videoenvtt);
                 echo "</nav>";
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJSCDN($lien_retour_video.$video, $liens_dossier_sous_titre.$videosansmp4);
+                LecteurJSCDN($lien_retour_video.$video, $liens_dossier_sous_titre.$videoenvtt);
                 echo "</nav>";
             }
             ?>

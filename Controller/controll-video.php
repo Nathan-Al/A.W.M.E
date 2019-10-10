@@ -28,7 +28,8 @@
         {
             $dossier= array();
             $video = $_GET["video"];
-            $videosansmp4 = str_replace(".mp4",".vtt", $video);
+            $videoenvtt = str_replace(".mp4",".vtt", $video);
+            $videosansmp4 = str_replace(".mp4"," ", $video);
             
             $fichiers = ScanFichiers($meza);
             $dossier = ScanDossier($meza);

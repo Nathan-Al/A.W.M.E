@@ -17,11 +17,13 @@ header
     display: flex;
 }
 body{
-    background-color: rgb(241, 241, 241);
-    /*border-style: solid;
-    border-color: rgb(253, 0, 0);*/
-    width: 100%;
-    height: 100%;
+    background-color: rgb(22, 13, 143);
+    border-style: solid;
+    border-color: rgb(253, 0, 0);
+    max-width: 100%;
+    max-height: 100%;
+    height : auto;
+    width: auto;
     margin: 0%;
     padding: 0%;
 }
@@ -68,9 +70,9 @@ a:active
     padding-right: 2%;
 	
     transition: 0.5s all;
-    /*
+    
     border-style: solid;
-    border-color: brown;*/
+    border-color: brown;
 }
 
 .Lien-nav-Accueil a:hover
@@ -140,9 +142,9 @@ img
     margin-right: 0%;
     white-space: nowrap;
     display: table-cell;
-    /*
+    
     border-style: solid;
-    border-color: rgb(13, 136, 145);*/
+    border-color: rgb(13, 136, 145);
 }
 
 .div-nom-image
@@ -206,21 +208,20 @@ img
     background-color: rgb(102, 102, 102);
     margin: 0%;
     padding: 0%;
-    /*display: block;
+    display: block;
     border-style: solid;
-    border-color: rgb(37, 0, 58);*/
+    border-color: rgb(37, 0, 58);
     width: auto;
     height: 89.5%;
 }
 
 .conteneur-2
 {
-    /*
     border-style: solid;
-    border-color: rgb(251, 255, 0);*/
+    border-color: rgb(251, 255, 0);
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: auto;
     height: 100%;
-    overflow-x: scroll;
+    overflow-y: scroll;
 }

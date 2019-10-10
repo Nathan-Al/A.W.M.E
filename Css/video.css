@@ -63,10 +63,36 @@ a
 {
     margin-bottom: 0%;
     padding-bottom: 0%;
-    /*border-style: solid;
-    border-color: rgb(207, 221, 16);*/
+    /*border-right: 2px solid rgb(30, 28, 158);*/
+
+    /*
+    border-style: solid;
+    border-color: rgb(207, 221, 16);
+    */
     align-items: center;
     text-align: center;
+    width: 10%;
+}
+
+.div-headers-2
+{
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    padding-left: 1%;
+
+    /*
+    border-style: solid;
+    border-color: rgb(16, 221, 125);
+    */
+
+    /*align-items: center;*/
+    text-align: center; 
+    color: white;
+    font-size: 25px;
+
+    width: 90%; 
+
+    background-image: linear-gradient(to left, #1b1d1f, #1f262d, #21303c, #233a4c, #24445c);
 }
 
 .Lien-nav-Accueil

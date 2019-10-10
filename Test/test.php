@@ -1,4 +1,25 @@
+<?php
 
+require "../Outil/lecteur-liens.php";
+require $require_javaScript."index.js";
+
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> TEST INDEX</title>
+	</head>
+	<body>
+		<h1> JS CODE </h1>
+
+		<p id="Te"> TEST euh ....</p>
+		
+		<script src="../JavaScript/index.js"></script>
+	</body>
+</html>
+
+	
 <?php
 /////////////////////////////////////////////////////////////////
 /// getID3() by James Heinrich <info@getid3.org>               //
@@ -14,7 +35,7 @@
 /////////////////////////////////////////////////////////////////
 
 
-
+/*
 $TaggingFormat = 'UTF-8';
 
 header('Content-Type: text/html; charset='.$TaggingFormat);
