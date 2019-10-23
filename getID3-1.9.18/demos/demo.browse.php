@@ -12,7 +12,7 @@
 //                                                            ///
 /////////////////////////////////////////////////////////////////
 
-
+die('For security reasons, this demo has been disabled. It can be enabled by removing line '.__LINE__.' in demos/'.basename(__FILE__));
 
 define('GETID3_DEMO_BROWSE_ALLOW_EDIT_LINK',   false); // if enabled, shows "edit" links (to /demos/demo.write.php) to allow ID3/APE/etc tag editing on applicable file types
 define('GETID3_DEMO_BROWSE_ALLOW_DELETE_LINK', false); // if enabled, shows "delete" links to delete files from the browse interface
@@ -115,12 +115,10 @@ if (isset($_REQUEST['filename'])) {
 	} else {
 		echo 'Browse: <a href="'.htmlentities($_SERVER['PHP_SELF'].'?listdirectory='.urlencode($listdirectory), ENT_QUOTES | ENT_SUBSTITUTE, $PageEncoding).'">'.getid3_lib::iconv_fallback('ISO-8859-1', $PageEncoding, $listdirectory).'</a><br>';
 	}
-	echo "hehfejNOOINNEFN565588888______";
+
 	getid3_lib::ksort_recursive($ThisFileInfo);
 	echo table_var_dump($ThisFileInfo, false, $PageEncoding);
-	echo "hehfejNOOINNEFN565588888______";
 	$endtime = microtime(true);
-	
 	echo 'File parsed in '.number_format($endtime - $starttime, 3).' seconds.<br>';
 
 } else {
@@ -215,7 +213,7 @@ if (isset($_REQUEST['filename'])) {
 
 		$columnsintable = 14;
 		echo '<table class="table" cellspacing="0" cellpadding="3">';
-		
+
 		echo '<tr bgcolor="#'.$getID3checkColor_Head.'"><th colspan="'.$columnsintable.'">Files in '.getid3_lib::iconv_fallback('ISO-8859-1', $PageEncoding, $currentfulldir).'</th></tr>';
 		$rowcounter = 0;
 		foreach ($DirectoryContents as $dirname => $val) {
@@ -253,7 +251,6 @@ if (isset($_REQUEST['filename'])) {
 			echo '<th>Bitrate</th>';
 			echo '<th>Artist</th>';
 			echo '<th>Title</th>';
-			
 			if (isset($_REQUEST['ShowMD5']) && GETID3_DEMO_BROWSE_ALLOW_MD5_LINK) {
 				echo '<th>MD5&nbsp;File (File) (<a href="'.htmlentities($_SERVER['PHP_SELF'].'?listdirectory='.rawurlencode(isset($_REQUEST['listdirectory']) ? $_REQUEST['listdirectory'] : '.'), ENT_QUOTES | ENT_SUBSTITUTE, $PageEncoding).'">disable</a>)</th>';
 				echo '<th>MD5&nbsp;Data (File) (<a href="'.htmlentities($_SERVER['PHP_SELF'].'?listdirectory='.rawurlencode(isset($_REQUEST['listdirectory']) ? $_REQUEST['listdirectory'] : '.'), ENT_QUOTES | ENT_SUBSTITUTE, $PageEncoding).'">disable</a>)</th>';
@@ -289,7 +286,7 @@ if (isset($_REQUEST['filename'])) {
 						echo '<td align="center" colspan="3">-</td>';
 					}
 					echo '<td align="left">&nbsp;'.(!empty($fileinfo['tags']) ? implode(', ', array_keys($fileinfo['tags'])) : '').'</td>';
-					echo "TTTTTTTTTTTTT -----------------";
+
 					echo '<td align="left">&nbsp;';
 					if (!empty($fileinfo['warning'])) {
 						$FilesWithWarnings++;

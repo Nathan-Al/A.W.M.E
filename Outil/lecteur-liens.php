@@ -22,6 +22,7 @@
     $require_vue_affichage_musique = "../Vue/affichage-musique.php";
     $require_vue_affichage_images = "../Vue/affichage-image.php";
     $require_vue_affichage_upload = "../Vue/affichage-upload.php";
+    $require_vue_affichage_youtube = "../Vue/affichage-youtube.php";
 
     // REQUIRE MODEL
     $require_model_musique = "../Model/musique.php";
@@ -47,6 +48,7 @@
     $liens_css_video = "../Css/video.css";
     $lien_css_affichage_box = "../Css/affichage-box.css";
     $liens_css_upload = "../Css/upload.css";
+    $liens_css_affichage_youtube = "../Css/youtube.css";
 
 /* LIENS DOSSIER */
     $liens_dossier_sous_titre = "../Video/SousTitre/";

@@ -39,6 +39,10 @@
                             <img src="media-site/up.jpg" class="Nav-Image"/>
                         </nav>
                         <nav class="Nav-Liens">
+                            <a href="Controller/controll-youtube.php" class="Liens-Accueil">Youtube</a>
+                            <img src="media-site/yt.png" class="Nav-Image"/>
+                        </nav>
+                        <nav class="Nav-Liens">
                             <a href="Test/test.php" class="Liens-Accueil">Test</a>
                             <img src="media-site/ts.jpg" class="Nav-Image"/>
                         </nav>

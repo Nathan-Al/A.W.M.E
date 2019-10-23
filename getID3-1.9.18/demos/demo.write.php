@@ -13,6 +13,7 @@
 /////////////////////////////////////////////////////////////////
 
 
+die('For security reasons, this demo has been disabled. It can be enabled by removing line '.__LINE__.' in demos/'.basename(__FILE__));
 
 $TaggingFormat = 'UTF-8';
 
@@ -29,7 +30,7 @@ getid3_lib::IncludeDependency(GETID3_INCLUDEPATH.'write.php', __FILE__, true);
 
 $browsescriptfilename = 'demo.browse.php';
 
-$Filename = "../../Musique/Gorillaz - Saturnz Barz (feat. Popcaan).mp3";//(isset($_REQUEST['Filename']) ? $_REQUEST['Filename'] : '');
+$Filename = (isset($_REQUEST['Filename']) ? $_REQUEST['Filename'] : '');
 
 
 
@@ -42,7 +43,7 @@ if (isset($_POST['WriteTags'])) {
 		$tagwriter = new getid3_writetags;
 		$tagwriter->filename       = $Filename;
 		$tagwriter->tagformats     = $TagFormatsToWrite;
-		$tagwriter->overwrite_tags = true;
+		$tagwriter->overwrite_tags = false;
 		$tagwriter->tag_encoding   = $TaggingFormat;
 		if (!empty($_POST['remove_other_tags'])) {
 			$tagwriter->remove_other_tags = true;
@@ -240,7 +241,6 @@ if (!empty($Filename)) {
 
 		echo '<tr><td align="right"><b>Picture</b><br>(ID3v2 only)</td><td><input type="file" name="userfile" accept="image/jpeg, image/gif, image/png"><br>';
 		echo '<select name="APICpictureType">';
-		
 		$APICtypes = getid3_id3v2::APICPictureTypeLookup('', true);
 		foreach ($APICtypes as $key => $value) {
 			echo '<option value="'.htmlentities($key, ENT_QUOTES).'">'.htmlentities($value).'</option>';

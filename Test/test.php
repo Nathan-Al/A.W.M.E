@@ -1,9 +1,31 @@
 <?php
 
 require "../Outil/lecteur-liens.php";
-require $require_javaScript."index.js";
+//require $require_javaScript."index.js";
 
 ?>
+
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Pack de démarrage jQuery</title>
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	</head>
+
+	<body>
+
+
+		<a href="../" class="liensjavascript">Liens </a>
+	</body>
+	<script src="../JavaScript/index.js" ?> >
+		
+	</script>
+</html>
+
+<!--
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +40,7 @@ require $require_javaScript."index.js";
 		<script src="../JavaScript/index.js"></script>
 	</body>
 </html>
-
+-->
 	
 <?php
 /////////////////////////////////////////////////////////////////

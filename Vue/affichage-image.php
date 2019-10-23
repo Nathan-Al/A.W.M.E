@@ -63,9 +63,9 @@
                        {
                         ?>
                             <div class="affichage-div-image">
-                                <div class="div-image">
+                                
                                     <img class="Min-Image" src="<?php echo $lien_retour_images.$tabliens[$liens][$page] ?>"/>
-                                </div>
+                          
                                 <div class="div-nom-image">
                                     <a class="a-nom-image" href=""><?php echo $tabliens[$liens][$page] ?></a>
                                 </div>

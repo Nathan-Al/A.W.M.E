@@ -11,7 +11,7 @@
 //                                                            ///
 /////////////////////////////////////////////////////////////////
 
-
+die('For security reasons, this demo has been disabled. It can be enabled by removing line '.__LINE__.' in demos/'.basename(__FILE__));
 
 
 // include getID3() library (can be in a different directory if full path is specified)

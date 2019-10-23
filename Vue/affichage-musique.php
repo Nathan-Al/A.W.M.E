@@ -26,7 +26,7 @@
                                 </div>
 
                                 <div class='div-liens-musique-gestion'>
-                                    <a href='".$controller_musique."?musique=".$fichier[$iop]."' class='liens-musique'>-".$fichier[$iop]."</a>
+                                    <a href='".$controller_musique."?musique=".$fichier[$iop]."' class='liens-musique'>".$fichier[$iop]."</a>
                                 </div>
                                 
                             </div>";
@@ -77,7 +77,7 @@
                                             <label for="nom">Miniature musique :  </label>
                                         </div>
                                         <div class="div-input"> 
-                                            <input type="file" name="fichiers" accept="image/jpeg, image/gif, image/png" value=<?php $info_music[0]->getImage() ?> >
+                                            <input type="file" name="fichiers" accept="image/jpeg, image/gif, image/png" value=<?php $Data ?> >
                                         </div>
 
                                     </div>
@@ -130,7 +130,7 @@
                                             <label for="nom">Nom de la piste :  </label>
                                         </div> 
                                         <div class="div-input"> 
-                                            <input type="text" id="nom" name="titre" required minlength="4" maxlength="100" size="30" value="<?php echo htmlspecialchars($info_music[0]->getTitre()) ?>">
+                                            <input type="text" id="nom" name="titre" required maxlength="100" size="30" value="<?php echo htmlspecialchars($info_music[0]->getTitre()) ?>">
                                         </div>
 
                                     </div>

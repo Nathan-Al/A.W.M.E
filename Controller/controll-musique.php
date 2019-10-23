@@ -46,7 +46,7 @@
 
          getid3_lib::CopyTagsToComments($ThisFileInfo);
          $info_music = array();
-
+         
             $c = "img";
             $titre = $ThisFileInfo['tags']['id3v2']['title'][0];
             $album = $ThisFileInfo['tags']['id3v2']['album'][0];
@@ -55,11 +55,13 @@
             $time = $ThisFileInfo['playtime_string'];
             $date = $ThisFileInfo['comments_html']['year'][0];
             $image = GetImageCover($ThisFileInfo, false, $PageEncoding,$c);
+            $arara = array('Data'=>GetDataImage($ThisFileInfo, false, $PageEncoding));
             $format_file = $ThisFileInfo['fileformat'];
             $format_size = $ThisFileInfo['filesize'];
             $bitrate = $ThisFileInfo['audio']['bitrate'];
-  
-            $return_music =  Verify($titre , $album , $artiste , $genre , $time , $date , $image , $format_file , $format_size ,$bitrate);
+
+            $Data = $arara['Data'];
+            $return_music =  Verify($titre , $album , $artiste , $genre , $time , $date , $image, $format_file , $format_size ,$bitrate);
   
             $info_music [] =  new Musique (
                $return_music [0],
@@ -72,7 +74,6 @@
                $return_music [7],
                $return_music [8],
                $return_music [9]);
-  
       }
    }
    else
@@ -163,14 +164,13 @@
          $tagwriter->tag_data = $TagData;
 
          // write tags
-         
          if ($tagwriter->WriteTags()) {
             //echo 'Successfully wrote tags<br>';
             $fait = true;
             $liens = $liensHomeMusique.$_GET["musique"];
-            echo "<meta http-equiv='refresh' content='0; URL=controll-musique.php?musique=".$liens."'>";
+               echo "<meta http-equiv='refresh' content='0; URL=controll-musique.php?musique=".$liens."'>";
             $message = "Modification effectué ! ";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+               echo "<script type='text/javascript'>alert('$message');</script>";
             if (!empty($tagwriter->warnings)) {
                //echo 'There were some warnings:<br>'.implode('<br><br>', $tagwriter->warnings);
                $fait = "middle";
@@ -185,10 +185,14 @@
    require $require_vue_affichage_musique;
 ?>
 
+
+<!-- --------------------------------------------- / --------------------------------------------->
+
+
 <?php
 
 function GetImageCover($variable, $wrap_in_td=false, $encoding='ISO-8859-1',$classimage) {
-	$returnstring = '';
+	$returnstring = "";
 	switch (gettype($variable)) {
 		case 'array':
 			
@@ -198,7 +202,7 @@ function GetImageCover($variable, $wrap_in_td=false, $encoding='ISO-8859-1',$cla
 				if (($key == 'data') && isset($variable['image_mime']) && $returnstring!="") {
 					$imageinfo = array();
 					if ($imagechunkcheck = getid3_lib::GetDataImageSize($value, $imageinfo)) {
-						$returnstring .= '</td>'."\n".'<td><img class="'.$classimage.'" src="data:'.$variable['image_mime'].';base64,'.base64_encode($value).'" width="'.$imagechunkcheck[0].'" height="'.$imagechunkcheck[1].'"></td></tr>'."\n";
+                  $returnstring .= '</td>'."\n".'<td><img class="'.$classimage.'" src="data:'.$variable['image_mime'].';base64,'.base64_encode($value).'" width="'.$imagechunkcheck[0].'" height="'.$imagechunkcheck[1].'"></td></tr>'."\n";
 					} else {
 						$returnstring .= '</td>'."\n".'<td><i>invalid image data</i></td></tr>'."\n";
 					}
@@ -208,7 +212,29 @@ function GetImageCover($variable, $wrap_in_td=false, $encoding='ISO-8859-1',$cla
 			}
 			break;
     }
+	return $returnstring;
+}
 
+function GetDataImage($variable, $wrap_in_td=false, $encoding='ISO-8859-1')
+{
+	$returnstring = "";
+	switch (gettype($variable)) {
+		case 'array':
+			
+			foreach ($variable as $key => $value) {
+                
+				//if (($key == 'data') && isset($variable['image_mime']) && isset($variable['dataoffset'])) {
+				if (($key == 'data') && isset($variable['image_mime']) && $returnstring!="") {
+					$imageinfo = array();
+					if ($imagechunkcheck = getid3_lib::GetDataImageSize($value, $imageinfo)) {
+                  $variable['image_mime'];
+					}
+				} else {
+					$returnstring .= '</td>'."\n".GetImageCover($value, true, $encoding,$classimage).'</tr>'."\n";
+				}
+			}
+			break;
+    }
 	return $returnstring;
 }
 
