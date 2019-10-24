@@ -51,6 +51,7 @@
             $titre = $ThisFileInfo['tags']['id3v2']['title'][0];
             $album = $ThisFileInfo['tags']['id3v2']['album'][0];
             $artiste = $ThisFileInfo['comments_html']['artist'][0];
+            $band = $ThisFileInfo['comments_html']['band'][0];
             $genre = $ThisFileInfo['comments_html']['genre'][0];
             $time = $ThisFileInfo['playtime_string'];
             $date = $ThisFileInfo['comments_html']['year'][0];
