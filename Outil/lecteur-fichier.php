@@ -147,7 +147,7 @@ function chargeLiens($liensenv)
         while($file[][] = readdir($dir)) 
         {
             $liens = 0;
-            for($compteur=0; $compteur<24; $compteur++)
+            for($compteur=0; $compteur<25; $compteur++)
             {
                 if($file[$liens][$page] != "." && $file[$liens][$page] != ".." && !is_dir($dirname.$file[$liens][$page] && $file[$liens][$page]!="" && $file[$liens][$page]!=false))
                 {

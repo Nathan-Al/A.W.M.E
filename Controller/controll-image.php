@@ -6,14 +6,26 @@
     {
         if($_GET["chgp"]==0)
         {
+            $nbpage = 0;
             $tabliens = array();
             $tabliens = chargeLiens($liensHomeImage);
             $page=$_GET["page"];
+            for ($i =1; $i < sizeof($tabliens); $i++)
+            {
+                if($tabliens[0][$i]!=null)
+                $nbpage++;
+            }
         }
         if($_GET["chgp"]==1)
         {
             $tabliens = array();
             $tabliens = chargeLiens($liensHomeImage);
+            for ($i =1; $i < sizeof($tabliens); $i++)
+            {
+                if($tabliens[0][$i]!=null)
+                $nbpage++;
+            }
+            
             //echo "TAB ".$tabliens[1][2];
 
             if(isset($_POST["suiv"]))
@@ -42,7 +54,7 @@
                 }
             }
         }
-        require $require_vue_affichage_images;    
+        require $require_vue_affichage_gallery;    
     }
 
 ?>

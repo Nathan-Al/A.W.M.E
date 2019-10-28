@@ -20,7 +20,8 @@
     $require_vue_affichage_video_box = "../Vue/affichage-video-box.php";
     $require_vue_affichage_lecteur_video = "../Vue/affichage-lecteur-video.php";
     $require_vue_affichage_musique = "../Vue/affichage-musique.php";
-    $require_vue_affichage_images = "../Vue/affichage-image.php";
+    $require_vue_affichage_gallery = "../Vue/affichage-gallery.php";
+    $require_vue_affichage_image = "../Vue/affichage-image.php";
     $require_vue_affichage_upload = "../Vue/affichage-upload.php";
     $require_vue_affichage_youtube = "../Vue/affichage-youtube.php";
 

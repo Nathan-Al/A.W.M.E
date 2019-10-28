@@ -7,10 +7,10 @@
             
             <head>
                 <?php
-                    if($_GET["video"]!="default" && isset($_GET["dossier"]))
+                    if($_GET["video"]!="default" || isset($_GET["dossier"]))
                     {
                         $nom = $_GET["dossier"];
-                        echo '<title> Video : '.$videoenvtt.'</title>';
+                        echo '<title> Video : '.$videosansmp4.'</title>';
 
                     }else
                     {
@@ -80,19 +80,23 @@
                     $liens = 0;
                     if(isset($_GET["dossier"]))
                     {
-                        $NDosier=$_GET["dossier"];
-                        for($o = 0; $o < sizeof($fichiers); $o++)  
+                        if($fichiers!="")
                         {
-                            ?>
-                                <?php
-                                    echo "<a href='".$controller_video."?dossier=".$NDosier."&video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
-                                    echo "<br>";
-                                    $liens++;
+                            $NDosier=$_GET["dossier"];
+                            for($o = 0; $o < sizeof($fichiers); $o++)  
+                            {
                                 ?>
-                        
-                            <?php
-
+                                    <?php
+                                        echo "<a href='".$controller_video."?dossier=".$NDosier."&video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
+                                        echo "<br>";
+                                        $liens++;
+                                    ?>
+                            
+                                <?php
+    
+                            }
                         }
+
                     }else
                     {
                         for($o = 0; $o < sizeof($fichiers); $o++)  
@@ -119,7 +123,7 @@
             if($_GET["video"]=="default")
             {
                 echo "<nav class='box-nav-lecteur-video'>";
-                LecteurJW($lien_retour_video.'mylivewallpapers.com-Treehouse-Summer-Rain.mp4',"");
+                //LecteurJW($lien_retour_video.'mylivewallpapers.com-Treehouse-Summer-Rain.mp4',"");
                 echo "</nav>";
             }
             elseif($_GET["video"]!="default" && isset($_GET["dossier"]))

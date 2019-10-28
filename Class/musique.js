@@ -27,11 +27,11 @@ class Musique {
 
     GetDataImage (variable, wrap_in_td=false, encoding, getid3_lib)
     {
-        $returnstring = "";
+        returnstring;
         switch (gettype(variable)) {
             case 'array':
                 
-                foreach (variable of cle => value) {
+                variable.forEach(function(value) {
                     
                     //if (($cle == 'data') && isset($variable['image_mime']) && isset($variable['dataoffset'])) {
                     if ((cle == 'data') && isset(variable['image_mime']) && returnstring!="") {
@@ -42,7 +42,7 @@ class Musique {
                     } else {
                         //returnstring .= '</td>'."\n".GetImageCover(value, true, encoding,classimage).'</tr>'."\n";
                     }
-                }
+                });
                 break;
         }
         return returnstring;
