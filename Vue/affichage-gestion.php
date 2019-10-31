@@ -21,7 +21,7 @@
                     </form>
 
                     <form method="post" class="form-2" action=<?php echo $controller_affichage_gestion ?>>
-                    <p>Supprimer une page : </p>
+                        <p>Supprimer une page : </p>
                         <label for="nomfichier">Nom de la page web : </label>
                         <input id="nomfichier" type="text" name="name">
                         <input type="submit" name="supp">

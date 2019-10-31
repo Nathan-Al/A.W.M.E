@@ -9,9 +9,23 @@ $fichiers = str_replace("affichage-","",ScanFichiers($dossier_vue));
 
 $dossier = array("vue"=>$dossier_vue, "controller"=>$dossier_controll, "css"=>$dossier_css);
 if(isset($_POST["create"]))
-$nomPage = nettoyageCharacters($_POST["name"]);
+if($_POST["name"]!="" && $_POST["name"]!=null)
+{
+    $nomPage = nettoyageCharacters($_POST["name"]);
 
-if(CreeFichier($dossier,$nomPage,true))
-echo "Fichier créer !";
+    if(CreeFichier($dossier,$nomPage,true))
+    echo "Fichier créer !";   
+}
+
+
+if(isset($_POST["supp"]))
+if($_POST["name"]!="" && $_POST["name"]!=null)
+{
+    $nomPage = nettoyageCharacters($_POST["name"]);
+    
+    if(SupprimerFichier($dossier,$nomPage))
+    echo "Fichier supprimer !";
+}
+
 
 require $require_vue_gestion;

@@ -92,10 +92,50 @@ function CreeFichier($destination, $nom, $newpage)
             
 }
 
-function SupprimerFichie($destination, $nom)
+function SupprimerFichier($destination, $nom)
 {
-    $chemin = $destination;
-    $nomfichier = $nom;
+    if($destination!=null && $nom!=null)
+    {
+        $nomfichier = $nom;
+        $vue = $destination["vue"] ;
+        $controller = $destination["controller"];
+        $css = $destination["css"];
+        $nom_vue =  $vue."affichage-".$nomfichier.".php";
+        $nom_controller = $controller."controll-".$nomfichier.".php";
+        $nom_css = $css."style-".$nomfichier.".css";
+        if(file_exists($nom_vue))
+        {
+            if(file_exists($nom_controller))
+            {
+                if(file_exists($nom_css))
+                {
+                    try
+                    {
+                        unlink($nom_vue);
+                        unlink($nom_controller);
+                        unlink($nom_css);
+
+                        return true;
+                    }catch (Exception $e)
+                    {
+                        return false;
+                    } 
+                }
+                else
+                {
+                    echo "Le fichier css n'existe pas !";
+                }
+            }
+            else
+            {
+                echo "Controller n'existe pas !";
+            }
+        }
+        else
+        {
+            echo "Le fichier vue n'existe pas !";
+        }
+    }
 }
 
 function EditerFichier($destination, $nom, $info)
