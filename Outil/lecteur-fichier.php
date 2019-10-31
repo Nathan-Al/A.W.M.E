@@ -78,6 +78,7 @@ function ScanFichiersDoc($liensfich){
                 }
             }
         }
+    if($tb_directories[0]!=null)
     for ($i = 0; $i<sizeof($tb_directories);$i++)
     {
         $dir = $liensfich.$tb_directories[$i];
@@ -103,6 +104,7 @@ function ScanFichiersDoc($liensfich){
                 }
             }
     }
+    if($tb_file2[0]!=null)
     for ($p = 0; $p < sizeof($tb_file2); $p++)
     {
         $tb_files[]=$tb_files2[$p];
@@ -318,6 +320,17 @@ function uploadfichier($chemindossier,$fichier)
 
 }
 
+function nettoyageCharacters($chaineCarach)
+{
+    $chaineCarach = strtr($chaineCarach, 
+            'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+            'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+    $chaineCarach = preg_replace('/([^.a-z0-9]+)/i ', '', $chaineCarach);
+    $chaineCarach = strtolower($chaineCarach);
+
+    return $chaineCarach;
+}
+
 require_once("MP3/Id.php");
  
 function read_mp3_tags($dir)
@@ -389,4 +402,3 @@ function read_mp3_tags($dir)
  
     return $result;
 }
-?>

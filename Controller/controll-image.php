@@ -1,60 +1,37 @@
 <?php
-    require "../Outil/lecteur-liens.php";
-    require $require_lecteur_fichier;
-    
-    if(isset($_GET["chgp"]))
-    {
-        if($_GET["chgp"]==0)
-        {
-            $nbpage = 0;
-            $tabliens = array();
-            $tabliens = chargeLiens($liensHomeImage);
-            $page=$_GET["page"];
-            for ($i =1; $i < sizeof($tabliens); $i++)
-            {
-                if($tabliens[0][$i]!=null)
-                $nbpage++;
-            }
-        }
-        if($_GET["chgp"]==1)
-        {
-            $tabliens = array();
-            $tabliens = chargeLiens($liensHomeImage);
-            for ($i =1; $i < sizeof($tabliens); $i++)
-            {
-                if($tabliens[0][$i]!=null)
-                $nbpage++;
-            }
-            
-            //echo "TAB ".$tabliens[1][2];
+require "../Outil/lecteur-liens.php";
+require $require_lecteur_fichier;
+if(isset($_GET["nomimage"]))
+{
+    $liens_image = $_GET["nomimage"];
+    list($width, $height, $type, $attr) = getimagesize($lien_retour_images.$liens_image);
+    $imageTypeArray = array
+    (
+        0=>'UNKNOWN',
+        1=>'GIF',
+        2=>'JPEG',
+        3=>'PNG',
+        4=>'SWF',
+        5=>'PSD',
+        6=>'BMP',
+        7=>'TIFF_II',
+        8=>'TIFF_MM',
+        9=>'JPC',
+        10=>'JP2',
+        11=>'JPX',
+        12=>'JB2',
+        13=>'SWC',
+        14=>'IFF',
+        15=>'WBMP',
+        16=>'XBM',
+        17=>'ICO',
+        18=>'COUNT' 
+    );
+}else
+{
+    echo "error image introuvable";
+}
 
-            if(isset($_POST["suiv"]))
-            {
-                $page = $_POST["suiv"]+1;
-            }
-            if(isset($_POST["prec"]))
-            {
-               $page = $_POST["prec"]-1;
-            }
-        }
-        if($_GET["chgp"]=="chercher")
-        {
-            if(isset($_POST["searchEngine"]))
-            {
-                if($_POST["searchEngine"]!=""&&$_POST["searchEngine"]!=null&&$_POST["searchEngine"]!=false)
-                {
-                    $motachercher = $_POST["searchEngine"];
-                    $tabliens = array();
-                    $tabliens = ChercherFicher($motachercher,$liensHomeImage);
-                }else
-                {
-                    $tabliens = array();
-                    $tabliens = chargeLiens($liensHomeImage); 
-                    echo "<meta http-equiv='refresh' content='0; URL=".$controller_affichage_image."?chgp=0 & page=1'>";
-                }
-            }
-        }
-        require $require_vue_affichage_gallery;    
-    }
+require $require_vue_affichage_image;
 
 ?>

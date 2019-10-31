@@ -231,7 +231,7 @@ function GetDataImage($variable, $wrap_in_td=false, $encoding='ISO-8859-1')
                   $variable['image_mime'];
 					}
 				} else {
-					$returnstring .= '</td>'."\n".GetImageCover($value, true, $encoding,$classimage).'</tr>'."\n";
+					$returnstring .= '</td>'."\n".GetImageCover($value, true, $encoding, $classimage).'</tr>'."\n";
 				}
 			}
 			break;
@@ -363,5 +363,3 @@ function Verify($titre , $album , $artiste , $genre , $time , $date , $image , $
 
    return $info_music_veri;
 }
-
-?>

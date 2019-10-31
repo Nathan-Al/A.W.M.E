@@ -1,52 +1,10 @@
-<html>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
-        <meta charset="UTF-8">
-        <LINK rel="icon" type="image/png" href="media-site/icone.png" /> <!-- Icone de l'onglet de la page web -->
-
-        <link rel="stylesheet" href="Css/Menu.css" /> <!-- Importations du css -->
-        
-        <head>
-            <title>Accueil</title> <!-- Titre de l'onglet de la page web -->
-        </head>
-
-            <body class="Menu-Body">
-                <header><h1> Bienvenue sur la page de gestion de samba </h1></header>
-                
-                <div id="conteneur">
-                    <div class="Menu-comp">
-                        <nav class="Nav-Liens">
-                            <a href="Controller/controll-image.php?chgp=0 & page=1 " class="Liens-Accueil">Image</a>
-                            <img src="media-site/img.jpg" class="Nav-Image"/>
-                        </nav>
-                        <nav class="Nav-Liens">
-                            <a href="Controller/controll-documents.php" class="Liens-Accueil">Documents</a>
-                            <img src="media-site/doc.jpg" class="Nav-Image"/>
-                        </nav>
-                        <nav class="Nav-Liens">
-                            <a href="Controller/controll-video.php?video=default" class="Liens-Accueil">Video</a>
-                            <img src="media-site/vid.jpg" class="Nav-Image"/>
-                        </nav>
-                        <nav class="Nav-Liens">
-                            <a href="Controller/controll-video-box.php?video=default" class="Liens-Accueil">Video Pour la box</a>
-                            <img src="media-site/vidbox.jpg" class="Nav-Image"/>
-                        </nav>
-                        <nav class="Nav-Liens">
-                            <a href="Controller/controll-musique.php" class="Liens-Accueil">Musique</a>
-                            <img src="media-site/ms.jpg" class="Nav-Image"/>
-                        </nav>
-                        <nav class="Nav-Liens">
-                            <a href="Controller/controll-upload.php" class="Liens-Accueil">Upload de fichier</a>
-                            <img src="media-site/up.jpg" class="Nav-Image"/>
-                        </nav>
-                        <nav class="Nav-Liens">
-                            <a href="Controller/controll-youtube.php" class="Liens-Accueil">Youtube</a>
-                            <img src="media-site/yt.png" class="Nav-Image"/>
-                        </nav>
-                        <nav class="Nav-Liens">
-                            <a href="Test/test.php" class="Liens-Accueil">Test</a>
-                            <img src="media-site/ts.jpg" class="Nav-Image"/>
-                        </nav>
-                    </div>
-                </div>
-            </body>
-</html>
+<?php
+    
+    if(isset($_GET["admin"]))
+    {
+        require "Controller/controll-gestion.php";
+    }else
+    {
+        require "Controller/controll-index.php";
+    }
+?>

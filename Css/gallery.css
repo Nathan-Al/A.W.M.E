@@ -146,6 +146,14 @@ a:active
     /*overflow-y: scroll;*/
 }
 
+.form-affichage-image
+{
+    height: 0;
+    width: 0;
+    margin:0;
+    padding: 0;
+}
+
 .Min-Image
 {
     background-color: rgb(179, 6, 6);

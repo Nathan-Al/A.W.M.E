@@ -48,7 +48,7 @@
 
                     <nav class="Nav-Fichiers">
                         <?php
-                                $liens = 0;
+                            $liens = 0;
                                     for($o = 0; $o < sizeof($fichiers); $o++) 
                                     {
                                         if($tabliens[$liens] != "0")
@@ -65,7 +65,7 @@
                                             $liens++;    
                                     }
                                     
-                                    closedir($dir);
+                                    //closedir($dir);
                                 
                         ?>
                     </nav>
