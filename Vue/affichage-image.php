@@ -21,11 +21,21 @@
                         </div>
                     </div>
                     <div class="div-info">
-                        <div class="nomImage">
-                            Titre : <?php echo $liens_image ?></h1>
+                        <div class="bouttonRetour">
+                            <a href=<?php echo $controller_affichage_gallery."?chgp=0&page=".$page ?> class="bouttonRetourA">Retour</a>
                         </div>
-                        <p>Resolution <?php echo $width."x".$height ?> </p>
-                        <p>Type : <?php  ?>
+                        <div class="InfoImage">
+                            <p>Titre : <?php echo $liens_image ?> </p>
+                        </div>
+                        <div class="InfoImage">
+                            <p>Resolution : <?php echo $width."x".$height ?> </p>
+                        </div>
+                        <div class="InfoImage">
+                            <p>Taille : <?php echo $taille ?></p>
+                        </div>
+                        <div class="InfoImage">
+                            <p>Type : <?php echo $type ?></p>
+                        </div>
                     </div>
                 </div>
 

@@ -1,10 +1,12 @@
 <?php
 require "../Outil/lecteur-liens.php";
 require $require_lecteur_fichier;
+
+$page = $_GET["page"];
+
 if(isset($_GET["nomimage"]))
 {
     $liens_image = $_GET["nomimage"];
-    list($width, $height, $type, $attr) = getimagesize($lien_retour_images.$liens_image);
     $imageTypeArray = array
     (
         0=>'UNKNOWN',
@@ -27,6 +29,19 @@ if(isset($_GET["nomimage"]))
         17=>'ICO',
         18=>'COUNT' 
     );
+
+    list($width, $height, $extension, $attr) = getimagesize($lien_retour_images.$liens_image);
+    $type = $imageTypeArray[$extension];
+    
+    if(filesize($lien_retour_images.$liens_image)>1 && filesize($lien_retour_images.$liens_image)<1024)
+        $taille = filesize($lien_retour_images.$liens_image)." octets";
+    else if(filesize($lien_retour_images.$liens_image)>1024 && filesize($lien_retour_images.$liens_image)<1048576)
+        $taille = filesize($lien_retour_images.$liens_image)." Ko";
+    else if(ilesize($lien_retour_images.$liens_image)>1048576)
+        $taille = filesize($lien_retour_images.$liens_image)." Mio";
+    
+    
+    
 }else
 {
     echo "error image introuvable";

@@ -9,10 +9,11 @@
 
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL *///----------------------------------
 
-    $require_lecteur_fichier = "../Outil/lecteur-fichier.php";
-    $require_lecteur_video = "../Outil/lecteur-video.php";
-    $require_lecteur_musique = "../Outil/lecteur-musique.php";
-    $require_createur_fichier = "../Outil/createur-fichier.php";
+    $racine_outil = "../Outil/";
+    $require_lecteur_fichier = $racine_outil."lecteur-fichier.php";
+    $require_lecteur_video = $racine_outil."lecteur-video.php";
+    $require_lecteur_musique = $racine_outil."lecteur-musique.php";
+    $require_createur_fichier = $racine_outil."createur-fichier.php";
 
     // REQUIRE VUE-----
 

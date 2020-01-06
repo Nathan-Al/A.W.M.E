@@ -24,7 +24,16 @@
             $effectuer = uploadfichier($liensHomeVideo,$fichier);
         }
         elseif(in_array($extension, $extensionsmusique))
-        {
+        {/*
+            $nom = strtolower($fichier['name']);
+            $tmpnom = $fichier['tmp_name'];
+            $taille = $fichier['size'];
+            $type = $fichier['type'];
+            $erreurr = $fichier['error'];
+            $dossier = $chemindossier;
+        
+            echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Erreur:".$erreurr." - Dossier:".$dossier;
+        */
             $effectuer = uploadfichier($liensHomeMusique,$fichier);
             //echo 'musique <br>';
         }

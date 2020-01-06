@@ -25,6 +25,7 @@
                 <nav class="nav-upload">
                     
                     <input type="file" name="fichiers">
+                    
                 </nav>
             </div>
             <input type="submit" name="envoyer" value="Envoyer le fichier">
@@ -32,14 +33,7 @@
         <?php
             if(isset($effectuer))
             {
-                if($effectuer==true)
-                {
-                    echo 'Upload effectué avec succès !';
-                }
-                else
-                {
-                    echo 'Echec de l\'upload !';
-                }
+                echo $effectuer;
             }
 
         ?>

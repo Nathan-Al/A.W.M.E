@@ -69,7 +69,7 @@
                         ?>
                             <div class="affichage-div-image">
                                 
-                                    <a class="a-image" href="<?php echo $controller_affichage_image."?nomimage=".$tabliens[$liens][$page] ?>">
+                                    <a class="a-image" href="<?php echo $controller_affichage_image."?nomimage=".$tabliens[$liens][$page]."&page=".$page ?>">
                                         <div class="a-image-background">
                                             <!-- Background nom image (apparait en hover) -->
                                             <span class="div-image-span"><?php echo $tabliens[$liens][$page] ?></span>
@@ -104,11 +104,11 @@
                                 {
                                     if($lien_retour_images.$tabliens[$liens]!=$lien_retour_images)
                                     {
-                           ?>
-                                <div class="div-image">
-                                    <img class="Min-Image" src="<?php echo $lien_retour_images.$tabliens[$liens] ?>"/>
-                                </div>
-                           <?php
+                                        ?>
+                                            <div class="div-image">
+                                                <img class="Min-Image" src="<?php echo $lien_retour_images.$tabliens[$liens] ?>"/>
+                                            </div>
+                                        <?php
                                     }
                                 } 
                             }

@@ -275,10 +275,11 @@ function uploadfichier($chemindossier,$fichier)
     $erreurr = $fichier['error'];
     $dossier = $chemindossier;
 
-    //echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Erreur:".$erreur." - Dossier:".$dossier;
+    //echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Erreur:".$erreurr." - Dossier:".$dossier;
 
     $fichier = basename($nom);
     $taille_maxi = 10000000;
+    
     $taille = filesize($tmpnom);
     $extensions = array('.png', '.gif', '.jpg', '.jpeg','.mp4', '.mkv', '.avi', '.mpeg','.mp3', '.waw', '.ogg', '.flac','.doc', '.docx', '.pdf', '.txt','.zip','.rar');
     $extension = strtolower(strrchr($nom, '.')); 
@@ -288,12 +289,12 @@ function uploadfichier($chemindossier,$fichier)
     {
         $erreur = 'Mauvais format de fichier';
     }
-  /*
+  
     if($taille>$taille_maxi)
     {
         $erreur = 'Le fichier est trop gros...';
     }
-*/
+
     if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
     {
         //On formate le nom du fichier ici...
@@ -304,19 +305,34 @@ function uploadfichier($chemindossier,$fichier)
 
         if(move_uploaded_file($tmpnom, $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
         {
-            return true;
+            return "Fichier Uploader !";
         }
         else //Sinon (la fonction renvoie FALSE).
         {
-            return false;
+            if($erreurr==1)
+            $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
+            else if($erreurr==2)
+            $message="Le fichier dépasse le poids autorisé par max_file_size !";
+            else if($erreurr==3)
+            $message="Une partit du fichier n'a pas été uploader.";
+            else if($erreurr==3)
+            $message="Aucun fichier.";
+            return $message;
         }
     }
     elseif(isset($erreur))
     {
         if($erreur!=""&&$erreur!=null)
-        echo "Erreur : ".$erreur;
-        return false;
-    } 
+        if($erreurr==1)
+            $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
+            else if($erreurr==2)
+            $message="Le fichier dépasse le poids autorisé par max_file_size !";
+            else if($erreurr==3)
+            $message="Une partit du fichier n'a pas été uploader.";
+            else if($erreurr==3)
+            $message="Aucun fichier.";
+            return $message;
+    }
 
 }
 
