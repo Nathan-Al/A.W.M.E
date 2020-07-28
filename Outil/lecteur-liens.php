@@ -10,6 +10,7 @@
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL *///----------------------------------
 
     $racine_outil = "../Outil/";
+    $racine_script ="../Scripts/";
     $require_lecteur_fichier = $racine_outil."lecteur-fichier.php";
     $require_lecteur_video = $racine_outil."lecteur-video.php";
     $require_lecteur_musique = $racine_outil."lecteur-musique.php";
@@ -18,7 +19,7 @@
     // REQUIRE VUE-----
 
     $require_vue_gestion ="../Vue/affichage-gestion.php";
-    $require_vue_index = "Vue/affichage-index.php";
+    $require_vue_index = "Vue/affichage-index.html";
     $require_vue_affichage_documents = "../Vue/affichage-documents.php";
     $require_vue_affichage_video = "../Vue/affichage-video.php";
     $require_vue_affichage_video_box = "../Vue/affichage-video-box.php";
