@@ -51,7 +51,11 @@
                             $liens = 0;
                                     for($o = 0; $o < sizeof($fichiers); $o++) 
                                     {
+<<<<<<< HEAD
                                         if($fichiers[$liens] != "0")
+=======
+                                        if($tabliens[$liens] != "0")
+>>>>>>> master
                                             {
                                                 ?>
                                                     <div class="div-documents">
