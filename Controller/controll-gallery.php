@@ -2,7 +2,6 @@
     require "../Outil/lecteur-liens.php";
     require $require_lecteur_fichier;
     
-<<<<<<< HEAD
     if(isset($_GET["page"]))
     {
         $tabliens = array();
@@ -14,43 +13,6 @@
             $nbpage++;
         }
 
-=======
-    if(isset($_GET["chgp"]))
-    {
-        if($_GET["chgp"]==0)
-        {
-            $nbpage = 0;
-            $tabliens = array();
-            $tabliens = chargeLiens($liensHomeImage);
-            $page=$_GET["page"];
-            for ($i =1; $i < sizeof($tabliens); $i++)
-            {
-                if($tabliens[0][$i]!=null)
-                $nbpage++;
-            }
-        }
-        if($_GET["chgp"]==1)
-        {
-            $tabliens = array();
-            $tabliens = chargeLiens($liensHomeImage);
-            for ($i =1; $i < sizeof($tabliens); $i++)
-            {
-                if($tabliens[0][$i]!=null)
-                $nbpage++;
-            }
-            
-            //echo "TAB ".$tabliens[1][2];
-
-            if(isset($_POST["suiv"]))
-            {
-                $page = $_POST["suiv"]+1;
-            }
-            if(isset($_POST["prec"]))
-            {
-               $page = $_POST["prec"]-1;
-            }
-        }
->>>>>>> master
         if($_GET["chgp"]=="chercher")
         {
             if(isset($_POST["searchEngine"]))

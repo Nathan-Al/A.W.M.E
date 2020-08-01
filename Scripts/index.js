@@ -29,7 +29,6 @@ let Menu_Ar = {
         "Test/test.php"
     ],
     images: [
-<<<<<<< HEAD
         "media-site/img.jpg",
         "media-site/doc.jpg",
         "media-site/vid.jpg",
@@ -38,16 +37,6 @@ let Menu_Ar = {
         "media-site/up.jpg",
         "media-site/yt.png",
         "media-site/ts.jpg"
-=======
-        "../media-site/img.jpg",
-        "../media-site/doc.jpg",
-        "../media-site/vid.jpg",
-        "../media-site/vidbox.jpg",
-        "../media-site/ms.jpg",
-        "../media-site/up.jpg",
-        "../media-site/yt.png",
-        "../media-site/ts.jpg"
->>>>>>> master
 
     ],
     class: {
