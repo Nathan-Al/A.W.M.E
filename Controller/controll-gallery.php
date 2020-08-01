@@ -1,6 +1,6 @@
 <?php
     require "../Outil/lecteur-liens.php";
-    require $require_lecteur_fichier;
+    include $require_lecteur_fichier;
     
     if(isset($_GET["page"]))
     {
