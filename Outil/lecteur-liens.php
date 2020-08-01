@@ -19,21 +19,33 @@
     // REQUIRE VUE-----
 
     $require_vue_gestion ="../Vue/affichage-gestion.php";
+<<<<<<< HEAD
     $require_vue_index = "Vue/affichage-index.php";
+=======
+    $require_vue_index = "Vue/affichage-index.html";
+>>>>>>> master
     $require_vue_affichage_documents = "../Vue/affichage-documents.php";
     $require_vue_affichage_video = "../Vue/affichage-video.php";
     $require_vue_affichage_video_box = "../Vue/affichage-video-box.php";
     $require_vue_affichage_lecteur_video = "../Vue/affichage-lecteur-video.php";
     $require_vue_affichage_musique = "../Vue/affichage-musique.php";
+<<<<<<< HEAD
     $require_vue_affichage_gallery = "../Vue/affichage-gallerie.php";
+=======
+    $require_vue_affichage_gallery = "../Vue/affichage-gallery.php";
+>>>>>>> master
     $require_vue_affichage_image = "../Vue/affichage-image.php";
     $require_vue_affichage_upload = "../Vue/affichage-upload.php";
     $require_vue_affichage_youtube = "../Vue/affichage-youtube.php";
 
     // REQUIRE MODEL
+<<<<<<< HEAD
     $require_model_musique = "../Class/musique.php";
     $require_class_upload = "../Class/upload.php";
 
+=======
+    $require_model_musique = "../Model/musique.php";
+>>>>>>> master
 
 /* LIENS TYPE a CONTROLLER */
 
@@ -53,7 +65,11 @@
    
 /* LIENS CSS */
     $liens_css_image = "../Css/image.css";
+<<<<<<< HEAD
     $liens_css_gallery = "../Css/gallerie.css";
+=======
+    $liens_css_gallery = "../Css/gallery.css";
+>>>>>>> master
     $liens_css_document = "../Css/documents.css";
     $liens_css_musique = "../Css/musique.css";
     $liens_css_video = "../Css/video.css";
@@ -64,8 +80,13 @@
 
 /* LIENS DOSSIER */
     $liens_dossier_sous_titre = "../Video/SousTitre/";
+<<<<<<< HEAD
     $require_decodeur_id3 = "../getID3-master/getid3/getid3.php";
     $require_write_id3 = "../getID3-master/getid3/write.php";
+=======
+    $require_decodeur_id3 = "../getID3-1.9.18/getid3/getid3.php";
+    $require_write_id3 = "../getID3-1.9.18/getid3/write.php";
+>>>>>>> master
     $require_javaScript = "../JavaScript/";
 
     $dossier_vue = "../Vue/";
@@ -73,7 +94,10 @@
     $dossier_outil = "../Outil/";
     $dossier_model = "../Model/";
     $dossier_css = "../Css/";
+<<<<<<< HEAD
     $dosier_sous_titre = $liensHomeVideo;
+=======
+>>>>>>> master
 
 /* ICONE PAGE DU SITE */
     $IconeSite = "../media-site/icone.png";

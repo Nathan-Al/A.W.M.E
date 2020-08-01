@@ -37,7 +37,11 @@ if(isset($_GET["nomimage"]))
         $taille = filesize($lien_retour_images.$liens_image)." octets";
     else if(filesize($lien_retour_images.$liens_image)>1024 && filesize($lien_retour_images.$liens_image)<1048576)
         $taille = filesize($lien_retour_images.$liens_image)." Ko";
+<<<<<<< HEAD
     else if(filesize($lien_retour_images.$liens_image)>1048576)
+=======
+    else if(ilesize($lien_retour_images.$liens_image)>1048576)
+>>>>>>> master
         $taille = filesize($lien_retour_images.$liens_image)." Mio";
     
     

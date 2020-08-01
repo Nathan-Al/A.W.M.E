@@ -24,7 +24,11 @@
             <div class="div-menu">
                 <nav class="nav-upload">
                     
+<<<<<<< HEAD
                     <input type="file" name="fichiers[]" multiple>
+=======
+                    <input type="file" name="fichiers">
+>>>>>>> master
                     
                 </nav>
             </div>
