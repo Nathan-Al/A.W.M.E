@@ -1,0 +1,249 @@
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0%;
+    background-color: #24445C;
+    width: 100%;
+    height: 10%;
+    border-top: 0px;
+    border-bottom: 1% solid black;
+    box-shadow: 0px 5px 10px;
+    display: flex;
+}
+
+body {
+    background-color: rgb(241, 241, 241);
+    /*border-style: solid;
+    border-color: rgb(253, 0, 0);*/
+    width: 100%;
+    height: auto;
+    margin: 0%;
+    padding: 0%;
+}
+
+h1 {
+    color: white;
+    padding-bottom: 0%;
+    padding-top: 0%;
+    margin: 0%;
+}
+
+h2 {
+    margin: 0%;
+}
+
+h1:hover {
+    color: orange;
+}
+
+p {
+    padding: 0%;
+    margin: 0%;
+}
+
+a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+a:hover {
+    transition: 0.4s all;
+    color: rgb(96, 226, 64);
+}
+
+audio {
+    width: 100%;
+}
+
+.checkbox-php {
+    color: white;
+    padding: 0%;
+    margin: 0%;
+}
+
+.div-headers-1 {
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    /*border-style: solid;
+    border-color: rgb(207, 221, 16);*/
+    align-items: center;
+    text-align: center;
+}
+
+.Lien-nav-Accueil {
+    list-style-type: none;
+    color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    transition: 0.5s all;
+    /*
+    background-color: black;
+    border-style: solid;
+    border-color: brown;*/
+}
+
+.Lien-nav-Accueil a:hover {
+    transition: 0.2s all;
+}
+
+.div-contenue {
+    display: flex;
+    /*
+    border-style: solid;
+    border-color: rgb(216, 203, 21);*/
+    flex-direction: column;
+    background-color: #24445C;
+    width: auto;
+    height: 90%;
+}
+
+.div-navigation {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    background-color: rgb(17, 10, 58);
+    margin: 0%;
+    padding: 0%;
+}
+
+.a-boutton {
+    width: 10%;
+    height: 100%;
+}
+
+.nav-liens-musique {
+    /*
+    border-style: solid;
+    border-color: rgb(216, 203, 21);*/
+    display: flex;
+    flex-wrap: wrap;
+    /*flex-direction: column;*/
+    background-color: rgb(39, 39, 39);
+    width: 80%;
+    height: 100%;
+    /*justify-content: space-around;*/
+    overflow-x: scroll;
+    margin: 0%;
+    padding: 0%;
+}
+
+.div-liens-musique {
+    border: 1px solid rgb(87, 87, 87);
+    margin-bottom: 0%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    display: flex;
+    width: 30%;
+    height: 30%;
+}
+
+.div-min-liens-musique {
+    width: 50%;
+    height: auto;
+    border: 2px solid rgb(221, 141, 35);
+}
+
+.div-liens-musique-info {
+    width: auto;
+    height: auto;
+    border-left: 1px solid rgb(160, 160, 160);
+    /*margin-left: 1%;*/
+    text-align: center;
+    font-size: 85%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.liens-musique {
+    display: block;
+    /*background-color: rgb(14, 70, 143);*/
+    height: auto;
+    width: auto;
+    line-height: 40px;
+    font-size: 90%;
+}
+
+.img-min-liens-musique {
+    width: 100%;
+    height: 100%;
+}
+
+.div-affichage-musique {
+    /*
+    border-style: solid;
+    border-color: rgb(52, 196, 16);
+    */
+    border-top: 1px solid black;
+    display: flex;
+    /*flex-direction: column;*/
+    width: auto;
+    height: auto;
+    justify-content: end;
+    justify-items: end;
+}
+
+.div-affichage-info-musique {
+    border-style: solid;
+    border-color: rgb(221, 141, 35);
+    height: 10%;
+    width: 100%;
+}
+
+.gestion-div-info {
+    display: flex;
+    /*
+    border-style: solid;
+    border-color: rgb(223, 13, 114);
+    border-bottom: 3px solid black;
+    */
+    width: 10%;
+    height: auto;
+}
+
+.div-img {
+    width: auto;
+    height: auto;
+    /*
+    border-style: solid;
+    border-color: rgb(68, 236, 222);*/
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    border-right: 1px solid rgb(255, 255, 255);
+    /*
+    border-style: solid;
+    border-color: rgb(255, 255, 255);*/
+}
+
+.div-info {
+    width: 15%;
+    height: auto;
+    text-align: start;
+    border-right: 1px solid white;
+    background-color: rgb(22, 22, 22);
+    /*
+    border-style: solid;
+    border-color: rgb(236, 21, 21);
+    */
+}
+
+.div-p-info-musique {
+    width: 100%;
+    height: auto;
+    padding: 0%;
+    margin: 0%;
+    border-bottom: 1px solid rgb(61, 60, 60);
+    color: white;
+}
+
+.div-lecteur-audio {
+    width: 80%;
+    /*height: auto;
+    background-color: rgb(18, 40, 168);*/
+}
+
+
+/* --- A déplacer dans css affichage gestion musique --- */
