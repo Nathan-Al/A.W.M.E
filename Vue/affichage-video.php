@@ -56,7 +56,6 @@
 
         <nav class='nav-separation-div'>
         <?php
-<<<<<<< HEAD
             if(isset($_GET["dossier"])&& $_GET["dossier"]!="default")
             {
                 $dossierRetour = BoutonRetour($_GET["dossier"]);
@@ -73,24 +72,6 @@
                 }
             
             }
-=======
-        if(isset($_GET["dossier"])&& $_GET["dossier"]!="default")
-        {
-            $dossierRetour = BoutonRetour($_GET["dossier"]);
-            if($dossierRetour!="")
-            {
-                
-                echo "<a href='".$controller_video."?video=default&dossier=".$dossierRetour."' class='a-separation'>Avant</a>";
-               
-            }else
-            {
-                
-                echo "<a href='".$controller_video."?video=default' class='a-separation'>Avant</a>";
-                
-            }
-        
-        }
->>>>>>> master
         ?>
         </nav>
        
