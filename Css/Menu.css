@@ -95,9 +95,11 @@ a:hover {
     padding: 0%;
     background-color: blue;
     position: absolute;
-    right: 100%;
+    /*right: 100%;*/
+    right: 80%;
     top: 10%;
     transition-duration: 1.5s;
+    display: flex;
 }
 
 .menu-param-actif {
@@ -113,11 +115,51 @@ a:hover {
     transition-duration: 0.5s;
 }
 
-.menu-multimedia {}
+.conteneur-para-onglet {
+    /*border: 1px solid white;*/
+    height: 100%;
+    width: 20%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-.conteneur-para-contenue {}
+.para-nav {
+    border-right: 1px solid rgb(88, 152, 248);
+    -webkit-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.75);
+    width: auto;
+    height: auto;
+    text-orientation: mixed;
+    writing-mode: sideways-lr;
+    text-align: center;
+    display: block;
+    flex: 1;
+    padding-left: 30%;
+}
 
-.conteneur-para-onglet {}
+.para-nav:hover {
+    border-right: 0px;
+    background-color: #000096;
+}
+
+.conteneur-para-contenue {
+    /*border: 1px solid rgb(8, 182, 66);*/
+    height: 100%;
+    width: 80%;
+}
+
+.menu-multimedia {
+    background-color: #000096;
+    width: 80%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    color: white;
+    position: absolute;
+}
 
 .Nav-Liens {
     width: 20%;

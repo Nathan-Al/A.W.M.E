@@ -1,11 +1,11 @@
 <?php
 /* LIENS DOSSIER MULTIMEDIA *///-----------------------------------
-
-    $liensHomeDocuments = '/home/Samba/Documents/';
-    $liensHomeImage = '/home/Samba/Image/';
-    $liensHomeVideo = "/home/Samba/Video/";
-    $liensHomeMusique = "/home/Samba/Musique/";
-    $liensMediaSite = "../media-site/";
+$jsonMultimedia = json_decode(file_get_contents("Json/liens_multimedia.json"),true);
+$liensHomeDocuments = $jsonMultimedia["Document"];
+$liensHomeImage = $jsonMultimedia["Image"];
+$liensHomeVideo = $jsonMultimedia["Video"];
+$liensHomeMusique = $jsonMultimedia["Musique"];
+$liensMediaSite = "../media-site/";
 
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL *///----------------------------------
 

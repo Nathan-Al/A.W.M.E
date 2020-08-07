@@ -1,5 +1,19 @@
 <?php
 
+$jsonMultimedia = json_decode(file_get_contents("../Json/liens_multimedia.json"),true);
+$jsonMultimedia["Video"][] = "MAMASITAA";
+$barak = $jsonMultimedia["Video"];
+
+for($i = 0; $i < count($barak); $i++ )
+{
+	echo $barak[$i];
+}
+
+$jsonMultimedia = json_encode($jsonMultimedia);
+
+//file_put_contents("../Json/liens_multimedia.json",$jsonMultimedia);
+
+/*
 require "../Outil/lecteur-liens.php";
 //require $require_javaScript."index.js";
 echo $_SERVER['DOCUMENT_ROOT']."<br>";
@@ -60,9 +74,10 @@ foreach ($indicesServer as $arg) {
     }
 }
 echo '</table>' ; 
+*/
 ?>
 
-
+<!--
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -82,7 +97,8 @@ echo '</table>' ;
 	</script>
 </html>
 
-<!--
+
+
 <!DOCTYPE html>
 <html>
 	<head>
