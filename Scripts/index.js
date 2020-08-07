@@ -67,6 +67,16 @@ for (p = 0; p < Menu_Ar.liens.length; p++) {
     document.getElementById("liens" + p).innerText = Menu_Ar.name_link[p];
 }
 
+let OngletParametre = document.querySelectorAll("#conteneur-para-onglet nav");
+let Parametre = document.querySelectorAll("#conteneur-para-contenue > div");
+
+OngletParametre.forEach(function(item, dix) {
+    item.addEventListener('click', function(e) {
+        item.style.zIndex = "2";
+        console.log(item, " ", dix)
+    })
+});
+
 /*
 parameter_Div.addEventListener('click', function(e) {
     console.log("Cliquer ");

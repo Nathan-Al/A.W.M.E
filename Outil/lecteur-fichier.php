@@ -389,7 +389,7 @@
     /* ---------------------- INFORMATIONS FICHIER AUDIO ET VIDEO ----------------------- */
                             /* ---------------------------- */
 
-    require_once("MP3/Id.php");
+    include("MP3/Id.php");
     function read_mp3_tags($liens,$musique)
     {
         $PageEncoding = 'UTF-8';

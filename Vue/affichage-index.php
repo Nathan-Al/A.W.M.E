@@ -19,27 +19,30 @@
             <img src="media-site/menu.png" style="width: auto; height: 100%;" />
         </div>
         <div style="width: 90%; height: auto; text-align: center;">
-            <h1> Bienvenue sur la page de gestion de samba </h1>
+            <h1> Bienvenue sur la page de gestion de A.W.M.E </h1>
         </div>
     </header>
 
     <div id="conteneur">
         <div id="Parametre-Menu" class="menu-param-inactif">
-            <div id="conteneur-para-onglet">
-
+            <div id="conteneur-para-onglet" class="conteneur-para-onglet">
+                <nav id="para-nav" class="para-nav">Apparence</nav>
+                <nav id="para-nav" class="para-nav">Multimédia</nav>
+                <nav id="para-nav" class="para-nav">Lecteur</nav>
+                <nav id="para-nav" class="para-nav">Paramètres</nav>
             </div>
-            <div id="conteneur-para-contenue">
-                <div id="apparence-tools" class="menu-multimedia">
-
+            <div id="conteneur-para-contenue" class="conteneur-para-contenue">
+                <div id="apparence-tools" class="menu-multimedia" style="z-index : 2;">
+                    1
                 </div>
-                <div id="multimedia-tools" class="menu-multimedia">
-
+                <div id="multimedia-tools" class="menu-multimedia" style="z-index : 1;">
+                    2
                 </div>
-                <div id="playMedia-tools" class="menu-multimedia">
-
+                <div id="playMedia-tools" class="menu-multimedia" style="z-index : 1;">
+                    3
                 </div>
-                <div id="info-tools" class="menu-multimedia">
-
+                <div id="info-tools" class="menu-multimedia" style="z-index : 1;">
+                    4
                 </div>
             </div>
         </div>
