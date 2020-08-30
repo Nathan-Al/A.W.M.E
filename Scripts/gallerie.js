@@ -18,8 +18,8 @@ for (p = 0; p < image_Array.length; p++) {
     src_Image_Array[p] = image_Array[p].getAttribute('src')
 };
 
-let tata = document.querySelectorAll('#affichage-div-image #a-image-background');
-let imageBackground_Array = [].slice.call(tata);
+let slice_trans = document.querySelectorAll('#affichage-div-image #a-image-background');
+let imageBackground_Array = [].slice.call(slice_trans);
 
 let Image_for_big_picture = {
     'image': imageBackground_Array,
