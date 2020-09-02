@@ -1,6 +1,6 @@
 <?php
 /* LIENS DOSSIER MULTIMEDIA *///-----------------------------------
-$jsonMultimedia = json_decode(file_get_contents("Json/liens_multimedia.json"),true);
+$jsonMultimedia = json_decode(file_get_contents("../Json/liens_multimedia.json"),true);
 $liensHomeDocuments = $jsonMultimedia["Document"];
 $liensHomeImage = $jsonMultimedia["Image"];
 $liensHomeVideo = $jsonMultimedia["Video"];

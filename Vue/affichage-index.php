@@ -24,6 +24,7 @@
     </header>
 
     <div id="conteneur">
+<!-- MENU PARAMETRE -->
         <div id="Parametre-Menu" class="menu-param-inactif">
             <div id="conteneur-para-onglet" class="conteneur-para-onglet">
                 <nav id="para-nav" class="para-nav">Apparence</nav>

@@ -389,9 +389,10 @@
     /* ---------------------- INFORMATIONS FICHIER AUDIO ET VIDEO ----------------------- */
                             /* ---------------------------- */
 
-    include("MP3/Id.php");
+    
     function read_mp3_tags($liens,$musique)
     {
+        include("MP3/Id.php");
         $PageEncoding = 'UTF-8';
         $ValidTagTypes = array('id3v1', 'id3v2.3', 'ape');
         $getID3 = new getID3;

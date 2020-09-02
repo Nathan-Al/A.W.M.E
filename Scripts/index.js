@@ -5,6 +5,7 @@ let menu = document.getElementById("Menu-comp");
 let parametre_Menu = document.getElementById("Parametre-Menu");
 let Conteneur = document.getElementById("conteneur");
 let json_data_multimedia = new Object();
+GetJson("Json/liens_multimedia.json")
 let Tac;
 
 const navidVideo = document.getElementById("nav-input-video");
@@ -74,6 +75,7 @@ for (p = 0; p < Menu_Ar.liens.length; p++) {
     document.getElementById("liens" + p).innerText = Menu_Ar.name_link[p];
 }
 
+/*-------------------------------------- MENU PARAMETRE -----------------------------*/
 
 parameter_Div.addEventListener('mouseover', function(e) {
     if (parametre_Menu.classList == "menu-param-inactif") {
@@ -114,15 +116,13 @@ function animate() {
     }
 }
 
-/*-------------------------------------- MENU PARAMETRE -----------------------------*/
-
 let slice_trans = document.querySelectorAll("#conteneur-para-onglet nav");
 let OngletParametre = [].slice.call(slice_trans);
 let Parametre = document.querySelectorAll("#conteneur-para-contenue > div");
 
 OngletParametre.forEach(function(item, dix) {
     item.addEventListener('click', function(e) {
-        Parametre.forEach(function(elem){
+        Parametre.forEach(function(elem) {
             elem.style.zIndex = "1";
             elem.style.transition = "z-index = 1";
         });
@@ -131,99 +131,98 @@ OngletParametre.forEach(function(item, dix) {
     })
 });
 
-GetJson("Json/liens_multimedia.json");
-
-function GetJson(link)
-{
-    $.getJSON(link, function(data){
-        $.each( data, function( key, val ) {
+async function GetJson(link) {
+    //json_return = new Object();
+    await
+    $.getJSON(link, async function(data) {
+        await
+        $.each(data, async function(key, val) {
             json_data_multimedia[key] = val;
         });
-    }).done(function () { 
-        MultimediaJsonRecup()
-    }).fail(function () {
+    }).done(async function() {
+        MultimediaJsonRecup();
+    }).fail(function() {
         console.log("IMPOSSIBLE DE CHARGER JSON")
     });
-    
 }
 
-function MultimediaJsonRecup()
-{
+
+function MultimediaJsonRecup() {
     let multimedia_input_nav = document.querySelectorAll("div.div-menu-est > nav");
     let img_ajouter = document.querySelectorAll("img.img-ajouter");
-    
-    json_data_multimedia["Video"].forEach(function(item, nb){
-        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-musique-'+nb+'" />');
-        const inpute = $('<input type="text" id="nav-input-text" value="'+item+'"/>');
-        const nav_input = $('<nav id="nav-input-text-video-'+nb+'" class="nav-input-texte">');
+
+    json_data_multimedia["Video"].forEach(function(item, nb) {
+        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-musique-' + nb + '" />');
+        const inpute = $('<input type="text" id="nav-input-text" value="' + item + '"/>');
+        const nav_input = $('<nav id="nav-input-text-video-' + nb + '" class="nav-input-texte">');
 
         $('#nav-input-video').append(nav_input);
-        $('#nav-input-text-video-'+nb).append(inpute).append(imgs);
+        $('#nav-input-text-video-' + nb).append(inpute).append(imgs);
     });
-    json_data_multimedia["Musique"].forEach(function(item, nb){
-        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-musique-'+nb+'" />');
-        const inpute = $('<input type="text" id="nav-input-text" value="'+item+'"/>');
-        const nav_input = $('<nav id="nav-input-text-musique-'+nb+'" class="nav-input-texte">');
+    json_data_multimedia["Musique"].forEach(function(item, nb) {
+        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-musique-' + nb + '" />');
+        const inpute = $('<input type="text" id="nav-input-text" value="' + item + '"/>');
+        const nav_input = $('<nav id="nav-input-text-musique-' + nb + '" class="nav-input-texte">');
 
         $('#nav-input-musique').append(nav_input);
-        $('#nav-input-text-musique-'+nb).append(inpute).append(imgs);
+        $('#nav-input-text-musique-' + nb).append(inpute).append(imgs);
     });
-    json_data_multimedia["Image"].forEach(function(item, nb){
-        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-image-'+nb+'" />');
-        const inpute = $('<input type="text" id="nav-input-text" value="'+item+'"/>');
-        const nav_input = $('<nav id="nav-input-text-image-'+nb+'" class="nav-input-texte">');
+    json_data_multimedia["Image"].forEach(function(item, nb) {
+        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-image-' + nb + '" />');
+        const inpute = $('<input type="text" id="nav-input-text" value="' + item + '"/>');
+        const nav_input = $('<nav id="nav-input-text-image-' + nb + '" class="nav-input-texte">');
 
         $('#nav-input-image').append(nav_input);
-        $('#nav-input-text-image-'+nb).append(inpute).append(imgs);
+        $('#nav-input-text-image-' + nb).append(inpute).append(imgs);
     });
-    json_data_multimedia["Document"].forEach(function(item, nb){
-        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-document-'+nb+'" />');
-        const inpute = $('<input type="text" id="nav-input-text" value="'+item+'"/>');
-        const nav_input = $('<nav id="nav-input-text-document-'+nb+'" class="nav-input-texte">');
+    json_data_multimedia["Document"].forEach(function(item, nb) {
+        const imgs = $('<img src="media-site/moins.png" class="img-supprimer" data-parent="nav-input-text-document-' + nb + '" />');
+        const inpute = $('<input type="text" id="nav-input-text" value="' + item + '"/>');
+        const nav_input = $('<nav id="nav-input-text-document-' + nb + '" class="nav-input-texte">');
 
         $('#nav-input-document').append(nav_input);
-        $('#nav-input-text-document-'+nb).append(inpute).append(imgs);
+        $('#nav-input-text-document-' + nb).append(inpute).append(imgs);
     });
-    
+
     /* 
         Ajout des input d'entré et des icones modifier/supprimer 
     */
-    img_ajouter.forEach(function(item,dix){
-        let M ;
-        item.addEventListener("click", function(e){
+    img_ajouter.forEach(function(item, dix) {
+        let M;
+        item.addEventListener("click", function(e) {
             const imgs = document.createElement("img");
-            imgs.setAttribute("class","img-supprimer");
-            imgs.setAttribute("src","media-site/croix.png");
-            imgs.setAttribute("id","new-input-img");
+            imgs.setAttribute("class", "img-supprimer");
+            imgs.setAttribute("src", "media-site/croix.png");
+            imgs.setAttribute("id", "new-input-img");
 
             const nav_input = document.createElement("nav");
-            nav_input.setAttribute("class","nav-input-texte");
-            nav_input.setAttribute("id","nav-input-text");
+            nav_input.setAttribute("class", "nav-input-texte");
+            nav_input.setAttribute("id", "nav-input-text");
 
             const iput = document.createElement("input");
-            iput.setAttribute("id","new-input");
-            iput.setAttribute("class","new-input");
+            iput.setAttribute("id", "new-input");
+            iput.setAttribute("class", "new-input");
 
-            nav_input.append(iput,imgs);
+            nav_input.append(iput, imgs);
             multimedia_input_nav[dix].append(nav_input);
 
-            iput.addEventListener("mouseout", function(){
+            iput.addEventListener("mouseout", function() {
                 SuppInput();
             });
-            iput.addEventListener("mouseover",function(){
+            iput.addEventListener("mouseover", function() {
                 clearTimeout(Tac)
             });
         })
     });
-    
+
     /* 
         Supprimer liens du ficier JSON 
     */
     let input_supprimer = document.querySelectorAll("img.img-supprimer");
-    input_supprimer.forEach(function(item,dix){
-        item.addEventListener("click", function(e){
+    input_supprimer.forEach(function(item, dix) {
+        item.addEventListener("click", function(e) {
 
-            ModifyJson("Json/liens_multimedia.json",)
+            ModifyJson("Json/liens_multimedia.json", )
             navidVideo.innerHTML = "";
             navidImage.innerHTML = "";
             navidMusique.innerHTML = "";
@@ -233,19 +232,14 @@ function MultimediaJsonRecup()
 
 }
 
-function SuppInput()
-{
+function SuppInput() {
     console.log("SuppInput")
-    Tac = setTimeout(function(){
+    Tac = setTimeout(function() {
         document.getElementById("new-input").remove();
         document.getElementById("new-input-img").remove()
-        }, 100000);
+    }, 100000);
 }
 
-function ModifyJson(link,data)
-{
+function ModifyJson(link, data) {
 
 }
-
-
-
