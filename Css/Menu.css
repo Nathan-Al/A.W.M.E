@@ -95,8 +95,8 @@ a:hover {
     padding: 0%;
     background-color: blue;
     position: absolute;
-    /*right: 100%;*/
-    right: 80%;
+    right: 100%;
+    /*right: 80%;*/
     top: 10%;
     transition-duration: 1.5s;
     display: flex;
