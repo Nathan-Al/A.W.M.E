@@ -5,6 +5,7 @@ $liensHomeDocuments = $jsonMultimedia["Document"];
 $liensHomeImage = $jsonMultimedia["Image"];
 $liensHomeVideo = $jsonMultimedia["Video"];
 $liensHomeMusique = $jsonMultimedia["Musique"];
+$liensYoutube = $jsonMultimedia["YouTube"];
 $liensMediaSite = "../media-site/";
 
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL *///----------------------------------
@@ -64,7 +65,7 @@ $liensMediaSite = "../media-site/";
 
 /* LIENS DOSSIER */
     $liens_dossier_sous_titre = "../Video/SousTitre/";
-    $require_decodeur_id3 = "../getID3-master/getid3/getid3.php";
+    $require_decodeur_id3 = "../Outil/getID3-master/getid3/getid3.php";
     $require_write_id3 = "../getID3-master/getid3/write.php";
     $require_javaScript = "../JavaScript/";
 

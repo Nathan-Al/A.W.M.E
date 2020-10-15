@@ -1,6 +1,6 @@
 {
     "Image": [
-        "Multimedia/Image",
+        "Multimedia/Image/",
         "Test/.com"
     ],
     "Document": [
@@ -16,6 +16,9 @@
         "Test/.com"
     ],
     "YouTube": [
-
+        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxMG5Qc9pUH6USbf33CUBtbA",
+        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxM6yhjpckya-n4WORH3USEJ",
+        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxNS5SIYcYYT7-PhGGYZ4qQc",
+        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxMSxOJDfcIbiOexP1vXTfVY"
     ]
 }

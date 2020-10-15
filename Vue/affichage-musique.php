@@ -20,6 +20,8 @@
                     <nav class="nav-liens-musique">
                         <?php
                         $iop = 0;
+                        if($fichier!=false)
+                        {
                             for($i=0; $i<10/*sizeof($fichier)*/;$i++)
                             {
                                 echo "<div class='div-liens-musique' >
@@ -34,6 +36,12 @@
                                     </div>";
                                 $iop++;
                             }
+                        }else
+                        {
+                            ?>
+                                <h1>AUCUN FICHIERS</h1>
+                            <?php
+                        }
                         ?>
                     </nav>
                 <a class="a-boutton" href="">Suivant</a>

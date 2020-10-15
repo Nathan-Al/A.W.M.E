@@ -11,24 +11,32 @@ $fichiers = ScanFichiers();
 require "../Vue/affichage-documents.php"; 
 
 
-function chargeLiens()
+function chargeLiens($dirname)
 {
-    $dirname = '/home/Samba/Documents/';
-    
-    $dir = opendir($dirname);
-    $liens=0;
-
-    while($file = readdir($dir)) 
+    //$dirname = '/home/Samba/Documents/';
+    for($p = 0; $p < sizeof($dirname); $p++)
     {
-        $file[$liens] = readdir($dir);
-        $liens++;
-        echo $file[$liens];
+        if(is_dir($dirname[$p]))
+        {
+            $dir = opendir($dirname);
+            $liens=0;
+        
+            while($file = readdir($dir)) 
+            {
+                $file[$liens] = readdir($dir);
+                $liens++;
+                echo $file[$liens];
+            }
+        
+            rsort($file);
+        
+            closedir($dir); 
+            
+        }else
+        {
+            //$file = false;
+        }
     }
-
-    rsort($file);
-
-    closedir($dir); 
-    
     return $file;
 }
 

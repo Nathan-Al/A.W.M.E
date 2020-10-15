@@ -1,32 +1,30 @@
 <?php
     require "../Outil/lecteur-liens.php";
     include $require_lecteur_fichier;
-    
+
     if(isset($_GET["page"]))
     {
         $tabliens = array();
-        $tabliens = chargeLiens($liensHomeImage);
+        $tabliens = chargeLiens($liensHomeImage, 15);
         $page=$_GET["page"];
-        for ($i =1; $i < sizeof($tabliens); $i++)
+        $nbpage = sizeof($tabliens);
+        if($tabliens!=false)
         {
-            if($tabliens[0][$i]!=null)
-            $nbpage++;
-        }
-
-        if($_GET["chgp"]=="chercher")
-        {
-            if(isset($_POST["searchEngine"]))
+            if(isset($_GET["chgp"]) && $_GET["chgp"]=="chercher")
             {
-                if($_POST["searchEngine"]!=""&&$_POST["searchEngine"]!=null&&$_POST["searchEngine"]!=false)
+                if(isset($_POST["searchEngine"]))
                 {
-                    $motachercher = $_POST["searchEngine"];
-                    $tabliens = array();
-                    $tabliens = ChercherFicher($motachercher,$liensHomeImage);
-                }else
-                {
-                    $tabliens = array();
-                    $tabliens = chargeLiens($liensHomeImage); 
-                    echo "<meta http-equiv='refresh' content='0; URL=".$controller_affichage_image."?chgp=0 & page=1'>";
+                    if($_POST["searchEngine"]!=""&&$_POST["searchEngine"]!=null&&$_POST["searchEngine"]!=false)
+                    {
+                        $motachercher = $_POST["searchEngine"];
+                        $tabliens = array();
+                        $tabliens = ChercherFicher($motachercher,$liensHomeImage);
+                    }else
+                    {
+                        $tabliens = array();
+                        $tabliens = chargeLiens($liensHomeImage,15); 
+                        echo "<meta http-equiv='refresh' content='0; URL=".$controller_affichage_image."?chgp=0 & page=1'>";
+                    }
                 }
             }
         }

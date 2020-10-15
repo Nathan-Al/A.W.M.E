@@ -1,89 +1,169 @@
 <?php
-    function ScanFichiers($meza){
-        $dir = $meza;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
-                                if (is_dir($dir.'/'.$element))
-                                {
-                                    //$tb_directories[] = $element;	
-                                }
-                                else
-                                {
-                                    $tb_files[] = $element;	
-                                }
+    function ScanFichiers($liens_video){
+        if(is_array($liens_video))
+        {
+            for($o = 0; $o <sizeof($liens_video);$o++)
+            {
+                $dir = "../".$liens_video[$o];
+                if ( is_dir($dir) )  {
+                    if ( $dh = opendir($dir) ) {
+                        while ( ($element = readdir($dh)) !== false){{
+                                if (($element != '_vti_cnf')&($element != '.')&($element != '..')&($element != '.DS_Store')	){
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            //$tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
+                                    }else
+                                    {
+                                        //$tb_directories = false;
+                                    }
+                                }	
                             }
-                        }	
+                    }else
+                    {
+                        //$tb_files = false;
                     }
                 }
             }
-        //echo "Size TB".sizeof($tb_files)."Size TB2".sizeof($tb_files2);
-    
-        return $tb_files;
+            if($tb_files==false || $tb_files[0]=="" || $tb_files[0]==null)
+                return false;
+            else
+                return $tb_files;
+        }else
+        {
+
+        }
     }
 
-    function ScanDossier($meza){
+    function ScanDossier($liens_dossier){
         $tb_directories = array();
-        $dir = $meza;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
-                                if (is_dir($dir.'/'.$element))
-                                {
-                                    $tb_directories[] = $element;	
-                                }
-                                else
-                                {
-                                    $tb_files[] = $element;	
-                                }
+        if(is_array($liens_dossier))
+        {
+            try {   
+                for($o = 0; $o < sizeof($liens_dossier); $o++)  
+                {
+                    $dir = "../".$liens_dossier[$o];
+                    if ( is_dir($dir) )  {
+                        if ( $dh = opendir($dir) ) {
+                            while ( ($element = readdir($dh)) !== false){{
+                                if (	($element != '_vti_cnf')	&
+                                    ($element != '.')		&
+                                    ($element != '..')		&
+                                    ($element != '.DS_Store')	){
+                                        
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            $tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
+                                    }
+                                }	
                             }
-                        }	
+                        }else
+                        {
+                            $tb_directories = false;
+                        }
                     }
-                }
+                }   
+
+            } catch(Exception $e){
+                $tb_directories = false;
             }
-        return $tb_directories;
+
+            if($tb_directories==false || $tb_directories[0]=="" || $tb_directories[0]==null)
+                return false;
+            else
+                return $tb_directories;
+        }
+        else
+        {
+            try {   
+                $dir = "../".$liens_dossier;
+                    if ( is_dir($dir) )  {
+                        if ( $dh = opendir($dir) ) {
+                            while ( ($element = readdir($dh)) !== false){{
+                                if (	($element != '_vti_cnf')	&
+                                    ($element != '.')		&
+                                    ($element != '..')		&
+                                    ($element != '.DS_Store')	){
+                                        
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            $tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
+                                    }
+                                }	
+                            }
+                        }else
+                        {
+                            $tb_directories = false;
+                        }
+                    }
+                 
+
+            } catch(Exception $e){
+                $tb_directories = false;
+            }
+
+            if($tb_directories==false || $tb_directories[0]=="" || $tb_directories[0]==null)
+                return false;
+            else
+                return $tb_directories; 
+        }
     }
 
     //Affichage documents
 
     function ScanFichiersDoc($liensfich){
-        $dir = $liensfich;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
-                                if (is_dir($dir.'/'.$element))
-                                {
-                                    $tb_directories[] = $element;	
-                                }
-                                else
-                                {
-                                    $tb_files[] = $element;	
-                                }
-                            }
-                        }	
-                    }
-                }
-            }
-        /*
-        if($tb_directories[0]!=null)
-        for ($i = 0; $i<sizeof($tb_directories);$i++)
+        
+        for($o = 0; $o < sizeof($liensfich); $o++)
         {
-            $dir = $liensfich.$tb_directories[$i];
+            $dir = "../".$liensfich[$o];
+            try{
+                if ( is_dir($dir) )  {
+                    if ( $dh = opendir($dir) ) {
+                        while (false !== ($element = readdir($dh))){{
+                                if (	($element != '_vti_cnf')	&
+                                    ($element != '.')		&
+                                    ($element != '..')		&
+                                    ($element != '.DS_Store')	){
+                                        
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            $tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
+                                    }
+                                }	
+                            }
+                        }
+                    }
+
+            }catch(Exception $e){
+                $tb_files = false;
+            }
+        }
+        return $tb_files;
+    }
+
+    function ScanDossierDoc($LiensDoc){
+        for($o = 0; $o < sizeof($LiensDoc); $o++)
+        {
+            $dir = "../".$LiensDoc[$o];
             if ( is_dir($dir) )  {
                 if ( $dh = opendir($dir) ) {
                     while ( ($element = readdir($dh)) !== false){{
@@ -94,88 +174,131 @@
                                     
                                     if (is_dir($dir.'/'.$element))
                                     {
-                                        //$tb_directories[] = $element;	
+                                        $tb_directories[] = $element;	
                                     }
                                     else
                                     {
-                                        $tb_files2[] = $element;
+                                        $tb_files[] = $element;	
                                     }
                                 }
                             }	
                         }
                     }
+                }else
+                {
+                    $tb_directories = false;
                 }
+            return $tb_directories;
         }
-        if($tb_files2[0]!=null)
-        for ($p = 0; $p < sizeof($tb_files2); $p++)
-        {
-            $tb_files[]=$tb_files2[$p];
-        }
-        */
-        //echo "Size TB".sizeof($tb_files)."Size TB2".sizeof($tb_files2);
-    
-        return $tb_files;
     }
+/**
+ * Fonctions qui permet de récupérer le chemin des ou du fichier/s qui se trouve dans le dossier envoyer
+ * Integer limite_fichier : indique combien de chemin vont être mise par par page Default = 0
+ * Array / String chemin_dossier : chemin ou la function devra récupérer les chemin des fichiers
+ */
+    function chargeLiens($chemin_dossier, $limite_fichier = 0)
+    {
+        $dir[]=null;
+        $page = 1;
+        if(is_array($chemin_dossier))
+        {
+            for ($o = 0; $o < sizeof($chemin_dossier); $o++)
+            {
+                $dirname[$o] = $chemin_dossier[$o];
+                try{
+                    if(is_dir("../".$dirname[$o]))
+                    {
+                        if ( $dir[$o] = opendir("../".$dirname[$o])) {
 
-    function ScanDossierDoc($LiensDoc){
-        $dir = $LiensDoc;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
-                                if (is_dir($dir.'/'.$element))
-                                {
-                                    $tb_directories[] = $element;	
+                            if($limite_fichier > 0)
+                            {
+                                $file = array();
+                                $liens = 0;
+                                while (false !== ($entry = readdir($dir[$o]))) {
+                                    if($entry!="."&&$entry!="..")
+                                    {
+                                        $file[$page][$liens] = $dirname[$o].$entry;
+                                        $liens++;
+                                        if($liens==15)
+                                        {
+                                            $page++;
+                                            $liens = 0;
+                                        }
+                                            
+                                    }
                                 }
-                                else
-                                {
-                                    $tb_files[] = $element;	
+                            }else
+                            {
+                                $file = array();
+                                $a = 0;
+                                while (false !== ($entry = readdir($dir[$o]))) {
+                                    if($entry!="."&&$entry!="..")
+                                    {
+                                        $file[$a] = $dirname[$o]."/".$entry;
+                                        $a++;
+                                    }
                                 }
                             }
-                        }	
+                            closedir($dir[$o]);
+                        }
                     }
-                }
-            }
-        return $tb_directories;
-    }
-
-    function chargeLiens($liensenv)
-    {
-            $dirname = $liensenv;
-            $dir = opendir($dirname);
-            $ona = 0;
-            $page = 1;
-            while($file[][] = readdir($dir)) 
-            {
-                $liens = 0;
-                for($compteur=0; $compteur<25; $compteur++)
+                    else
+                    {
+                        $dir[$o] = false;
+                    }
+                }catch(Exception $e)
                 {
-                    if($file[$liens][$page] != "." && $file[$liens][$page] != ".." && !is_dir($dirname.$file[$liens][$page] && $file[$liens][$page]!="" && $file[$liens][$page]!=false))
-                    {
-                        //echo readdir($dir),$page. "<br>";
-                        $file[$liens][$page] = readdir($dir);
-                        //echo "<br> L".$liens."  P".$page."  ".$file[$liens][$page]."<br>";
-                        //echo "<br>"."L".$liens."  P".$page;
-                    }
-                    if ($file[$liens][$page]=="..")
-                    {
-                        $file[$liens][$page] = "0";
-                    }
-                    $liens++;
-                    
+                    $dir = false;
                 }
-                //echo "<br>"."fin du for"."<br>";
-                $page++;
-                
             }
-            //echo "<br>"."fin while"."<br>";
-            
-            rsort($file);
-            
+        }else
+        {
+            try{
+                if(is_dir("../".$chemin_dossier))
+                {
+                    if ( $dir = opendir("../".$chemin_dossier)) {
+
+                        if($limite_fichier > 0)
+                        {
+                            $file = array();
+                            $liens = 0;
+                            while (false !== ($entry = readdir($dir))) {
+                                if($entry!="."&&$entry!="..")
+                                {
+                                    $file[$page][$liens] = $chemin_dossier.$entry;
+                                    $liens++;
+                                    if($liens==15)
+                                    {
+                                        $page++;
+                                        $liens = 0;
+                                    }
+                                        
+                                }
+                            }
+                        }else
+                        {
+                            $file = array();
+                            $a = 0;
+                            while (false !== ($entry = readdir($dir))) {
+                                if($entry!="."&&$entry!="..")
+                                {
+                                    $file[$a] = $chemin_dossier."/".$entry;
+                                    $a++;
+                                }
+                            }
+                        }
+                        closedir($dir);
+                    }
+                }
+                else
+                {
+                    $dir = false;
+                }
+            }catch(Exception $e)
+            {
+                $dir = false;
+            }
+        }
         return $file;
     }
 
@@ -183,29 +306,40 @@
     {
         $dossier = ScanDossier($chemindacces);
         $fichier = ScanFichiers($chemindacces);
-        if($dossier!="" && $dossier !=null)
-        for($p=0;$p<sizeof($dossier);$p++)
+        if($dossier != false && $fichier != false)
         {
-            $sousfichier = ScanFichiers($chemindacces.$dossier[$p]);
-            $indexmulti = sizeof($fichier)+sizeof($sousfichier);
-        }
-        else
-        $indexmulti = sizeof($fichier);
-
-
-        $o=0;
-        for($m=0;$m<$indexmulti;$m++)
-        {
-            if($m<sizeof($fichier))
+            for($o = 0; $o < sizeof($chemindacces); $o++)
             {
-                $fichierfin[$m]=$fichier[$m];
-            }else
-            {
-                $fichierfin[$m]=$sousfichier[$o];
-                
-                $o++;
+                if($dossier[$o]!=false && $dossier[$o] !=null)
+                for($p=0;$p<sizeof($dossier[$o]);$p++)
+                {
+                    $sousfichier = ScanFichiers($chemindacces.$dossier[$p]);
+                    $indexmulti = sizeof($fichier)+sizeof($sousfichier);
+                }
+                else
+                $indexmulti = false;
+                //$indexmulti = sizeof($fichier);
+    
+                $o=0;
+                for($m=0;$m<$indexmulti;$m++)
+                {
+                    if($m<sizeof($fichier))
+                    {
+                        $fichierfin[$m]=$fichier[$m];
+                    }else
+                    {
+                        $fichierfin[$m]=$sousfichier[$o];
+                        
+                        $o++;
+                    }
+                }
             }
+        }else
+        {
+            $fichierfin = false;
         }
+
+    
         return $fichierfin;  
     }
 

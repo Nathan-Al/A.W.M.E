@@ -19,21 +19,27 @@
                     <nav class="Nav-Dossier">
                         <?php
                             $liens = 0;
-                            for($o = 0; $o < sizeof($dossier); $o++)  
-                                        {
-                                            if($tabliens[$liens] != "0")
-                                            {
-                                                ?>
-                                                    <div class="div-documents">
-                                                        <?php
-                                                            echo "<a href='".$lien_retour_documents.$dossier[$liens]."' class='a-doc'>".$o." :".$dossier[$liens]."</a>";
-                                                            echo "<br>";
-                                                        ?>
-                                                    </div>
-                                                <?php
-                                            }
-                                            $liens++;    
-                                        }
+                            if($dossier!=false)
+                            {
+                                for($o = 0; $o < sizeof($dossier); $o++)  
+                                {
+
+                                    ?>
+                                        <div class="div-documents">
+                                            <?php
+                                                echo "<a href='".$lien_retour_documents.$dossier[$liens]."' class='a-doc'>".$o." :".$dossier[$liens]."</a>";
+                                                echo "<br>";
+                                            ?>
+                                        </div>
+                                    <?php
+                                $liens++;    
+                                }
+                            }else
+                            {
+                                ?>
+                                <h1>AUCUN DOSSIER</h1>
+                                <?php
+                            }
                         ?>
                     </nav>
             </nav>
@@ -49,7 +55,9 @@
                     <nav class="Nav-Fichiers">
                         <?php
                             $liens = 0;
-                                    for($o = 0; $o < sizeof($fichiers); $o++) 
+                            if($fichiers!=false)
+                            {
+                                for($o = 0; $o < sizeof($fichiers); $o++) 
                                     {
                                         if($fichiers[$liens] != "0")
                                             {
@@ -64,7 +72,12 @@
                                             }
                                             $liens++;    
                                     }
-                                    
+                            }else
+                            {
+                                ?>
+                                <h1>AUCUN FICHIERS</h1>
+                                <?php
+                            } 
                                     //closedir($dir);
                                 
                         ?>

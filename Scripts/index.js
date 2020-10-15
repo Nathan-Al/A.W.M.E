@@ -29,8 +29,8 @@ let Menu_Ar = {
     liens: [
         "Controller/controll-gallery.php?chgp=0 & page=1",
         "Controller/controll-documents.php",
-        "Controller/controll-video.php?video=default",
-        "Controller/controll-video-box.php?video=default",
+        "Controller/controll-video.php",
+        "Controller/controll-video-box.php",
         "Controller/controll-musique.php",
         "Controller/controll-upload.php",
         "Controller/controll-youtube.php",

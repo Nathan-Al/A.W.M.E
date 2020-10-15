@@ -1,9 +1,9 @@
 <?php
-    require "../Outil/lecteur-liens.php";
-    require $require_lecteur_fichier;
-    require $require_lecteur_musique;
-    require $require_model_musique;
-    require_once($require_decodeur_id3);
+   require "../Outil/lecteur-liens.php";
+   require $require_lecteur_fichier;
+   require $require_lecteur_musique;
+   require $require_model_musique;
+   require_once($require_decodeur_id3);
 
    $getID3 = new getID3;
    $PageEncoding = 'UTF-8';
@@ -31,35 +31,37 @@
    }
    echo('<br>'.count(array_filter($fichier)));
    */
-  for($e=0;$e<sizeof($fichier); $e++)
+  if($fichier!=false)
   {
-     $musique_classer[$pages][$e] = $fichier[$nb];
-     if($e==9)
-     {
-        $pages++;
-     }
-     $nb++;
-  }
-  
-  //$getID3->setOption(array('encoding'=>$TaggingFormat));
+      for($e=0;$e<sizeof($fichier); $e++)
+      {
+         $musique_classer[$pages][$e] = $fichier[$nb];
+         if($e==9)
+         {
+            $pages++;
+         }
+         $nb++;
+      }
 
-  for($r=0;$r<sizeof($musique_classer);$r++)
-  {
-     $Line_liens = $lien_retour_musique.$musique_classer[$pages_get][$r];
-     $s = strrchr($Line_liens,'/');
-     $m = substr($s,1);
-     $liens_musique[$r] = read_mp3_tags($liensHomeMusique. $m,$lien_retour_musique.$m);
-     //getid3_lib::CopyTagsToComments($liens_musique[$r]);
-  }
+      //$getID3->setOption(array('encoding'=>$TaggingFormat));
 
-  for($r=0;$r<sizeof($liens_musique); $r++)
-  {
-     try{
-        //$cover_musique[$r] = GetImageCover($liens_musique[$r], false, $PageEncoding,$s);
-     }
-     catch(Exception $err)
-     {echo $err->getMessage();}
- 
+      for($r=0;$r<sizeof($musique_classer);$r++)
+      {
+         $Line_liens = $lien_retour_musique.$musique_classer[$pages_get][$r];
+         $s = strrchr($Line_liens,'/');
+         $m = substr($s,1);
+         $liens_musique[$r] = read_mp3_tags($liensHomeMusique. $m,$lien_retour_musique.$m);
+         //getid3_lib::CopyTagsToComments($liens_musique[$r]);
+      }
+      for($r=0;$r<sizeof($liens_musique); $r++)
+      {
+         try{
+            //$cover_musique[$r] = GetImageCover($liens_musique[$r], false, $PageEncoding,$s);
+         }
+         catch(Exception $err)
+         {echo $err->getMessage();}
+      
+      }
   }
 
   if(isset($_GET["musique"]))

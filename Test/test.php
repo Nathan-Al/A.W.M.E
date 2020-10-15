@@ -1,5 +1,5 @@
 <?php
-
+require "../Outil/lecteur-video.php";
 $jsonMultimedia = json_decode(file_get_contents("../Json/liens_multimedia.json"),true);
 $jsonMultimedia["Video"][] = "MAMASITAA";
 $barak = $jsonMultimedia["Video"];
@@ -10,6 +10,12 @@ for($i = 0; $i < count($barak); $i++ )
 }
 
 $jsonMultimedia = json_encode($jsonMultimedia);
+
+LecteurVideoBase("../Multimedia/video/dogo.mp4","");
+?>
+<button type="button" id="chg1">Changer le monde</button>
+<script src="tri.js"></script>
+<?php
 
 //file_put_contents("../Json/liens_multimedia.json",$jsonMultimedia);
 

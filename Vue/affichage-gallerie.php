@@ -15,7 +15,13 @@
             </div>
             <div class="div-headers-2">
                 <?php
-                    echo "<p>Page ".$page."/".$nbpage."</p>";
+                    if(isset($page))
+                    {
+                        if(isset($nbpage))
+                        {
+                            echo "<p>Page ".$page."/".$nbpage."</p>";
+                        }
+                    }
                 ?>
             </div>
             <div class="div-headers-3">
@@ -42,7 +48,7 @@
                         }
                     ?>
                      <?php
-                        if($tabliens[0][$page+1]!=null)
+                        if($page>0 && $page<$nbpage)
                         {
                     ?>
                         <div class="div-a-page">            
@@ -62,39 +68,49 @@
             <div id="conteneur-2" class="conteneur-2">
                 <div id="conteneur-3" class="conteneur-3">
                     <?php
-                    $liens = 0;
                     //echo $tabliens[0][1];
                     if($page!=null)
                     {
-                        //echo $page;
-                        while($liens != 15) 
+                        if ($tabliens!=false)
                         {
-                            //echo "<br> L".$liens." P".$page;
-                        //echo $tabliens[$liens][$page];
-                        if($tabliens[$liens][$page] != "0")
+                            if ($page>0 && $page<=$nbpage)
+                            {
+                                for($f = 0; $f < sizeof($tabliens[$page]); $f++)
+                                {
+                                    //echo "<br> L".$liens." P".$page;
+                                    //echo $tabliens[$liens][$page];
+                                    if($tabliens[$page][$f] != "0")
+                                    {
+                                        ?>
+                                            <div id="affichage-div-image" class="affichage-div-image">
+                                                
+                                                    <!--<a class="a-image" href="<?php //echo $controller_affichage_image."?nomimage=".$tabliens[$liens][$page]."&page=".$page ?>"> -->
+                                                        <div id="a-image-background" class="a-image-background">
+                                                            <!-- Background nom image (apparait en hover) -->
+                                                            <span id="image-span" class="div-image-span"><?php echo $tabliens[$page][$f] ?></span>
+                                                        </div>
+                                                    <!--</a>-->
+                                                
+                                                                                    
+                                                <div id="div-image" class="div-image">
+                                                    <img class="Min-Image" id="<?php echo $f?>" src="<?php echo "../".$tabliens[$page][$f] ?>"/>
+                                                </div>
+                                            </div>
+                                        <?php
+                                    }
+                                }  
+                            }else
+                            {  
+                            ?>
+                                <h1 class="h1_center">LA PAGE N'EXISTE PAS</h1>
+                            <?php
+                            } 
+                        }else
                         {
                             ?>
-                                <div id="affichage-div-image" class="affichage-div-image">
-                                    
-                                        <!--<a class="a-image" href="<?php //echo $controller_affichage_image."?nomimage=".$tabliens[$liens][$page]."&page=".$page ?>"> -->
-                                            <div id="a-image-background" class="a-image-background">
-                                                <!-- Background nom image (apparait en hover) -->
-                                                <span id="image-span" class="div-image-span"><?php echo $tabliens[$liens][$page] ?></span>
-                                            </div>
-                                        <!--</a>-->
-                                    
-                                                                        
-                                    <div id="div-image" class="div-image">
-                                        <img class="Min-Image" id="<?php echo $liens?>" src="<?php echo $lien_retour_images.$tabliens[$liens][$page] ?>"/>
-                                    </div>
-                                </div>
-                            <?php
+                                <h1 class="h1_center">AUCUNE IMAGE</h1>
+                             <?php
                         }
-                            $liens++;
-                        }
-                        //$page++;
-                        
-                        //closedir($dir);
                     }
     
                     ?>

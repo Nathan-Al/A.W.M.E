@@ -204,8 +204,7 @@ a:hover {
     /*border: 2px solid white;*/
 }
 
-.div-title-img
-{
+.div-title-img {
     display: flex;
     height: auto;
     width: auto;
@@ -215,8 +214,7 @@ a:hover {
     justify-content: center;
 }
 
-.nav-input-texte
-{
+.nav-input-texte {
     display: flex;
     height: auto;
     width: auto;
@@ -224,27 +222,23 @@ a:hover {
     justify-content: center;
 }
 
-.new-input
-{
+.new-input {
     background-color: #83d754;
 }
 
-.img-ajouter
-{
+.img-ajouter {
     width: 10%;
     height: 10%;
     cursor: pointer;
 }
 
-.img-supprimer
-{
+.img-supprimer {
     width: 10%;
     height: 10%;
     cursor: pointer;
 }
 
-.div-menu-est
-{
+.div-menu-est {
     height: 20%;
     width: auto;
     padding-bottom: 2%;
