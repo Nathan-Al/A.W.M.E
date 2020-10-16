@@ -82,10 +82,10 @@ function LecteurVideo(videoliens, liens_sous_titre) {
     nav_video_normal.innerHTML = "";
     nav_video_normal.innerHTML =
         `<body>
-        <video class="lecteur-video" preload="none" id="lecteur_base" src="../${videoliens}" poster="../media-site/play.png"
+        <video class="lecteur-video" preload="none" id="lecteur_base" src="${videoliens}" poster="../media-site/play.png"
         type="video/x-matroska; codecs="."theora, vorbis" controls onerror="failed(event)" >
         </video>
-        <track default kind="captions" srclang="fr" src="../${liens_sous_titre}" />
+        <track default kind="captions" srclang="fr" src="${liens_sous_titre}" />
         </body>`
 }
 
@@ -99,7 +99,7 @@ function LecteurVideoJS(liensmp4, lienswebm, liens_sous_titre) {
         preload="auto"
         data-setup="{}"
       >
-        <source src="../${liensmp4}" type="video/mp4" />
+        <source src="${liensmp4}" type="video/mp4" />
         <p class="vjs-no-js">
           To view this video please enable JavaScript, and consider upgrading to a
           web browser that

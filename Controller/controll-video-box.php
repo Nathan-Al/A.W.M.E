@@ -4,6 +4,9 @@ require $require_lecteur_fichier;
 require $require_lecteur_video;
 
 
+$fichiers = ScanFichiers($meza);
+$dossier = ScanDossier($meza);
+
 if(isset($_GET["video"]))
     {
         if(isset($_GET["dossier"]))
@@ -18,13 +21,7 @@ if(isset($_GET["video"]))
             $meza = $liensHomeVideo;
         }
 
-        if($_GET["video"]=="default")
-        {
-            $fichiers = ScanFichiers($meza);
-            $dossier = ScanDossier($meza);
-            require $require_vue_affichage_video_box;  
-        }
-        elseif($_GET["video"]!="" && $_GET["video"]!=null)
+        if($_GET["video"]!="" && $_GET["video"]!=null)
         {
             $video = $_GET["video"];
             $nom = $_GET["dossier"];
@@ -47,4 +44,7 @@ function BoutonRetour($dosierpressent)
         $rem = str_replace($m, "",$dosierpressent);
         return $rem;
     }
+
+    $vue = CheckLink($require_vue_affichage_video_box);
+require $vue;  
 ?>

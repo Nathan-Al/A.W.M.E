@@ -1,27 +1,26 @@
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
+    <head>
+        <?php
+            if($video!="default" && isset($dossier) && $videosansmp4!="")
+            {
+                $nom = $dossier;
+                echo '<title> Video : '.$videosansmp4.'</title>';
+
+                }else
+                {
+                    echo '<title>Video</title>';
+                }
+        ?>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-
         <link rel="stylesheet" href=<?php echo $liens_css_video ?> /> <!-- Importations du css -->
-            <head>
-                <?php
-                    if($video!="default" && isset($dossier) && $videosansmp4!="")
-                    {
-                        $nom = $dossier;
-                        echo '<title> Video : '.$videosansmp4.'</title>';
-
-                    }else
-                    {
-                        echo '<title>Video</title>';
-                    }
-                ?>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-                <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
-                <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
-                <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-            </head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+        <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
+        <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    </head>
     <body>
         <?php if(isset($mama)){echo $mama;}?>
         <header>

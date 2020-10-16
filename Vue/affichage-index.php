@@ -1,16 +1,19 @@
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
-<meta charset="UTF-8">
-<LINK rel="icon" type="image/png" href="media-site/icone.png" />
-<!-- Icone de l'onglet de la page web -->
-<link rel="stylesheet" href="Css/Menu.css" />
-<!--<link rel="stylesheet" href="../Css/Menu.css" /> -->
-<!-- Importations du css -->
-
 <head>
     <title>Accueil</title>
     <!-- Titre de l'onglet de la page web -->
     <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
+    <meta charset="UTF-8">
+    <LINK rel="icon" type="image/png" href="media-site/icone.ico" />
+    <!-- Icone de l'onglet de la page web -->
+    <!-- Importations du css -->
+    <link rel="stylesheet" href="Css/Index.css" />
+    <!-- EXTERNAL LINK-->
+    <link href="Public/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="Public/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="Public/fontawesome/css/solid.css" rel="stylesheet">
+	<script defer src="Public/fontawesome/js/all.js"></script> <!--load all styles -->
 </head>
 
 <body class="Menu-Body" id="Body">

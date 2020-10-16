@@ -1,13 +1,11 @@
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
+    <head>
+        <title>Upload de fichier</title> <!-- Titre de l'onglet de la page web -->
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-
         <link rel="stylesheet" href=<?php echo $liens_css_upload ?> /> <!-- Importations du css -->
-            
-            <head>
-                <title>Upload de fichier</title> <!-- Titre de l'onglet de la page web -->
-            </head>
+    </head>
     <body>
         <header>
             <div class="div-headers-1">

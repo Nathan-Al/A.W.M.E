@@ -1,10 +1,10 @@
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
-    <meta charset="UTF-8">
-    <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-    <link rel="stylesheet" href=<?php echo $liens_css_gallery ?> /> <!-- Importations du css -->
     <head>
         <title>Image</title> <!-- Titre de l'onglet de la page web -->
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
+        <meta charset="UTF-8">
+        <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
+        <link rel="stylesheet" href=<?php echo $liens_css_gallery ?> /> <!-- Importations du css -->
     </head>
 
     <body>
@@ -87,13 +87,13 @@
                                                     <!--<a class="a-image" href="<?php //echo $controller_affichage_image."?nomimage=".$tabliens[$liens][$page]."&page=".$page ?>"> -->
                                                         <div id="a-image-background" class="a-image-background">
                                                             <!-- Background nom image (apparait en hover) -->
-                                                            <span id="image-span" class="div-image-span"><?php echo $tabliens[$page][$f] ?></span>
+                                                            <span id="image-span" class="div-image-span"><?php $nom_fichier = explode("/",$tabliens[$page][$f]); echo $nom_fichier[sizeof($nom_fichier)-1]; ?></span>
                                                         </div>
                                                     <!--</a>-->
                                                 
                                                                                     
                                                 <div id="div-image" class="div-image">
-                                                    <img class="Min-Image" id="<?php echo $f?>" src="<?php echo "../".$tabliens[$page][$f] ?>"/>
+                                                    <img class="Min-Image" id="<?php echo $f?>" src="<?php echo $tabliens[$page][$f] ?>"/>
                                                 </div>
                                             </div>
                                         <?php

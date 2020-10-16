@@ -6,7 +6,10 @@ $dossier = array();
 $fichiers = array();
 $dossier = ScanDossierDoc($liensHomeDocuments);
 $fichiers = ScanFichiersDoc($liensHomeDocuments);
+$liens_fichiers = chargeLiens($liensHomeDocuments);
+//$liens_document = chargeLiens();
 
-require $require_vue_affichage_documents; 
+$vue = CheckLink($require_vue_affichage_documents);
+require $vue; 
 
 ?>

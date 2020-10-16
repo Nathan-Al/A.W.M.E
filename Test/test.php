@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="../Public/fontawesome/css/all.css" rel="stylesheet">
+		<script defer src="../Public/fontawesome/js/all.js"></script> <!--load all styles -->
+		<title>Document</title>
+	</head>
+	<body>
+	<div style="font-size: 1rem;">
+		<i class="fas fa-user fa-7x"></i>
+		<i class="fab fa-youtube fa-7x"></i>
+		<i class="fas fa-play fa-7x"></i>
+	</div>
+	</body>
+</html>
 <?php
 require "../Outil/lecteur-video.php";
 $jsonMultimedia = json_decode(file_get_contents("../Json/liens_multimedia.json"),true);
@@ -11,7 +28,7 @@ for($i = 0; $i < count($barak); $i++ )
 
 $jsonMultimedia = json_encode($jsonMultimedia);
 
-LecteurVideoBase("../Multimedia/video/dogo.mp4","");
+//LecteurVideoBase("../Multimedia/video/dogo.mp4","");
 ?>
 <button type="button" id="chg1">Changer le monde</button>
 <script src="tri.js"></script>

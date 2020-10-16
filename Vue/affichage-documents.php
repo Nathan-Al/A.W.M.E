@@ -64,7 +64,7 @@
                                                 ?>
                                                     <div class="div-documents">
                                                         <?php
-                                                        echo "<a href='".$lien_retour_documents.$fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
+                                                        echo "<a href='".$liens_fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
                                                             echo "<br>";
                                                         ?>
                                                     </div>

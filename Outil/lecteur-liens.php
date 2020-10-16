@@ -16,6 +16,7 @@ $liensMediaSite = "../media-site/";
     $require_lecteur_video = $racine_outil."lecteur-video.php";
     $require_lecteur_musique = $racine_outil."lecteur-musique.php";
     $require_createur_fichier = $racine_outil."createur-fichier.php";
+    $require_lecteur_chemin = $racine_outil."lecteur-chemin.php";
 
     // REQUIRE VUE-----
 
@@ -77,6 +78,6 @@ $liensMediaSite = "../media-site/";
     $dosier_sous_titre = $liensHomeVideo;
 
 /* ICONE PAGE DU SITE */
-    $IconeSite = "../media-site/icone.png";
+    $IconeSite = "../media-site/icone.ico";
     
 ?>

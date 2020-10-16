@@ -28,7 +28,8 @@
                 }
             }
         }
-        require $require_vue_affichage_gallery;    
+        $vue = CheckLink($require_vue_affichage_gallery);
+        require $vue;    
     }
 
 ?>

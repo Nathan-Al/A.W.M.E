@@ -367,7 +367,7 @@ a:active {
 */
 
 .hover-big-picture {
-    height: 100%;
+    height: auto;
     width: 100%;
     /*background-color: rgb(49, 49, 49);*/
     display: flex;
@@ -376,6 +376,7 @@ a:active {
     transition-duration: 1s;
     transition-property: all;
     position: sticky;
+    margin-block: auto;
 }
 
 .conteneur-image {

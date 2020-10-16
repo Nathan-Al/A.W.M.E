@@ -1,4 +1,6 @@
 <?php
+    require "../Outil/lecteur-chemin.php";
+
     function ScanFichiers($liens_video){
         if(is_array($liens_video))
         {
@@ -46,7 +48,7 @@
             try {   
                 for($o = 0; $o < sizeof($liens_dossier); $o++)  
                 {
-                    $dir = "../".$liens_dossier[$o];
+                    $dir = CheckLink($liens_dossier[$o]);
                     if ( is_dir($dir) )  {
                         if ( $dh = opendir($dir) ) {
                             while ( ($element = readdir($dh)) !== false){{
@@ -85,7 +87,7 @@
         else
         {
             try {   
-                $dir = "../".$liens_dossier;
+                $dir = CheckLink($liens_dossier);
                     if ( is_dir($dir) )  {
                         if ( $dh = opendir($dir) ) {
                             while ( ($element = readdir($dh)) !== false){{
@@ -129,7 +131,7 @@
         
         for($o = 0; $o < sizeof($liensfich); $o++)
         {
-            $dir = "../".$liensfich[$o];
+            $dir = CheckLink($liensfich[$o]);
             try{
                 if ( is_dir($dir) )  {
                     if ( $dh = opendir($dir) ) {
@@ -163,7 +165,8 @@
     function ScanDossierDoc($LiensDoc){
         for($o = 0; $o < sizeof($LiensDoc); $o++)
         {
-            $dir = "../".$LiensDoc[$o];
+            
+            $dir = CheckLink($LiensDoc[$o]);
             if ( is_dir($dir) )  {
                 if ( $dh = opendir($dir) ) {
                     while ( ($element = readdir($dh)) !== false){{
@@ -191,11 +194,11 @@
             return $tb_directories;
         }
     }
-/**
- * Fonctions qui permet de récupérer le chemin des ou du fichier/s qui se trouve dans le dossier envoyer
- * Integer limite_fichier : indique combien de chemin vont être mise par par page Default = 0
- * Array / String chemin_dossier : chemin ou la function devra récupérer les chemin des fichiers
- */
+    /**
+     * Fonctions qui permet de récupérer le chemin des ou du fichier/s qui se trouve dans le dossier envoyer
+     * Integer limite_fichier : indique combien de chemin vont être mise par par page Default = 0
+     * Array / String chemin_dossier : chemin ou la function devra récupérer les chemin des fichiers
+     */
     function chargeLiens($chemin_dossier, $limite_fichier = 0)
     {
         $dir[]=null;
@@ -204,11 +207,11 @@
         {
             for ($o = 0; $o < sizeof($chemin_dossier); $o++)
             {
-                $dirname[$o] = $chemin_dossier[$o];
+                $dirname[$o] = CheckLink($chemin_dossier[$o]);
                 try{
-                    if(is_dir("../".$dirname[$o]))
+                    if(is_dir($dirname[$o]))
                     {
-                        if ( $dir[$o] = opendir("../".$dirname[$o])) {
+                        if ( $dir[$o] = opendir($dirname[$o])) {
 
                             if($limite_fichier > 0)
                             {
@@ -254,9 +257,9 @@
         }else
         {
             try{
-                if(is_dir("../".$chemin_dossier))
+                if(is_dir($chemin_dossier))
                 {
-                    if ( $dir = opendir("../".$chemin_dossier)) {
+                    if ( $dir = opendir($chemin_dossier)) {
 
                         if($limite_fichier > 0)
                         {

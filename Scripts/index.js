@@ -37,18 +37,19 @@ let Menu_Ar = {
         "Test/test.php"
     ],
     images: [
-        "media-site/img.jpg",
-        "media-site/doc.jpg",
-        "media-site/vid.jpg",
-        "media-site/vidbox.jpg",
-        "media-site/ms.jpg",
-        "media-site/up.jpg",
-        "media-site/yt.png",
-        "media-site/ts.jpg"
+        '<i class="fas fa-image fa-10x Nav-Image"></i>',
+        '<i class="fas fa-file-alt fa-10x Nav-Image"></i>',
+        '<i class="fas fa-play fa-10x Nav-Image"></i>',
+        '<i class="fas fa-tv fa-10x Nav-Image"></i>',
+        '<i class="fas fa-music fa-10x Nav-Image"></i>',
+        '<i class="fas fa-file-upload fa-10x Nav-Image"></i>',
+        '<i class="fab fa-youtube fa-10x Nav-Image"></i>',
+        "<p>No Image Found</p>"
 
     ],
     class: {
         nav: "Nav-Liens",
+            nav2: "Nav-nav-Image",
             lien: "Liens-Accueil",
             img: "Nav-Image"
     }
@@ -60,19 +61,27 @@ for (p = 0; p < Menu_Ar.liens.length; p++) {
     nav1.setAttribute('id', 'nav' + p);
     nav1.classList.add(Menu_Ar.class.nav)
 
+    const nav2 = document.createElement('nav');
+    nav2.setAttribute('id', 'nav-image-' + p);
+    nav2.classList.add(Menu_Ar.class.nav2);
+
     const a1 = document.createElement('a');
-    a1.setAttribute('id', 'liens' + p);
+    a1.setAttribute('id', 'liens-' + p);
     a1.setAttribute('href', Menu_Ar.liens[p])
     a1.classList.add(Menu_Ar.class.lien);
+    /*
+        const img1 = document.createElement('img');
+        img1.setAttribute('id', 'img' + p);
+        img1.setAttribute('src', Menu_Ar.images[p]);
+        img1.classList.add(Menu_Ar.class.img);
 
-    const img1 = document.createElement('img');
-    img1.setAttribute('id', 'img' + p);
-    img1.setAttribute('src', Menu_Ar.images[p]);
-    img1.classList.add(Menu_Ar.class.img);
+        nav1.append(a1, img1);
+        */
 
+    nav2.innerHTML += Menu_Ar.images[p];
+    nav1.append(a1, nav2);
     menu.append(nav1);
-    nav1.append(a1, img1);
-    document.getElementById("liens" + p).innerText = Menu_Ar.name_link[p];
+    document.getElementById("liens-" + p).innerText = Menu_Ar.name_link[p];
 }
 
 /*-------------------------------------- MENU PARAMETRE -----------------------------*/
