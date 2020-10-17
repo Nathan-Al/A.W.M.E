@@ -20,6 +20,9 @@ function CheckLink ($chemin_a_verifier)
                 }elseif(strpos($chemin_a_verifier,"/")>2 || strpos($chemin_a_verifier,".")==0)
                 {
 
+                }else
+                {
+                    $chemin_final = "Impossible de trouver le dossier/fichier";
                 }
             }
         }catch(Exception $e)

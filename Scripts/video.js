@@ -7,7 +7,6 @@ let basic_video = document.getElementById("lecteur_base");
 let you_watch = document.getElementById("titre_video");
 let data_json;
 let fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc, dossier_current, dossier_avant;
-//let json_video = document.getElementById("json-video");
 
 GetStartinng();
 
@@ -16,11 +15,6 @@ function GetStartinng() {
     all_dossier = document.querySelectorAll('#div-dossier-video #dossier');
     all_fichier.forEach(function(item, dix) {
         item.addEventListener('click', function(e) {
-            //console.log(item.value);
-            //basic_video.src = "../" + item.value;
-            //json_video = "../" + item.value;
-            //sendData({ video: item.value });
-
             document.title = "Video : " + item.textContent;
             you_watch.innerHTML = "Vous regardez : " + item.textContent;
             LecteurVideo(item.value, "");
@@ -31,8 +25,6 @@ function GetStartinng() {
 
     all_dossier.forEach(function(item, dix) {
         item.addEventListener('click', function(e) {
-            //console.log(item.value);
-            //sendData({ dossier: item.value });
             data_json = fetchServer({ dossier_chgp: item.value });
             suiteDansLesIdee(data_json);
             UpdateNav(fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc);
@@ -122,7 +114,6 @@ function ChargeOnglet() {
     OngletParametre.forEach(function(item, dix) {
         item.addEventListener('click', function(e) {
             Parametre.forEach(function(elem) {
-                //console.log(elem);
                 elem.style.zIndex = "-1";
                 elem.style.transition = "z-index = 0";
             });
@@ -150,7 +141,7 @@ function fetchServer(data_send) {
         return false;
     }
     httpRequest.onreadystatechange = alertContents;
-    httpRequest.open('POST', '../Controller/controll-video', false);
+    httpRequest.open('POST', 'controll-video.php', false);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send(urlEncodedData);
 
@@ -159,6 +150,8 @@ function fetchServer(data_send) {
             if (httpRequest.status === 200) {
                 //alert(httpRequest.data);
                 data_receiv = JSON.parse(httpRequest.response);
+            } else if (httpRequest.status === 404) {
+                alert('La connexion avec la page n\'a pas pu être effectuer.');
             } else {
                 alert('Il y a eu un problème avec la requête.');
             }
@@ -180,7 +173,6 @@ function buttonRetour() {
         nav_retour.append(retour);
         let retour_html = document.getElementById("retour_btn");
         retour_html.addEventListener('click', function(e) {
-            console.log("Detecter click");
             data_json = fetchServer({ dossier_chgp: retour_html.value });
             suiteDansLesIdee(data_json);
             UpdateNav(fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc);

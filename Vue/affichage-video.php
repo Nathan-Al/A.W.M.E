@@ -63,7 +63,7 @@
                     $liens = 0;
                     if(isset($dossier))
                     {
-                        if($fichiers!=false)
+                        if($fichiers)
                         {
                             $NDosier=$dossier;
                             for($o = 0; $o < sizeof($fichiers); $o++)  
@@ -79,6 +79,11 @@
                                 <?php
     
                             }
+                        }else
+                        {
+                            ?>
+                                <h1>AUCUN FICHIERS</h1>
+                            <?php
                         }
 
                     }else
@@ -127,7 +132,7 @@
             
         </nav>
 </div>
-        <script src="../Scripts/jquery-3.5.1.js"></script>
+        <script src="../Scripts/jquery.js"></script>
         <script src="../Scripts/video.js"></script>
     </body>
 </html>

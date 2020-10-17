@@ -21,36 +21,81 @@
 
         $dossier= array();
         $liens_video = array();
-        $dossier = ScanDossier($meza);
+        $dossier_raw = ScanDossier($meza);
         $dossier_liens = array();
         $liens_video_raw = chargeLiens($meza);
         $fichiers = array();
-        $t = 0;$s=0;$m = 0;
-        for($p = 0; $p < sizeof($liens_video_raw); $p++)
+        $t = 0;$s=0;$m = 0; $l =0;
+        if($liens_video_raw!=false)
         {
-            $a = explode("/", $liens_video_raw[$p]);
-            if(strpos($a[sizeof($a)-1],"."))
+            for($p = 0; $p < sizeof($liens_video_raw); $p++)
             {
-                $fichiers[$t] = $a[sizeof($a)-1];
-                $t++;
+                $a = explode("/", $liens_video_raw[$p]);
+                $exten = strrchr($a[sizeof($a)-1],".");
+                if(gettype(stripos($a[sizeof($a)-1],"$"))!="integer")
+                {
+                    if(strpos($a[sizeof($a)-1],".")!=0 || strpos($a[sizeof($a)-1],".")==false)
+                    {
+                        if(!strpos($a[sizeof($a)-1],".") && strpos($a[sizeof($a)-1],".")==false)
+                        {
+                            if(strpos($a[sizeof($a)-1],".")==0 && gettype(stripos($a[sizeof($a)-1],"."))!="integer")
+                            {
+                                $dossier_liens[$m] = $liens_video_raw[$p];
+                                $m++;
+                            } 
+                        }
+                    }
+    
+                    if($exten == ".mp4" || $exten == ".avi" || $exten ==".mkv" || $exten == ".mp3")
+                    {
+                        if(strpos($a[sizeof($a)-1],"."))
+                        {
+                            $fichiers[$t] = $a[sizeof($a)-1];
+                            $t++;
+                        }
+                        if(strpos($a[sizeof($a)-1],"."))
+                        {
+                            $liens_video[$s] = $liens_video_raw[$p];
+                            $s++;
+                        }
+                    }
+                }
+                
             }
-            if(strpos($a[sizeof($a)-1],"."))
+        }
+        if($dossier_raw!=false)
+        {
+            for($p = 0; $p < sizeof($dossier_raw); $p++)
             {
-                $liens_video[$s] = $liens_video_raw[$p];
-                $s++;
+                $a = explode("/", $dossier_raw[$p]);
+                $exten = strrchr($a[sizeof($a)-1],".");
+                if(gettype(stripos($a[sizeof($a)-1],"$"))!="integer")
+                {
+                    if(strpos($a[sizeof($a)-1],".")!=0 || strpos($a[sizeof($a)-1],".")==false)
+                    {
+                        if(!strpos($a[sizeof($a)-1],".") && strpos($a[sizeof($a)-1],".")==false)
+                        {
+                            if(strpos($a[sizeof($a)-1],".")==0 && gettype(stripos($a[sizeof($a)-1],"."))!="integer")
+                            {
+                                $dossier[$l] = $dossier_raw[$p];
+                                $l++;
+                            }    
+                        }
+                    }
+                }
             }
-            if(!strpos($a[sizeof($a)-1],"."))
-            {
-                $dossier_liens[$m] = $liens_video_raw[$p];
-                $m++;
-            }
-            
         }
 
-        if(isset($_POST["test"]))
+
+        if(!sizeof($fichiers)==sizeof($liens_video))
         {
-            echo $mama=$_POST["test"];
+            //Verifier chaque entrer pour aligner tout les liens et les fichiers
         }
+        if(!sizeof($dossier)==sizeof($dossier_liens))
+        {
+            //Verifier chaque entrer pour aligner tout les liens et les fichiers
+        }
+        
         
         if(isset($_POST["dossier_chgp"]))
         {
