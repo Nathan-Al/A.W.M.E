@@ -128,7 +128,7 @@
     //Affichage documents
 
     function ScanFichiersDoc($liensfich){
-        
+        $tb_files = null;
         for($o = 0; $o < sizeof($liensfich); $o++)
         {
             $dir = CheckLink($liensfich[$o]);
@@ -159,13 +159,16 @@
                 $tb_files = false;
             }
         }
-        return $tb_files;
+        if($tb_files!=null)
+            return $tb_files;
+        else
+            return false;
     }
 
     function ScanDossierDoc($LiensDoc){
+        $tb_directories = null;
         for($o = 0; $o < sizeof($LiensDoc); $o++)
         {
-            
             $dir = CheckLink($LiensDoc[$o]);
             if ( is_dir($dir) )  {
                 if ( $dh = opendir($dir) ) {
@@ -191,7 +194,10 @@
                 {
                     $tb_directories = false;
                 }
-            return $tb_directories;
+            if($tb_directories!=null)
+                return $tb_directories;
+            else
+                return $tb_directories = false;
         }
     }
     /**

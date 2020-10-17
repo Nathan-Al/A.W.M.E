@@ -27,7 +27,8 @@
                                     ?>
                                         <div class="div-documents">
                                             <?php
-                                                echo "<a href='".$lien_retour_documents.$dossier[$liens]."' class='a-doc'>".$o." :".$dossier[$liens]."</a>";
+                                             $nb = $o+1;
+                                                echo "<a href='".$lien_retour_documents.$dossier[$liens]."' class='a-doc'>".$nb." :".$dossier[$liens]."</a>";
                                                 echo "<br>";
                                             ?>
                                         </div>
@@ -64,7 +65,8 @@
                                                 ?>
                                                     <div class="div-documents">
                                                         <?php
-                                                        echo "<a href='".$liens_fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
+                                                            $nb = $o+1;
+                                                            echo "<a href='".$liens_fichiers[$liens]."' class='a-doc'>".$nb." :".$fichiers[$liens]."</a>";
                                                             echo "<br>";
                                                         ?>
                                                     </div>
