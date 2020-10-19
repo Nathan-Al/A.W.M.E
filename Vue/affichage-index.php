@@ -10,10 +10,7 @@
     <!-- Importations du css -->
     <link rel="stylesheet" href="Css/Index.css" />
     <!-- EXTERNAL LINK-->
-    <link href="Public/fontawesome/css/fontawesome.css" rel="stylesheet">
-    <link href="Public/fontawesome/css/brands.css" rel="stylesheet">
-    <link href="Public/fontawesome/css/solid.css" rel="stylesheet">
-	<script defer src="Public/fontawesome/js/all.js"></script> <!--load all styles -->
+	<script defer src="Public/fontawesome/all.js"></script> <!--load all styles -->
 </head>
 
 <body class="Menu-Body" id="Body">
