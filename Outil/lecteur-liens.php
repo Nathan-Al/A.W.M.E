@@ -7,6 +7,11 @@ $liensHomeVideo = $jsonMultimedia["Video"];
 $liensHomeMusique = $jsonMultimedia["Musique"];
 $liensYoutube = $jsonMultimedia["YouTube"];
 $liensMediaSite = "../media-site/";
+$dossier_multimedia = "../Multimedia/";
+$dossier_video_default = $dossier_multimedia."Video/";
+$dossier_musique_default = $dossier_multimedia."Musique/";
+$dossier_document_default = $dossier_multimedia."Document/";
+$dossier_image_default = $dossier_multimedia."Image/";
 
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL *///----------------------------------
 
@@ -75,6 +80,7 @@ $liensMediaSite = "../media-site/";
     $dossier_outil = "../Outil/";
     $dossier_model = "../Model/";
     $dossier_css = "../Css/";
+    $dossier_public = "../Public/";
     $dosier_sous_titre = $liensHomeVideo;
 
 /* ICONE PAGE DU SITE */

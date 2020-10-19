@@ -21,7 +21,6 @@
         <form method="POST" action= <?php echo $controller_upload ?> enctype="multipart/form-data">	
             <div class="div-menu">
                 <nav class="nav-upload">
-                    
                     <input type="file" name="fichiers[]" multiple>
                     
                 </nav>

@@ -416,56 +416,27 @@
     {
         if(gettype($fichier)=="array")
         {
-            $fichier = array_filter($fichier,'strlen');
-            for($m=0;$m<sizeof($fichier);$m++)
-            {
-                
-                if($fichier['name']!=null)
-                $nom = strtolower($fichier['name'][$m]);
+            $nom = $fichier['name']!=null ? strtolower($fichier['name']) : null;
 
-                if($fichier['tmp_name']!=null)
-                $tmpnom = $fichier['tmp_name'][$m];
+            $tmpnom = $fichier['tmp_name']!=null ? $fichier['tmp_name'] : null;
 
-                if($fichier['size']!=null)
-                $taille = $fichier['size'][$m];
+            $taille = $fichier['size']!=null ? $fichier['size']: null;
 
-                if($fichier['type']!="")
-                $type = $fichier['type'][$m];
+            $type = $fichier['type']!="" ? $fichier['type'] : null;
 
-                if($fichier['error']!=null)
-                $erreurr = $fichier['error'][$m];
+            $erreurr = $fichier['error']!=null ? $fichier['error'] : null;
 
-                $dossier = $chemindossier;
-                $extension = strtolower(strrchr($nom, '.')); 
-
-                echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Extensions:".$extension." - Erreur:".$erreurr." - Dossier:".$dossier." - Key:".$key."<br>";
-            }
-        }
-        else
-        {
-            $nom = strtolower($fichier['name']);
-            $tmpnom = $fichier['tmp_name'];
-            $taille = $fichier['size'];
-            $type = $fichier['type'];
-            $erreurr = $fichier['error'];
             $dossier = $chemindossier;
 
-            $fichier = basename($nom);
-            $taille_maxi = 10000000;
-            
+            //echo "Nom:".$nom." - Nom temp:",$tmpnom," - Taille:",$taille," - Type:",$type," - Extensions:",$extension," - Erreur:",$erreurr," - Dossier:",$dossier," - Key:",$m,"<br>";
+
+            $fichier_basename = basename($nom);
+            $taille_maxi = 1000000000;
             $taille = filesize($tmpnom);
-            $extensions = array('.png', '.gif', '.jpg', '.jpeg','.mp4', '.mkv', '.avi', '.mpeg','.mp3', '.waw', '.ogg', '.flac','.doc', '.docx', '.pdf', '.txt','.zip','.rar');
-            $extension_Sp = array('.vtt','.ass');
-            $extension = strtolower(strrchr($nom, '.')); 
             //Début des vérifications de sécurité...
 
             //echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Extensions:".$extension." - Erreur:".$erreurr." - Dossier:".$dossier;
             
-            if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-            {
-                $erreur = 'Mauvais format de fichier';
-            }
-        
             if($taille>$taille_maxi)
             {
                 $erreur = 'Le fichier est trop gros...';
@@ -473,47 +444,53 @@
 
             if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
             {
-                //On formate le nom du fichier ici...
-                if($extension!=$extension_Sp)
-                {
-                    $fichier = strtr($fichier, 
-                    'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
-                    'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-                    $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-                }
+                    //On formate le nom du fichier ici...
+                $nom = strtr($nom, 
+                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+                'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+                $nom = preg_replace('/([^.a-z0-9]+)/i', '-', $nom);
 
-                if(move_uploaded_file($tmpnom, $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+                if(move_uploaded_file($tmpnom, "$dossier/$nom")) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
                 {
                     return "Fichier Uploader !";
                 }
                 else //Sinon (la fonction renvoie FALSE).
                 {
+                    $message="";
                     if($erreurr==1)
-                    $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
+                        $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
                     else if($erreurr==2)
-                    $message="Le fichier dépasse le poids autorisé par max_file_size !";
+                        $message="Le fichier dépasse le poids autorisé par max_file_size !";
                     else if($erreurr==3)
-                    $message="Une partit du fichier n'a pas été uploader.";
+                        $message="Une partit du fichier n'a pas été uploader.";
                     else if($erreurr==3)
-                    $message="Aucun fichier.";
+                        $message="Aucun fichier.";
                     else if($message==null || $message=="")
-                    $message="Une Erreur inconnu c'est produite";
+                        $message="Une Erreur inconnu c'est produite";
                     return $message;
                 }
             }
-            elseif(isset($erreur))
-            {
-                if($erreur!=""&&$erreur!=null)
-                if($erreurr==1)
-                    $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
-                    else if($erreurr==2)
-                    $message="Le fichier dépasse le poids autorisé par max_file_size !";
-                    else if($erreurr==3)
-                    $message="Une partit du fichier n'a pas été uploader.";
-                    else if($erreurr==3)
-                    $message="Aucun fichier.";
-                    return $message;
-            }
+                elseif(isset($erreur))
+                {
+                    $message="";
+                    if($erreur!=""&&$erreur!=null)
+                    if($erreurr==1)
+                            $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
+                        else if($erreurr==2)
+                            $message="Le fichier dépasse le poids autorisé par max_file_size !";
+                        else if($erreurr==3)
+                            $message="Une partit du fichier n'a pas été uploader.";
+                        else if($erreurr==3)
+                            $message="Aucun fichier.";
+                        if($message!="")
+                            return $message;
+                        else
+                            return $erreur;
+                }
+        }
+        else
+        {
+            return "Problème d'envoie de donnée. Array demander,".gettype($fichier)."reçu.";
         }
 
     }
