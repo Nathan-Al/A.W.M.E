@@ -1,15 +1,18 @@
 <html>
     <head>
         <?php
-            if($video!="default" && isset($dossier) && $videosansmp4!="")
+            if(isset($video) && isset($dossier) && $videosansmp4!="")
             {
-                $nom = $dossier;
-                echo '<title> Video : '.$videosansmp4.'</title>';
-
+                if($video!="default")
+                {
+                    $nom = $dossier;
+                    echo '<title> Video : '.$videosansmp4.'</title>';
+    
                 }else
                 {
-                    echo '<title>Video</title>';
+                        echo '<title>Video</title>';
                 }
+            }
         ?>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
@@ -25,7 +28,7 @@
         <?php if(isset($mama)){echo $mama;}?>
         <header>
             <div class="div-headers-1">
-                <a href="../" class="Lien-nav-Accueil"><h1>Samba</h1></a>
+                <a href="../" class="Lien-nav-Accueil"><h1>Menu</h1></a>
             </div>
             <div class="div-headers-2">
                 <p id="titre_video">Vous regardez : </p>
@@ -34,87 +37,84 @@
     <div class="div-contenue">
         <nav class="nav-liste-video">
                                            <!-- BOUCLE AFFICHAGE DOSSIER --> 
-            <div class="div-dossier-video" id="div-dossier-video">
-                
-                <?php
-                    if($dossier!=false)
-                    {
-                        for($o = 0; $o < sizeof($dossier); $o++)  
+            <div class="div-video">
+                <div class="titre_multimedia">
+                        <p class="denomination">Dossier</p>
+                </div>
+                <div class="div-dossier-video" id="div-dossier-video">
+                    <?php
+                        if(isset($dossier))
                         {
-                            echo '<button id="dossier" class="button-liens-dossier" value="'.$dossier_liens[$o].'">'.$dossier[$o].'</button>';
-                            echo "<br>";
-                        }
-                    }else
-                    {
-                        ?>
-                            <H1>AUCUN DOSSIER</H1>
-                        <?php
-                    }
-
-                ?>
-                </form>
-            </div>
-        <nav class='nav-separation-div' id="nav-separation-div">
-            
-        </nav>
-                                           <!-- BOUCLE AFFICHAGE FICHIER VIDEO -->        
-            <div class="div-liens-video" id="div-liens-video">
-                <?php
-                    $liens = 0;
-                    if(isset($dossier))
-                    {
-                        if($fichiers)
-                        {
-                            $NDosier=$dossier;
-                            for($o = 0; $o < sizeof($fichiers); $o++)  
+                            if($dossier!=false)
                             {
-                                
-                                        //echo "<a href='".$controller_video."?dossier=".$NDosier."&video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
-                                        
-                                        echo '<button id="fichier" class="button-liens-video" value="'.$liens_video[$liens].'" type="button">'.$fichiers[$liens].'</button>';
-                                        echo "<br>";
-                                        $liens++;
+                                for($o = 0; $o < sizeof($dossier); $o++)  
+                                {
                                     ?>
-                            
-                                <?php
-    
-                            }
-                        }else
-                        {
-                            ?>
-                                <h1>AUCUN FICHIERS</h1>
-                            <?php
-                        }
-
-                    }else
-                    {
-                        if($fichiers!=false)
-                        {
-                            for($o = 0; $o < sizeof($fichiers); $o++)  
+                                        <button id="dossier" class="button-liens-dossier" value="<?php echo$dossier_liens[$o]?>"><?php echo $dossier[$o] ?></button>
+                                    <?php
+                                }
+                            }else
                             {
                                 ?>
-                                    
-                                        <?php
-                                            //echo "<a class='a-doc' href='".$controller_video."?video=".$fichiers[$liens]."' class='a-doc'>".$fichiers[$liens]."</a>";
-                                            echo '<button id="fichier" class="button-liens-video" value="'.$liens_video[$liens].'">'.$fichiers[$liens].'</button>';
-                                            echo "<br>";
-                                            $liens++;
-                                        ?>
+                                    <H1>AUCUN DOSSIER</H1>
                                 <?php
-    
                             }
-                        }else
-                        {
-                            ?>
-                                <h1>AUCUN FICHIERS</h1>
-                            <?php
                         }
-                    }
-                ?>
+                    ?>
+                </div>
             </div>
-           
+            <input type="hidden" id="far_from_home" value="<?php echo $far_from_home; ?>">
+            <nav class='nav-separation-div' id="nav-separation-div"></nav>
+                                           <!-- BOUCLE AFFICHAGE FICHIER VIDEO -->     
+            <div class="div-video">
+                <div class="titre_multimedia">
+                    <p class="denomination">Video</p> 
+                </div>
+                    <div class="div-liens-video" id="div-liens-video">
+                        <?php
+                            $liens = 0;
+                            if(isset($dossier))
+                            {
+                                if(isset($fichiers))
+                                {
+                                    $NDosier=$dossier;
+                                    for($o = 0; $o < sizeof($fichiers); $o++)  
+                                    {
+                                        ?>
+                                            <button id="fichier" class="button-liens-video" value="<?php echo $liens_video[$liens]?>" type="button"><?php echo $fichiers[$liens]?></button>
+                                        <?php
+                                            $liens++;
+                                    }
+                                }else
+                                {
+                                    ?>
+                                        <h1>AUCUN FICHIERS</h1>
+                                    <?php
+                                }
+
+                            }else
+                            {
+                                if($fichiers!=false)
+                                {
+                                    for($o = 0; $o < sizeof($fichiers); $o++)  
+                                    {
+                                        ?>
+                                            <button id="fichier" class="button-liens-video" value="<?php echo $liens_video[$liens]?>"><?php echo $fichiers[$liens]?></button> 
+                                        <?php
+                                            $liens++;
+                                    }
+                                }else
+                                {
+                                    ?>
+                                        <h1>AUCUN FICHIERS</h1>
+                                    <?php
+                                }
+                            }
+                        ?>
+                    </div>
+            </div>
         </nav>
-                                                    <!-- LECTEUR VIDEO -->
+                                                <!-- LECTEUR VIDEO -->
         <nav class="nav-lecteur-video">
             <div id="conteneur-para-onglet" class="conteneur-para-onglet">
                 <nav id="para-nav" class="para-nav">Lecteur Normal</nav>
@@ -123,15 +123,14 @@
 
             <div class="conteneur-para-contenue" id="conteneur-para-contenue">
                 <nav class='box-nav-lecteur-video' style='z-index:0;' id="nav-normal-video">
-                        
+                            
                 </nav>
                 <nav class='box-nav-lecteur-video' style='z-index:-1;' id="nav-js-video">
-                        
+                            
                 </nav>
             </div>
-            
         </nav>
-</div>
+    </div>
         <script src="../Scripts/jquery.js"></script>
         <script src="../Scripts/video.js"></script>
     </body>

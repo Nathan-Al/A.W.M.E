@@ -2,22 +2,22 @@
     require "../Outil/lecteur-liens.php";
     require $require_lecteur_fichier;
     require $require_lecteur_video;
-
+    if(isset($_POST["nbreq"]))
+        $far_from_home = $_POST["nbreq"]+1;
+    else
+        $far_from_home = 0;
     $dos="";
-    $meza = $liensHomeVideo;
     $video = "";
-    $dossier = "";
+    $dossier = array();
     $videosansmp4 = "";
-
     /**
      * Donnée envoyer par POST via script JavaScript
      * Par défaut la variable meza est le Array reécupérer en JSON
      * quand un liens est envoyer par le script il devriendra le dossier ou les fichiers seront chercher
      */
-    if(isset($_POST["dossier_chgp"]))
+    if(isset($_POST["dossier_chgp"]) && $_POST["nbreq"]>0)
     {
         $meza = $_POST["dossier_chgp"];
-    }
 
         $dossier= array();
         $liens_video = array();
@@ -103,7 +103,25 @@
             echo json_encode($data);
         }
         $video = "default";
-
+    }
+    if(isset($_POST["nbreq"]) || $far_from_home==0)
+    {
+        //Comportement normal alias home
+        foreach($liensHomeVideo as $index=>$value)
+        {
+            $dossier[$index]= str_replace("../","",$value);
+        }
+        $dossier_liens = $liensHomeVideo;
+        $meza = $liensHomeVideo;
+        if(isset($_POST["nbreq"]))
+        {
+            if($_POST["nbreq"]==0)
+            {
+                $data = ['fichiers'=>null,'dossiers'=>$dossier,'liens_video'=>null,'liens_dossier'=>$dossier_liens,'current_dir'=>$meza];
+                echo json_encode($data);
+            }
+        }
+    }
     function BoutonRetour($dosierpressent)
     {
         $ch = "/";

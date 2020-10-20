@@ -376,7 +376,8 @@ a:active {
     transition-duration: 1s;
     transition-property: all;
     position: sticky;
-    margin-block: auto;
+    margin-block-end: auto;
+    margin-block-start: auto;
 }
 
 .conteneur-image {

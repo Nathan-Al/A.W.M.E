@@ -10,7 +10,7 @@
     </head>
         <header>
             <div class="div-headers-1">
-                <a href="../" class="Lien-nav-Accueil"><h1 class="h1-sb">Samba</h1></a>
+                <a href="../" class="Lien-nav-Accueil"><h1 class="h1-sb">Menu</h1></a>
             </div>
         </header>
 

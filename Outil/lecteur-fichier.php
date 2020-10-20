@@ -51,12 +51,10 @@
                     $dir = CheckLink($liens_dossier[$o]);
                     if ( is_dir($dir) )  {
                         if ( $dh = opendir($dir) ) {
-                            while ( ($element = readdir($dh)) !== false){{
-                                if (	($element != '_vti_cnf')	&
-                                    ($element != '.')		&
-                                    ($element != '..')		&
-                                    ($element != '.DS_Store')	){
-                                        
+                            while ( ($element = readdir($dh)) !== false)
+                                {
+                                    if (($element != '_vti_cnf')&($element != '.')&($element != '..')&($element != '.DS_Store')	)
+                                    {
                                         if (is_dir($dir.'/'.$element))
                                         {
                                             $tb_directories[] = $element;	
@@ -67,7 +65,7 @@
                                         }
                                     }
                                 }	
-                            }
+                            
                         }else
                         {
                             $tb_directories = false;
@@ -170,24 +168,26 @@
         for($o = 0; $o < sizeof($LiensDoc); $o++)
         {
             $dir = CheckLink($LiensDoc[$o]);
-            if ( is_dir($dir) )  {
-                if ( $dh = opendir($dir) ) {
-                    while ( ($element = readdir($dh)) !== false){{
-                            if (	($element != '_vti_cnf')	&
-                                ($element != '.')		&
-                                ($element != '..')		&
-                                ($element != '.DS_Store')	){
-                                    
-                                    if (is_dir($dir.'/'.$element))
-                                    {
-                                        $tb_directories[] = $element;	
-                                    }
-                                    else
-                                    {
-                                        $tb_files[] = $element;	
-                                    }
+            if ( is_dir($dir) )  
+            {
+                if ( $dh = opendir($dir) ) 
+                {
+                    while ( ($element = readdir($dh)) !== false)
+                    {
+                            if (($element != '_vti_cnf')&
+                                ($element != '.')&
+                                ($element != '..')&
+                                ($element != '.DS_Store'))
+                            {
+                                if (is_dir($dir.'/'.$element))
+                                {
+                                    $tb_directories[] = $element;	
                                 }
-                            }	
+                                else
+                                {
+                                    $tb_files[] = $element;	
+                                }
+                            }
                         }
                     }
                 }else
@@ -211,6 +211,9 @@
         $page = 1;
         if(is_array($chemin_dossier))
         {
+            $file = array();
+            $a = 0;
+            $liens = 0;
             for ($o = 0; $o < sizeof($chemin_dossier); $o++)
             {
                 $dirname[$o] = CheckLink($chemin_dossier[$o]);
@@ -221,12 +224,10 @@
 
                             if($limite_fichier > 0)
                             {
-                                $file = array();
-                                $liens = 0;
                                 while (false !== ($entry = readdir($dir[$o]))) {
                                     if($entry!="."&&$entry!="..")
                                     {
-                                        $file[$page][$liens] = $dirname[$o].$entry;
+                                        $file[$page][$liens] = $dirname[$o]."/".$entry;
                                         $liens++;
                                         if($liens==15)
                                         {
@@ -238,8 +239,7 @@
                                 }
                             }else
                             {
-                                $file = array();
-                                $a = 0;
+
                                 while (false !== ($entry = readdir($dir[$o]))) {
                                     if($entry!="."&&$entry!="..")
                                     {

@@ -136,10 +136,12 @@ a:hover {
     height: auto;
     text-orientation: mixed;
     writing-mode: sideways-lr;
+    -webkit-writing-mode: vertical-rl;
     text-align: center;
     display: block;
     flex: 1;
-    padding-left: 30%;
+    padding-right: 35%;
+    padding-left: 35%;
 }
 
 .para-nav:hover {

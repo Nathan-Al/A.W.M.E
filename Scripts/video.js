@@ -5,9 +5,9 @@ let div_dossier = document.getElementById("div-dossier-video");
 
 let basic_video = document.getElementById("lecteur_base");
 let you_watch = document.getElementById("titre_video");
+let button_retour_exist = parseInt(document.getElementById("far_from_home").value);
 let data_json;
 let fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc, dossier_current, dossier_avant;
-
 GetStartinng();
 
 function GetStartinng() {
@@ -25,7 +25,8 @@ function GetStartinng() {
 
     all_dossier.forEach(function(item, dix) {
         item.addEventListener('click', function(e) {
-            data_json = fetchServer({ dossier_chgp: item.value });
+            button_retour_exist = button_retour_exist + 1;
+            data_json = fetchServer({ dossier_chgp: item.value, nbreq: button_retour_exist });
             suiteDansLesIdee(data_json);
             UpdateNav(fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc);
             GetStartinng();
@@ -163,9 +164,9 @@ function fetchServer(data_send) {
 function buttonRetour() {
     let nav_retour = document.getElementById("nav-separation-div")
     nav_retour.innerHTML = "";
-    let retour = document.createElement("button");
-    dossier_avant = dossier_current.slice(0, dossier_current.lastIndexOf("/"));
-    if (dossier_avant.lastIndexOf("/") > 0) {
+    if (button_retour_exist != 0 && button_retour_exist > 0) {
+        let retour = document.createElement("button");
+        dossier_avant = dossier_current.slice(0, dossier_current.lastIndexOf("/"));
         retour.setAttribute("id", "retour_btn")
         retour.setAttribute("class", "a-separation");
         retour.setAttribute("value", dossier_avant);
@@ -173,7 +174,8 @@ function buttonRetour() {
         nav_retour.append(retour);
         let retour_html = document.getElementById("retour_btn");
         retour_html.addEventListener('click', function(e) {
-            data_json = fetchServer({ dossier_chgp: retour_html.value });
+            button_retour_exist = button_retour_exist - 1;
+            data_json = fetchServer({ dossier_chgp: retour_html.value, nbreq: button_retour_exist });
             suiteDansLesIdee(data_json);
             UpdateNav(fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc);
             GetStartinng();

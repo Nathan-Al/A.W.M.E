@@ -20,10 +20,15 @@ FlowPlayer/
 getID3-master/
 
 getID3-1.9.18/
-Outil/lecteur-liens.php
+
 Test/
-Json/liens_multimedia.json
+
+Json/
+
 Multimedia/Video
+
 Multimedia/Image
+
 Multimedia/Musique
+
 Multimedia/Document
