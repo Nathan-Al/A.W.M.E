@@ -70,7 +70,7 @@ $dossier_image_default = $dossier_multimedia."Image/";
     $liens_css_gestion = "../Css/gestion.css";
 
 /* LIENS DOSSIER */
-    $liens_dossier_sous_titre = "../Video/SousTitre/";
+    $liens_dossier_sous_titre = $jsonMultimedia["SousTitre"];
     $require_decodeur_id3 = "../Outil/getID3-master/getid3/getid3.php";
     $require_write_id3 = "../getID3-master/getid3/write.php";
     $require_javaScript = "../JavaScript/";

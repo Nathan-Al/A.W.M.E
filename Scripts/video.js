@@ -7,7 +7,7 @@ let basic_video = document.getElementById("lecteur_base");
 let you_watch = document.getElementById("titre_video");
 let button_retour_exist = parseInt(document.getElementById("far_from_home").value);
 let data_json;
-let fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc, dossier_current, dossier_avant;
+let fichiers_doc, dossiers_doc, liens_dossier_doc, liens_fichiers_doc, dossier_current, dossier_avant, sous_titre;
 GetStartinng();
 
 function GetStartinng() {
@@ -17,8 +17,8 @@ function GetStartinng() {
         item.addEventListener('click', function(e) {
             document.title = "Video : " + item.textContent;
             you_watch.innerHTML = "Vous regardez : " + item.textContent;
-            LecteurVideo(item.value, "");
-            LecteurVideoJS(item.value, "");
+            LecteurVideo(item.value, sous_titre);
+            LecteurVideoJS(item.value, sous_titre);
             ChargeOnglet();
         })
     });
@@ -41,6 +41,7 @@ function suiteDansLesIdee(data_json) {
     liens_dossier_doc = data_json.liens_dossier;
     liens_fichiers_doc = data_json.liens_video
     dossier_current = data_json.current_dir;
+    sous_titre = data_json.sous_titre;
 }
 
 function UpdateNav(fichiers, dossiers, liens_dossier, liens_fichiers) {
@@ -72,18 +73,42 @@ function UpdateNav(fichiers, dossiers, liens_dossier, liens_fichiers) {
 
 function LecteurVideo(videoliens, liens_sous_titre) {
     let nav_video_normal = document.getElementById("nav-normal-video");
+    let titre_edit;
+    let sous_titre = "";
+    liens_sous_titre.forEach(function(item) {
+        let ts = videoliens.substring(0, videoliens.lastIndexOf("."));
+        titre_edit = ts.substring(ts.lastIndexOf("/") + 1);
+
+        let tr = item.substring(item.lastIndexOf("/") + 1);
+        sous_titre_edit = tr.substring(0, tr.lastIndexOf("."));
+        if (sous_titre_edit == titre_edit) {
+            sous_titre = item;
+        }
+    })
     nav_video_normal.innerHTML = "";
     nav_video_normal.innerHTML =
         `<body>
-        <video class="lecteur-video" preload="none" id="lecteur_base" src="${videoliens}" poster="../media-site/play.png"
-        type="video/x-matroska; codecs="."theora, vorbis" controls onerror="failed(event)" >
-        </video>
-        <track default kind="captions" srclang="fr" src="${liens_sous_titre}" />
+            <video class="lecteur-video" preload="none" id="lecteur_base" src="${videoliens}" poster="../media-site/play.png"
+            type="video/mp4; codecs="."theora, vorbis" controls onerror="failed(event)" >
+                <track kind="subtitles" srclang="fr-FR" src="${sous_titre}" lang="fr"/>
+            </video>
         </body>`
 }
 
-function LecteurVideoJS(liensmp4, lienswebm, liens_sous_titre) {
+function LecteurVideoJS(liensmp4, liens_sous_titre) {
     let div = document.getElementById("nav-js-video");
+    let titre_edit;
+    let sous_titre = "";
+    liens_sous_titre.forEach(function(item) {
+        let ts = liensmp4.substring(0, liensmp4.lastIndexOf("."));
+        titre_edit = ts.substring(ts.lastIndexOf("/") + 1);
+
+        let tr = item.substring(item.lastIndexOf("/") + 1);
+        sous_titre_edit = tr.substring(0, tr.lastIndexOf("."));
+        if (sous_titre_edit == titre_edit) {
+            sous_titre = item;
+        }
+    })
     div.innerHTML = "";
     div.innerHTML += `<video
         id="js-video"
@@ -93,6 +118,7 @@ function LecteurVideoJS(liensmp4, lienswebm, liens_sous_titre) {
         data-setup="{}"
       >
         <source src="${liensmp4}" type="video/mp4" />
+        <track kind="subtitles" srclang="fr-FR" src="${sous_titre}" lang="fr">
         <p class="vjs-no-js">
           To view this video please enable JavaScript, and consider upgrading to a
           web browser that

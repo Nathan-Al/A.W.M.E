@@ -1,24 +1,20 @@
 {
     "Image": [
-        "../Multimedia/Image",
-        "../Image"
+        "../Multimedia/Image"
     ],
     "Document": [
-        "../Multimedia/Document",
-        "../Documents"
+        "../Multimedia/Document"
     ],
     "Video": [
-        "../Multimedia/Video",
-        "../Video"
+        "../Multimedia/Video"
+    ],
+    "SousTitre": [
+        "../Multimedia/Video/SousTitre"
     ],
     "Musique": [
-        "../Multimedia/Musique",
-        "../Musique"
+        "../Multimedia/Musique"
     ],
     "YouTube": [
-        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxMG5Qc9pUH6USbf33CUBtbA",
-        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxM6yhjpckya-n4WORH3USEJ",
-        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxNS5SIYcYYT7-PhGGYZ4qQc",
-        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxMSxOJDfcIbiOexP1vXTfVY"
+
     ]
 }

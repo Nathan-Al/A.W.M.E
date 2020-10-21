@@ -25,6 +25,8 @@
         $dossier_liens = array();
         $liens_video_raw = chargeLiens($meza);
         $fichiers = array();
+        $sous_titre_dossier_raw = chargeLiens($liens_dossier_sous_titre);
+        $sous_titre= array();
         $t = 0;$s=0;$m = 0; $l =0;
         if($liens_video_raw!=false)
         {
@@ -86,6 +88,10 @@
             }
         }
 
+        foreach($sous_titre_dossier_raw as $key => $value){
+            $sous_titre [$key] = $value;
+        }
+
 
         if(!sizeof($fichiers)==sizeof($liens_video))
         {
@@ -99,7 +105,7 @@
         
         if(isset($_POST["dossier_chgp"]))
         {
-            $data = ['fichiers'=>$fichiers,'dossiers'=>$dossier,'liens_video'=>$liens_video,'liens_dossier'=>$dossier_liens,'current_dir'=>$meza];
+            $data = ['fichiers'=>$fichiers,'dossiers'=>$dossier,'liens_video'=>$liens_video,'liens_dossier'=>$dossier_liens,'sous_titre'=>$sous_titre,'current_dir'=>$meza];
             echo json_encode($data);
         }
         $video = "default";
