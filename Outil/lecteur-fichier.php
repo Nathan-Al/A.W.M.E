@@ -311,47 +311,6 @@
         return $file;
     }
 
-    function ListerTotalitefichier($chemindacces)
-    {
-        $dossier = ScanDossier($chemindacces);
-        $fichier = ScanFichiers($chemindacces);
-        if($dossier != false && $fichier != false)
-        {
-            for($o = 0; $o < sizeof($chemindacces); $o++)
-            {
-                if($dossier[$o]!=false && $dossier[$o] !=null)
-                for($p=0;$p<sizeof($dossier[$o]);$p++)
-                {
-                    $sousfichier = ScanFichiers($chemindacces.$dossier[$p]);
-                    $indexmulti = sizeof($fichier)+sizeof($sousfichier);
-                }
-                else
-                $indexmulti = false;
-                //$indexmulti = sizeof($fichier);
-    
-                $o=0;
-                for($m=0;$m<$indexmulti;$m++)
-                {
-                    if($m<sizeof($fichier))
-                    {
-                        $fichierfin[$m]=$fichier[$m];
-                    }else
-                    {
-                        $fichierfin[$m]=$sousfichier[$o];
-                        
-                        $o++;
-                    }
-                }
-            }
-        }else
-        {
-            $fichierfin = false;
-        }
-
-    
-        return $fichierfin;  
-    }
-
     function ChercherFicher($CharactACherh, $liensDossier)
     {
         $dossier = ScanDossier($liensDossier);

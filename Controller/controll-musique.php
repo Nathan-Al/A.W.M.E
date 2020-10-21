@@ -9,7 +9,8 @@
    $PageEncoding = 'UTF-8';
    $cover_musique = array();
    $ValidTagTypes = array('id3v1', 'id3v2.3', 'ape');
-   $fichier = ListerTotalitefichier($liensHomeMusique);
+   //$fichier = ListerTotalitefichier($liensHomeMusique);
+   //$fichier = chargeLiens($liensHomeMusique);
    $liens_musique = array();
    $cover_musique = array();
    $s = "img-min-liens-musique";

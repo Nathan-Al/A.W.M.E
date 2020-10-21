@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
         <link rel="stylesheet" href=<?php echo $liens_css_musique ?> /> <!-- Importations du css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     </head>
         <header>
             <div class="div-headers-1">
