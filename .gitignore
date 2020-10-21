@@ -19,14 +19,8 @@ FlowPlayer/
 
 getID3-master/
 
-getID3-1.9.18/
-
 Test/
 
-Multimedia/Video
+old/
 
-Multimedia/Image
-
-Multimedia/Musique
-
-Multimedia/Document
+Json/liens_multimedia.json
