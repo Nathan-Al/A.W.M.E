@@ -4,11 +4,6 @@
 |----------------------------------------------------|
 */
 
-@use "responsive/res-video.scss";
-.a-doc {
-    color: aliceblue;
-}
-
 .a-doc:hover {
     color: blue;
 }
@@ -150,7 +145,7 @@
     color: rgb(28, 18, 117);
 }
 
-.div-contenue {
+.div-contenue-video {
     display: flex;
     /*
     border-style: solid;

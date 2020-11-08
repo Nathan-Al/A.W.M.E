@@ -141,6 +141,13 @@ nav {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
+@media only screen and (max-width: 1920px) {
+    .affichage-div-image {
+        margin-left: 1%;
+        background-color: #1b56a200;
+    }
+}
+
 @media only screen and (max-width: 1700px) {
     //-----------------------GALLERY
     .affichage-div-image {

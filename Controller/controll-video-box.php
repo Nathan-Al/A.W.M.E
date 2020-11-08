@@ -3,7 +3,8 @@ require "../Outil/lecteur-liens.php";
 require $require_lecteur_fichier;
 require $require_lecteur_video;
 
-
+$meza = $liensHomeVideo;
+$avantdossier = "../";
 $fichiers = ScanFichiers($meza);
 $dossier = ScanDossier($meza);
 

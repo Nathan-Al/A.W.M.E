@@ -20,7 +20,7 @@
             </div>
         </header>
     <body>
-        <div class="div-contenue">
+        <div class="div-contenue-musique">
             <div class="div-navigation">
                     <nav class="nav-liens-musique">
                         <?php

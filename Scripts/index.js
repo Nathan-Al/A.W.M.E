@@ -25,8 +25,7 @@ let Menu_Ar = {
         "Video Box",
         "Musique",
         "Upload",
-        "Youtube",
-        "Test"
+        "Youtube"
     ],
 
     liens: [
@@ -36,8 +35,7 @@ let Menu_Ar = {
         "Controller/controll-video-box.php",
         "Controller/controll-musique.php",
         "Controller/controll-upload.php",
-        "Controller/controll-youtube.php",
-        "Test/test.php"
+        "Controller/controll-youtube.php"
     ],
     images: [
         '<i class="fas fa-image fa-10x Nav-Image"></i>',
@@ -46,9 +44,7 @@ let Menu_Ar = {
         '<i class="fas fa-tv fa-10x Nav-Image"></i>',
         '<i class="fas fa-music fa-10x Nav-Image"></i>',
         '<i class="fas fa-file-upload fa-10x Nav-Image"></i>',
-        '<i class="fab fa-youtube fa-10x Nav-Image"></i>',
-        "<p>No Image Found</p>"
-
+        '<i class="fab fa-youtube fa-10x Nav-Image"></i>'
     ],
     class: {
         nav: "Nav-Liens",

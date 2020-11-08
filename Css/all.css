@@ -765,10 +765,6 @@
 |----------------------   PAGE VIDEO  ---------------|
 |----------------------------------------------------|
 */
-.a-doc {
-  color: aliceblue;
-}
-
 .a-doc:hover {
   color: blue;
 }
@@ -910,7 +906,7 @@
   color: #1c1275;
 }
 
-.div-contenue {
+.div-contenue-video {
   display: flex;
   /*
   border-style: solid;
@@ -1016,15 +1012,6 @@ audio {
   margin: 0%;
 }
 
-.div-headers-1 {
-  margin-bottom: 0%;
-  padding-bottom: 0%;
-  /*border-style: solid;
-  border-color: rgb(207, 221, 16);*/
-  align-items: center;
-  text-align: center;
-}
-
 .Lien-nav-Accueil {
   list-style-type: none;
   color: white;
@@ -1042,7 +1029,7 @@ audio {
   transition: 0.2s all;
 }
 
-.div-contenue {
+.div-contenue-musique {
   display: flex;
   /*
   border-style: solid;
@@ -1360,6 +1347,12 @@ nav {
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1920px) {
+  .affichage-div-image {
+    margin-left: 1%;
+    background-color: #1b56a200;
+  }
+}
 @media only screen and (max-width: 1700px) {
   .affichage-div-image {
     width: 15%;

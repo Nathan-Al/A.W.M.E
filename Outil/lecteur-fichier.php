@@ -2,6 +2,7 @@
     require "../Outil/lecteur-chemin.php";
 
     function ScanFichiers($liens_video){
+        $tb_files = [];
         if(is_array($liens_video))
         {
             for($o = 0; $o <sizeof($liens_video);$o++)

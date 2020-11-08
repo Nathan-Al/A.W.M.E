@@ -7,7 +7,7 @@
         $tabliens = array();
         $tabliens_raw = chargeLiens($liensHomeImage);
         $page=$_GET["page"];
-        $nbpage = sizeof($tabliens_raw);
+        
         $file = array();
         $liens = 0;
         $pages = 1;
@@ -19,7 +19,7 @@
             {
                 if(strpos($a[sizeof($a)-1],".")!=0 || strpos($a[sizeof($a)-1],".")==false)
                 {
-                    $tabliens[$pages][$liens] = $tabliens_raw[$p];
+                    $tabliens[$pages][$liens] = str_replace(" ","%20",$tabliens_raw[$p]);
                     $liens++;
                     if($liens==15)
                     {
@@ -29,6 +29,7 @@
                 }
             }
         }
+        $nbpage = sizeof($tabliens);
         if($tabliens!=false)
         {
             if(isset($_GET["chgp"]) && $_GET["chgp"]=="chercher")

@@ -63,15 +63,10 @@
                 </div>
             </div>
         </header>
-<?php
-   /* if ($_GET["chgp"]==0)
-    {*/
-?>
         <div id="conteneur-1" class="conteneur-1">
             <div id="conteneur-2" class="conteneur-2">
                 <div id="conteneur-3" class="conteneur-3" style="filter: blur(0);">
                     <?php
-                    //echo $tabliens[0][1];
                     if($page!=null)
                     {
                         if ($tabliens!=false)
@@ -80,23 +75,16 @@
                             {
                                 for($f = 0; $f < sizeof($tabliens[$page]); $f++)
                                 {
-                                    //echo "<br> L".$liens." P".$page;
-                                    //echo $tabliens[$liens][$page];
                                     if($tabliens[$page][$f] != "0")
                                     {
                                         ?>
                                             <div id="affichage-div-image" class="affichage-div-image">
-                                                
-                                                    <!--<a class="a-image" href="<?php //echo $controller_affichage_image."?nomimage=".$tabliens[$liens][$page]."&page=".$page ?>"> -->
-                                                        <div id="a-image-background" class="a-image-background" data-target="div-image-<?php echo $f?>">
-                                                            <!-- Background nom image (apparait en hover) -->
-                                                            <span id="image-span" class="div-image-span"><?php $nom_fichier = explode("/",$tabliens[$page][$f]); echo $nom_fichier[sizeof($nom_fichier)-1]; ?></span>
-                                                        </div>
-                                                    <!--</a>-->
-                                                
-                                                                                    
+                                                <div id="a-image-background" class="a-image-background" data-target="div-image-<?php echo $f?>">
+                                                    <!-- Background nom image (apparait en hover) -->
+                                                    <span id="image-span" class="div-image-span"><?php $nom_fichier = explode("/",$tabliens[$page][$f]); echo $nom_fichier[sizeof($nom_fichier)-1]; ?></span>
+                                                </div>                               
                                                 <div id="div-image-<?php echo $f?>" class="div-image" style="background-image: url(<?php echo $tabliens[$page][$f] ;?>); ">
-                                                    <!-- <img class="Min-Image" id="<?php //echo $f; ?>" src="<?php //echo $tabliens[$page][$f] ?>"/> -->
+
                                                 </div>
                                             </div>
                                         <?php

@@ -41,7 +41,7 @@
             <div class="div-headers-3">
             </div>
         </header>
-    <div class="div-contenue">
+    <div class="div-contenue-video">
         <nav class="nav-liste-video">
                                            <!-- BOUCLE AFFICHAGE DOSSIER --> 
             <div class="div-video">
