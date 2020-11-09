@@ -19,7 +19,7 @@
                         for($p = 0; $p < sizeof($Array_youtube); $p++)
                             {
                                 ?>
-                                    <a href="#playlist-<?php echo $p ?>" class="a-play">Playlist <?php echo $p+1 ?></a>
+                                    <a id="ancre_playlist" href="#playlist-<?php echo $p ?>" class="a-play" data-target=<?php echo $Array_youtube[$p] ?>>Playlist <?php echo $p+1 ?></a>
                                 <?php
                             }
                     ?>
@@ -27,15 +27,14 @@
                     <div class="div-headers-3">
                     </div>
                 </header>
-                <div class="div-contenue">
+                <div class="div-contenue-youtube">
                     <div class="div-contenue-playlist">
                         <?php
                         if($Array_youtube!=false)
-                            for($p = 0; $p < sizeof($Array_youtube); $p++)
                             {
                                 ?>
                                     <div class="div-playlist">
-                                        <iframe id="playlist-<?php echo $p ?>" src=<?php echo $Array_youtube[$p] ?> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="iframe-playlist"></iframe>
+                                        <iframe id="playlist" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="iframe-playlist"></iframe>
                                     </div>
                                 <?php
                             }
@@ -49,4 +48,5 @@
                     </div>
                 </div>
             </body>
+    <script src="../Scripts/youtube.js"></script>
 </html>
