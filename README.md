@@ -9,9 +9,11 @@ Php, javaScript, Css, Saas, JQuery
 # Version
 1.0.0
 
-# Module / Autre
+# Module / Autre nécessaire
 * GetID3 version 1.9.20
 * Video.js CDN version 7.8.4
+## Pour le bon fonctionement du site n'oublier pas de  :
+ * récupérer getid3 a https://www.getid3.org/ et de déplacer le dossier `getID3-master` dans le dossier Outil !
 
 ## Fonctionnement de A.W.M.E
 ### Informations générale
@@ -35,8 +37,8 @@ La même chose que pour la page vidéo mais optimiser pour le navigateur d’un 
 Cliquer sur l’un des liens qui ont le nom des fichiers pour qu’il l’ouvre.
 Même chose pour les dossiers.
 ### Musique
- ! Nécésite getid3
------------------------------------
+ ! Nécessite getID3 !
+--------------
 Cliquer sur le nom d’un des chansons pour immédiatement la faire jouer.
 ### Youtube
  ! Important ! La page YouTube fonctionne avec le principe d’intégration de Playlist. Pour savoir comment faire vous pouvez regarder sur Google “Comment intégrer ma playlist“ ou vous pouvez aller sur Youtube->Votre Playlist->Partager->Intégrer->Copier le lien de l’frame se trouvant dans src=““<br />
@@ -44,7 +46,6 @@ Les liens noirs en haut de la page représentent chacune des playlist, cliqué d
 # Note
 Ceci est la première version du site.  <br />
 Par la suite il va transposer entant qu’application / logiciel. <br />
-Pour le bon fonctionement du site n'oublier pas de récupérer getid3 a https://www.getid3.org/ et de déplacer le dossier `getID3-master` dans le dossier Outil.
 
 # Beug
 Dans la version 1.0.0 il est impossible d'ouvrir les dossier pour les documents. Ce beug cera corriger dans la prochaine version.
