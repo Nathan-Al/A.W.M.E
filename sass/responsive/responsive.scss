@@ -1,0 +1,93 @@
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (max-width: 1200px) {}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .Nav-Liens {
+        width: 20%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        text-align: center;
+        font-size: 115%;
+    }
+    .div-headers-1 {
+        width: 35%;
+    }
+    .div-headers-2 {
+        width: 20%;
+    }
+    .div-headers-3 {
+        width: 35%;
+    }
+    .div-header-deux {
+        width: 50%;
+    }
+    .Nav-Liens {
+        width: 20%;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        text-align: center;
+        font-size: 150%;
+    }
+    .div-header-deux {
+        width: 90%;
+    }
+    .div-icone {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 398px) {
+    header {
+        height: 5%;
+    }
+    h1 {
+        text-align: center;
+        font-size: 90%;
+    }
+    .div-icone {
+        width: 90%;
+        height: auto;
+    }
+    .div-header-deux {
+        width: 90%;
+    }
+    .conteneur {
+        height: 95%;
+    }
+    .Menu-comp {
+        width: 95%;
+        height: 100%;
+    }
+    .Nav-Liens {
+        width: 25%;
+        margin-top: 0%;
+        height: 25%;
+    }
+    .Liens-Accueil {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        height: 20%;
+    }
+    .Nav-Image {
+        max-width: 70%;
+        max-height: 100%;
+    }
+    .Nav-nav-Image {
+        height: 80%;
+    }
+}

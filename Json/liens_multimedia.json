@@ -1,17 +1,17 @@
 {
-    "Image": [
-        "Multimedia/Image"
-    ],
     "Document": [
-        "Multimedia/Document"
+        "../Multimedia/Document"
     ],
-    "Video": [
-        "Multimedia/Video"
+    "Image": [
+        "../Multimedia/Image"
     ],
     "Musique": [
-        "Multimedia/Musique"
+        "../Multimedia/Musique"
+    ],
+    "SousTitre": [],
+    "Video": [
+        "../Multimedia/Video"
     ],
     "YouTube": [
-
     ]
 }

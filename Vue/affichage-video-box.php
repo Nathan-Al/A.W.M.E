@@ -3,14 +3,14 @@
     <meta charset="UTF-8">
     <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
 
-    <link rel="stylesheet" href=<?php echo $lien_css_affichage_box ?> /> <!-- Importations du css -->
+    <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
         
     <head>
             <title>Accueil</title> <!-- Titre de l'onglet de la page web -->
     </head>
         <header>
             <div class="div-headers-1">
-                <a href="../" class="Lien-nav-Accueil"><h1 class="h1-sb">Samba</h1></a>
+                <a href="../" class="Lien-nav-Accueil"><h1 class="h1-sb">Menu</h1></a>
             </div>
         </header>
 
@@ -27,7 +27,16 @@
                     <?php
                     $liens = 0;
                     $default ="default";
-                    $avantdossier = $_GET["dossier"];
+                    if(isset($_GET["dossier"]))
+                    {
+                        $avantdossier = $_GET["dossier"];
+                    }else
+                    {
+                        ?>
+                            <H1>AUCUN DOSSIER</H1>
+                        <?php
+                    }
+                    if($dossier!=false)
                     for($o = 0; $o < sizeof($dossier); $o++)  
                         {
                             ?>
@@ -43,8 +52,8 @@
                 ?>
                     </nav>
             </nav>
-                                    <nav class="headers-flo">
-                                    <?php
+    <nav class="headers-flo">
+    <?php
         if(isset($_GET["dossier"])&& $_GET["dossier"]!="default")
         {
             $dossierRetour = BoutonRetour($_GET["dossier"]);
@@ -89,18 +98,27 @@
                         }
                     }else
                     {
-                        for($o = 0; $o < sizeof($fichiers); $o++)  
+                        if($fichiers!=false)
+                        {
+                            for($o = 0; $o < sizeof($fichiers); $o++)  
+                            {
+                                ?>
+                                    
+                                        <?php
+                                            echo "<a class='a-liens-video' href='".$controller_video_box."?video=".$fichiers_liens[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
+                                            echo "<br>";
+                                            $liens++;
+                                        ?>
+                                <?php
+    
+                            }
+                        }else
                         {
                             ?>
-                                
-                                    <?php
-                                        echo "<a class='a-liens-video' href='".$controller_video_box."?video=".$fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
-                                        echo "<br>";
-                                        $liens++;
-                                    ?>
+                                <H1>AUCUN FICHIERS</H1>
                             <?php
-
                         }
+                        
                     }
                 ?>
                     </nav>

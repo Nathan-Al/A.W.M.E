@@ -1,132 +1,185 @@
 <?php
-    function ScanFichiers($meza){
-        $dir = $meza;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
-                                if (is_dir($dir.'/'.$element))
-                                {
-                                    //$tb_directories[] = $element;	
-                                }
-                                else
-                                {
-                                    $tb_files[] = $element;	
-                                }
+    require "../Outil/lecteur-chemin.php";
+
+    function ScanFichiers($liens_video){
+        $tb_files = [];
+        if(is_array($liens_video))
+        {
+            for($o = 0; $o <sizeof($liens_video);$o++)
+            {
+                $dir = "../".$liens_video[$o];
+                if ( is_dir($dir) )  {
+                    if ( $dh = opendir($dir) ) {
+                        while ( ($element = readdir($dh)) !== false){{
+                                if (($element != '_vti_cnf')&($element != '.')&($element != '..')&($element != '.DS_Store')	){
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            //$tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
+                                    }else
+                                    {
+                                        //$tb_directories = false;
+                                    }
+                                }	
                             }
-                        }	
+                    }else
+                    {
+                        //$tb_files = false;
                     }
                 }
             }
-        //echo "Size TB".sizeof($tb_files)."Size TB2".sizeof($tb_files2);
-    
-        return $tb_files;
+            if($tb_files==false || $tb_files[0]=="" || $tb_files[0]==null)
+                return false;
+            else
+                return $tb_files;
+        }else
+        {
+
+        }
     }
 
-    function ScanDossier($meza){
+    function ScanDossier($liens_dossier){
         $tb_directories = array();
-        $dir = $meza;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
-                                if (is_dir($dir.'/'.$element))
+        if(is_array($liens_dossier))
+        {
+            try {   
+                for($o = 0; $o < sizeof($liens_dossier); $o++)  
+                {
+                    $dir = CheckLink($liens_dossier[$o]);
+                    if ( is_dir($dir) )  {
+                        if ( $dh = opendir($dir) ) {
+                            while ( ($element = readdir($dh)) !== false)
                                 {
-                                    $tb_directories[] = $element;	
-                                }
-                                else
-                                {
-                                    $tb_files[] = $element;	
-                                }
-                            }
-                        }	
+                                    if (($element != '_vti_cnf')&($element != '.')&($element != '..')&($element != '.DS_Store')	)
+                                    {
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            $tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
+                                    }
+                                }	
+                            
+                        }else
+                        {
+                            $tb_directories = false;
+                        }
                     }
-                }
+                }   
+
+            } catch(Exception $e){
+                $tb_directories = false;
             }
-        return $tb_directories;
+
+            if($tb_directories==false || $tb_directories[0]=="" || $tb_directories[0]==null)
+                return false;
+            else
+                return $tb_directories;
+        }
+        else
+        {
+            try {   
+                $dir = CheckLink($liens_dossier);
+                    if ( is_dir($dir) )  {
+                        if ( $dh = opendir($dir) ) {
+                            while ( ($element = readdir($dh)) !== false){{
+                                if (	($element != '_vti_cnf')	&
+                                    ($element != '.')		&
+                                    ($element != '..')		&
+                                    ($element != '.DS_Store')	){
+                                        
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            $tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
+                                    }
+                                }	
+                            }
+                        }else
+                        {
+                            $tb_directories = false;
+                        }
+                    }
+                 
+
+            } catch(Exception $e){
+                $tb_directories = false;
+            }
+
+            if($tb_directories==false || $tb_directories[0]=="" || $tb_directories[0]==null)
+                return false;
+            else
+                return $tb_directories; 
+        }
     }
 
     //Affichage documents
 
     function ScanFichiersDoc($liensfich){
-        $dir = $liensfich;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
-                                if (is_dir($dir.'/'.$element))
-                                {
-                                    $tb_directories[] = $element;	
-                                }
-                                else
-                                {
-                                    $tb_files[] = $element;	
-                                }
-                            }
-                        }	
-                    }
-                }
-            }
-        /*
-        if($tb_directories[0]!=null)
-        for ($i = 0; $i<sizeof($tb_directories);$i++)
+        $tb_files = null;
+        for($o = 0; $o < sizeof($liensfich); $o++)
         {
-            $dir = $liensfich.$tb_directories[$i];
-            if ( is_dir($dir) )  {
-                if ( $dh = opendir($dir) ) {
-                    while ( ($element = readdir($dh)) !== false){{
-                            if (	($element != '_vti_cnf')	&
-                                ($element != '.')		&
-                                ($element != '..')		&
-                                ($element != '.DS_Store')	){
-                                    
-                                    if (is_dir($dir.'/'.$element))
-                                    {
-                                        //$tb_directories[] = $element;	
+            $dir = CheckLink($liensfich[$o]);
+            try{
+                if ( is_dir($dir) )  {
+                    if ( $dh = opendir($dir) ) {
+                        while (false !== ($element = readdir($dh))){{
+                                if (	($element != '_vti_cnf')	&
+                                    ($element != '.')		&
+                                    ($element != '..')		&
+                                    ($element != '.DS_Store')	){
+                                        
+                                        if (is_dir($dir.'/'.$element))
+                                        {
+                                            $tb_directories[] = $element;	
+                                        }
+                                        else
+                                        {
+                                            $tb_files[] = $element;	
+                                        }
                                     }
-                                    else
-                                    {
-                                        $tb_files2[] = $element;
-                                    }
-                                }
-                            }	
+                                }	
+                            }
                         }
                     }
-                }
+
+            }catch(Exception $e){
+                $tb_files = false;
+            }
         }
-        if($tb_files2[0]!=null)
-        for ($p = 0; $p < sizeof($tb_files2); $p++)
-        {
-            $tb_files[]=$tb_files2[$p];
-        }
-        */
-        //echo "Size TB".sizeof($tb_files)."Size TB2".sizeof($tb_files2);
-    
-        return $tb_files;
+        if($tb_files!=null)
+            return $tb_files;
+        else
+            return false;
     }
 
     function ScanDossierDoc($LiensDoc){
-        $dir = $LiensDoc;
-        if ( is_dir($dir) )  {
-            if ( $dh = opendir($dir) ) {
-                while ( ($element = readdir($dh)) !== false){{
-                        if (	($element != '_vti_cnf')	&
-                            ($element != '.')		&
-                            ($element != '..')		&
-                            ($element != '.DS_Store')	){
-                                
+        $tb_directories = null;
+        for($o = 0; $o < sizeof($LiensDoc); $o++)
+        {
+            $dir = CheckLink($LiensDoc[$o]);
+            if ( is_dir($dir) )  
+            {
+                if ( $dh = opendir($dir) ) 
+                {
+                    while ( ($element = readdir($dh)) !== false)
+                    {
+                            if (($element != '_vti_cnf')&
+                                ($element != '.')&
+                                ($element != '..')&
+                                ($element != '.DS_Store'))
+                            {
                                 if (is_dir($dir.'/'.$element))
                                 {
                                     $tb_directories[] = $element;	
@@ -136,77 +189,127 @@
                                     $tb_files[] = $element;	
                                 }
                             }
-                        }	
+                        }
                     }
-                }
-            }
-        return $tb_directories;
-    }
-
-    function chargeLiens($liensenv)
-    {
-            $dirname = $liensenv;
-            $dir = opendir($dirname);
-            $ona = 0;
-            $page = 1;
-            while($file[][] = readdir($dir)) 
-            {
-                $liens = 0;
-                for($compteur=0; $compteur<25; $compteur++)
+                }else
                 {
-                    if($file[$liens][$page] != "." && $file[$liens][$page] != ".." && !is_dir($dirname.$file[$liens][$page] && $file[$liens][$page]!="" && $file[$liens][$page]!=false))
-                    {
-                        //echo readdir($dir),$page. "<br>";
-                        $file[$liens][$page] = readdir($dir);
-                        //echo "<br> L".$liens."  P".$page."  ".$file[$liens][$page]."<br>";
-                        //echo "<br>"."L".$liens."  P".$page;
-                    }
-                    if ($file[$liens][$page]=="..")
-                    {
-                        $file[$liens][$page] = "0";
-                    }
-                    $liens++;
-                    
+                    $tb_directories = false;
                 }
-                //echo "<br>"."fin du for"."<br>";
-                $page++;
-                
-            }
-            //echo "<br>"."fin while"."<br>";
-            
-            rsort($file);
-            
-        return $file;
+            if($tb_directories!=null)
+                return $tb_directories;
+            else
+                return $tb_directories = false;
+        }
     }
-
-    function ListerTotalitefichier($chemindacces)
+    /**
+     * Fonctions qui permet de récupérer le chemin des ou du fichier/s qui se trouve dans le dossier envoyer
+     * Integer limite_fichier : indique combien de chemin vont être mise par par page Default = 0
+     * Array / String chemin_dossier : chemin ou la function devra récupérer les chemin des fichiers
+     */
+    function chargeLiens($chemin_dossier, $limite_fichier = 0)
     {
-        $dossier = ScanDossier($chemindacces);
-        $fichier = ScanFichiers($chemindacces);
-        if($dossier!="" && $dossier !=null)
-        for($p=0;$p<sizeof($dossier);$p++)
+        $dir[]=null;
+        $page = 1;
+        if(is_array($chemin_dossier))
         {
-            $sousfichier = ScanFichiers($chemindacces.$dossier[$p]);
-            $indexmulti = sizeof($fichier)+sizeof($sousfichier);
-        }
-        else
-        $indexmulti = sizeof($fichier);
+            $file = array();
+            $a = 0;
+            $liens = 0;
+            for ($o = 0; $o < sizeof($chemin_dossier); $o++)
+            {
+                $dirname[$o] = CheckLink($chemin_dossier[$o]);
+                try{
+                    if(is_dir($dirname[$o]))
+                    {
+                        if ( $dir[$o] = opendir($dirname[$o])) {
 
+                            if($limite_fichier > 0)
+                            {
+                                while (false !== ($entry = readdir($dir[$o]))) {
+                                    if($entry!="."&&$entry!="..")
+                                    {
+                                        $file[$page][$liens] = $dirname[$o]."/".$entry;
+                                        $liens++;
+                                        if($liens==15)
+                                        {
+                                            $page++;
+                                            $liens = 0;
+                                        }
+                                            
+                                    }
+                                }
+                            }else
+                            {
 
-        $o=0;
-        for($m=0;$m<$indexmulti;$m++)
+                                while (false !== ($entry = readdir($dir[$o]))) {
+                                    if($entry!="."&&$entry!="..")
+                                    {
+                                        $file[$a] = $dirname[$o]."/".$entry;
+                                        $a++;
+                                    }
+                                }
+                            }
+                            closedir($dir[$o]);
+                        }
+                    }
+                    else
+                    {
+                        $dir[$o] = false;
+                    }
+                }catch(Exception $e)
+                {
+                    $dir = false;
+                }
+            }
+        }else
         {
-            if($m<sizeof($fichier))
+            try{
+                if(is_dir($chemin_dossier))
+                {
+                    if ( $dir = opendir($chemin_dossier)) {
+
+                        if($limite_fichier > 0)
+                        {
+                            $file = array();
+                            $liens = 0;
+                            while (false !== ($entry = readdir($dir))) {
+                                if($entry!="."&&$entry!="..")
+                                {
+                                    $file[$page][$liens] = $chemin_dossier.$entry;
+                                    $liens++;
+                                    if($liens==15)
+                                    {
+                                        $page++;
+                                        $liens = 0;
+                                    }
+                                        
+                                }
+                            }
+                        }else
+                        {
+                            $file = array();
+                            $a = 0;
+                            while (false !== ($entry = readdir($dir))) {
+                                if($entry!="."&&$entry!="..")
+                                {
+                                    $file[$a] = $chemin_dossier."/".$entry;
+                                    $a++;
+                                }
+                            }
+                        }
+                        closedir($dir);
+                    }
+                }
+                else
+                {
+                    $dir = false;
+                }
+            }catch(Exception $e)
             {
-                $fichierfin[$m]=$fichier[$m];
-            }else
-            {
-                $fichierfin[$m]=$sousfichier[$o];
-                
-                $o++;
+                $dir = false;
             }
         }
-        return $fichierfin;  
+        return $file;
     }
 
     function ChercherFicher($CharactACherh, $liensDossier)
@@ -263,6 +366,18 @@
         return $lienstrouver;
     }
 
+    function RecupererDataJson($json_link)
+    {
+        $jsonData = file_get_contents(CheckLink($json_link));
+        $final_data = json_decode($jsonData);
+        return $final_data;
+    }
+
+    function ModifierJson($liensJson, $data)
+    {
+        $newJsonString = json_encode($data,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        file_put_contents(CheckLink($liensJson), $newJsonString);
+    }
 
     function renommerfichier ($chemindossier,$anciennom,$nouveauxnom)
     {
@@ -273,56 +388,27 @@
     {
         if(gettype($fichier)=="array")
         {
-            $fichier = array_filter($fichier,'strlen');
-            for($m=0;$m<sizeof($fichier);$m++)
-            {
-                
-                if($fichier['name']!=null)
-                $nom = strtolower($fichier['name'][$m]);
+            $nom = $fichier['name']!=null ? strtolower($fichier['name']) : null;
 
-                if($fichier['tmp_name']!=null)
-                $tmpnom = $fichier['tmp_name'][$m];
+            $tmpnom = $fichier['tmp_name']!=null ? $fichier['tmp_name'] : null;
 
-                if($fichier['size']!=null)
-                $taille = $fichier['size'][$m];
+            $taille = $fichier['size']!=null ? $fichier['size']: null;
 
-                if($fichier['type']!="")
-                $type = $fichier['type'][$m];
+            $type = $fichier['type']!="" ? $fichier['type'] : null;
 
-                if($fichier['error']!=null)
-                $erreurr = $fichier['error'][$m];
+            $erreurr = $fichier['error']!=null ? $fichier['error'] : null;
 
-                $dossier = $chemindossier;
-                $extension = strtolower(strrchr($nom, '.')); 
-
-                echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Extensions:".$extension." - Erreur:".$erreurr." - Dossier:".$dossier." - Key:".$key."<br>";
-            }
-        }
-        else
-        {
-            $nom = strtolower($fichier['name']);
-            $tmpnom = $fichier['tmp_name'];
-            $taille = $fichier['size'];
-            $type = $fichier['type'];
-            $erreurr = $fichier['error'];
             $dossier = $chemindossier;
 
-            $fichier = basename($nom);
-            $taille_maxi = 10000000;
-            
+            //echo "Nom:".$nom." - Nom temp:",$tmpnom," - Taille:",$taille," - Type:",$type," - Extensions:",$extension," - Erreur:",$erreurr," - Dossier:",$dossier," - Key:",$m,"<br>";
+
+            $fichier_basename = basename($nom);
+            $taille_maxi = 1000000000;
             $taille = filesize($tmpnom);
-            $extensions = array('.png', '.gif', '.jpg', '.jpeg','.mp4', '.mkv', '.avi', '.mpeg','.mp3', '.waw', '.ogg', '.flac','.doc', '.docx', '.pdf', '.txt','.zip','.rar');
-            $extension_Sp = array('.vtt','.ass');
-            $extension = strtolower(strrchr($nom, '.')); 
             //Début des vérifications de sécurité...
 
             //echo "Nom:".$nom." - Nom temp:".$tmpnom." - Taille:".$taille." - Type:".$type." - Extensions:".$extension." - Erreur:".$erreurr." - Dossier:".$dossier;
             
-            if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-            {
-                $erreur = 'Mauvais format de fichier';
-            }
-        
             if($taille>$taille_maxi)
             {
                 $erreur = 'Le fichier est trop gros...';
@@ -330,47 +416,53 @@
 
             if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
             {
-                //On formate le nom du fichier ici...
-                if($extension!=$extension_Sp)
-                {
-                    $fichier = strtr($fichier, 
-                    'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
-                    'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-                    $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-                }
+                    //On formate le nom du fichier ici...
+                $nom = strtr($nom, 
+                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+                'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+                $nom = preg_replace('/([^.a-z0-9]+)/i', '-', $nom);
 
-                if(move_uploaded_file($tmpnom, $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+                if(move_uploaded_file($tmpnom, "$dossier/$nom")) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
                 {
                     return "Fichier Uploader !";
                 }
                 else //Sinon (la fonction renvoie FALSE).
                 {
+                    $message="";
                     if($erreurr==1)
-                    $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
+                        $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
                     else if($erreurr==2)
-                    $message="Le fichier dépasse le poids autorisé par max_file_size !";
+                        $message="Le fichier dépasse le poids autorisé par max_file_size !";
                     else if($erreurr==3)
-                    $message="Une partit du fichier n'a pas été uploader.";
+                        $message="Une partit du fichier n'a pas été uploader.";
                     else if($erreurr==3)
-                    $message="Aucun fichier.";
+                        $message="Aucun fichier.";
                     else if($message==null || $message=="")
-                    $message="Une Erreur inconnu c'est produite";
+                        $message="Une Erreur inconnu c'est produite";
                     return $message;
                 }
             }
-            elseif(isset($erreur))
-            {
-                if($erreur!=""&&$erreur!=null)
-                if($erreurr==1)
-                    $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
-                    else if($erreurr==2)
-                    $message="Le fichier dépasse le poids autorisé par max_file_size !";
-                    else if($erreurr==3)
-                    $message="Une partit du fichier n'a pas été uploader.";
-                    else if($erreurr==3)
-                    $message="Aucun fichier.";
-                    return $message;
-            }
+                elseif(isset($erreur))
+                {
+                    $message="";
+                    if($erreur!=""&&$erreur!=null)
+                    if($erreurr==1)
+                            $message="Le fichier dépasse la taille autoriser par upload_max_filesize !";
+                        else if($erreurr==2)
+                            $message="Le fichier dépasse le poids autorisé par max_file_size !";
+                        else if($erreurr==3)
+                            $message="Une partit du fichier n'a pas été uploader.";
+                        else if($erreurr==3)
+                            $message="Aucun fichier.";
+                        if($message!="")
+                            return $message;
+                        else
+                            return $erreur;
+                }
+        }
+        else
+        {
+            return "Problème d'envoie de donnée. Array demander,".gettype($fichier)."reçu.";
         }
 
     }
@@ -389,41 +481,31 @@
     /* ---------------------- INFORMATIONS FICHIER AUDIO ET VIDEO ----------------------- */
                             /* ---------------------------- */
 
-    include("MP3/Id.php");
-    function read_mp3_tags($liens,$musique)
+    require_once("../Outil/getID3-master/getid3/getid3.php");
+    function read_mp3_tags($musique, $image = false)
     {
+        //include("MP3/Id.php");
         $PageEncoding = 'UTF-8';
         $ValidTagTypes = array('id3v1', 'id3v2.3', 'ape');
         $getID3 = new getID3;
-        $OldThisFileInfo = $getID3->analyze($liens);
-        getid3_lib::CopyTagsToComments($OldThisFileInfo);
+        //$OldThisFileInfo = $getID3->analyze($liens);
+        //getid3_lib::CopyTagsToComments($OldThisFileInfo);
             
         //$ValidTagTypes = ValidTagTypes($OldThisFileInfo);
             
         // Analyze file and store returned data in $ThisFileInfo
+        CheckLink($musique);
         $ThisFileInfo = $getID3->analyze($musique);
 
         getid3_lib::CopyTagsToComments($ThisFileInfo);
         $info_music = array();
-            
-                $c = "img";
-                $titre = (isset($ThisFileInfo['tags']['id3v2']['title'][0]))? $ThisFileInfo['tags']['id3v2']['title'][0]:"Inconnue";
-                $album = (isset($ThisFileInfo['tags']['id3v2']['album'][0]))? $ThisFileInfo['tags']['id3v2']['album'][0]:"Inconnue";
-                $artiste = (isset($ThisFileInfo['comments_html']['artist'][0]))? $ThisFileInfo['comments_html']['artist'][0]:"Inconnue";
-                $band = (isset($ThisFileInfo['comments_html']['band'][0]))? $ThisFileInfo['comments_html']['band'][0]:"Inconnue";
-                $genre = (isset($ThisFileInfo['comments_html']['genre'][0]))? $ThisFileInfo['comments_html']['genre'][0]:"Inconnue";
-                $time = (isset($ThisFileInfo['playtime_string']))? $ThisFileInfo['playtime_string']:"Inconnue";
-                $date = (isset($ThisFileInfo['comments_html']['year'][0]))? $ThisFileInfo['comments_html']['year'][0]:"Inconnue";
-                $image = (isset($ThisFileInfo['comments']['picture'][0]))? GetImageCover($ThisFileInfo['comments']['picture'][0], false, $PageEncoding,$c):false;
-                $arara = array('Data'=>GetDataImage($ThisFileInfo, false, $PageEncoding));
-                $format_file = (isset($ThisFileInfo['fileformat']))? $ThisFileInfo['fileformat']:"Inconnue";
-                $format_size = (isset($ThisFileInfo['filesize']))? $ThisFileInfo['filesize']:"Inconnue";
-                $bitrate = (isset($ThisFileInfo['audio']['bitrate']))? $ThisFileInfo['audio']['bitrate']:"Inconnue";
-
-                $Data = $arara['Data'];
-                $return_music =  Verify($titre , $album , $artiste , $genre , $time , $date , $image, $format_file , $format_size ,$bitrate, $band);
-    
-                $info_music [] =  new Musique (
+        if($image)
+        {
+            $c = "img-min-lecteur";
+            $image = (isset($ThisFileInfo['comments']['picture'][0]))? GetImageCover($ThisFileInfo['comments']['picture'][0], false, $PageEncoding,$c):false;
+            $arara = array('Data'=>GetDataImage($ThisFileInfo, false, $PageEncoding));
+            $return_music =  Verify("", "", "", "", "", "", $image, "", "","", "");
+            $info_music [] =  new Musique (
                 $return_music [0],
                 $return_music [1],
                 $return_music [2],
@@ -434,8 +516,43 @@
                 $return_music [7],
                 $return_music [8],
                 $return_music [9]);
+            return $info_music;
+        }else if(!$image)
+        {
+            $titre = (isset($ThisFileInfo['tags']['id3v2']['title'][0]))? $ThisFileInfo['tags']['id3v2']['title'][0]:"Inconnue";
+            $album = (isset($ThisFileInfo['tags']['id3v2']['album'][0]))? $ThisFileInfo['tags']['id3v2']['album'][0]:"Inconnue";
+            $artiste = (isset($ThisFileInfo['comments_html']['artist'][0]))? $ThisFileInfo['comments_html']['artist'][0]:"Inconnue";
+            $band = (isset($ThisFileInfo['comments_html']['band'][0]))? $ThisFileInfo['comments_html']['band'][0]:"Inconnue";
+            $genre = (isset($ThisFileInfo['comments_html']['genre'][0]))? $ThisFileInfo['comments_html']['genre'][0]:"Inconnue";
+            $time = (isset($ThisFileInfo['playtime_string']))? $ThisFileInfo['playtime_string']:"Inconnue";
+            $date = (isset($ThisFileInfo['comments_html']['year'][0]))? $ThisFileInfo['comments_html']['year'][0]:"Inconnue";
+            $image = "";
+            $arara = "";
+            $format_file = (isset($ThisFileInfo['fileformat']))? $ThisFileInfo['fileformat']:"Inconnue";
+            $format_size = (isset($ThisFileInfo['filesize']))? $ThisFileInfo['filesize']:"Inconnue";
+            $bitrate = (isset($ThisFileInfo['audio']['bitrate']))? $ThisFileInfo['audio']['bitrate']:"Inconnue";
 
-        return $info_music;
+            if($arara!="" || $arara!=null)
+                $Data = $arara['Data'];
+            else
+                $Data = "";
+            $return_music =  Verify($titre , $album , $artiste , $genre , $time , $date , $image, $format_file , $format_size ,$bitrate, $band);
+
+            $info_music [] =  new Musique (
+            $return_music [0],
+            $return_music [1],
+            $return_music [2],
+            $return_music [3],
+            $return_music [4],
+            $return_music [5],
+            $return_music [6],
+            $return_music [7],
+            $return_music [8],
+            $return_music [9]);
+
+            return $info_music;
+        }
+        
     }
 
     function modif_mp3_tags($dir)
@@ -459,7 +576,7 @@
                             }catch(Exception $e){
                                 throw $e;
                             }
-                            $returnstring .= '</td>'."\n".'<td><img class="'.$classimage.'" src="data:'.$variable['image_mime'].';base64,'.$base64Image.'" width="'.$imagechunkcheck[0].'" height="'.$imagechunkcheck[1].'"></td></tr>'."\n";
+                            $returnstring .= '</td>'."\n".'<td><img class="'.$classimage.'" src="data:'.$variable['image_mime'].';base64,'.$base64Image.'"></td></tr>'."\n";
                         } else {
                             $returnstring .= '</td>'."\n".'<td><i>invalid image data</i></td></tr>'."\n";
                         }

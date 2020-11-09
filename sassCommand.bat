@@ -1,0 +1,1 @@
+./Public/dart-sass/sass sass/all.scss Css/all.css --watch

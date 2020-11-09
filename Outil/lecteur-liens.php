@@ -1,11 +1,17 @@
 <?php
 /* LIENS DOSSIER MULTIMEDIA *///-----------------------------------
-$jsonMultimedia = json_decode(file_get_contents("Json/liens_multimedia.json"),true);
+$jsonMultimedia = json_decode(file_get_contents("../Json/liens_multimedia.json"),true);
 $liensHomeDocuments = $jsonMultimedia["Document"];
 $liensHomeImage = $jsonMultimedia["Image"];
 $liensHomeVideo = $jsonMultimedia["Video"];
 $liensHomeMusique = $jsonMultimedia["Musique"];
+$liensYoutube = $jsonMultimedia["YouTube"];
 $liensMediaSite = "../media-site/";
+$dossier_multimedia = "../Multimedia/";
+$dossier_video_default = $dossier_multimedia."Video/";
+$dossier_musique_default = $dossier_multimedia."Musique/";
+$dossier_document_default = $dossier_multimedia."Document/";
+$dossier_image_default = $dossier_multimedia."Image/";
 
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL *///----------------------------------
 
@@ -15,6 +21,7 @@ $liensMediaSite = "../media-site/";
     $require_lecteur_video = $racine_outil."lecteur-video.php";
     $require_lecteur_musique = $racine_outil."lecteur-musique.php";
     $require_createur_fichier = $racine_outil."createur-fichier.php";
+    $require_lecteur_chemin = $racine_outil."lecteur-chemin.php";
 
     // REQUIRE VUE-----
 
@@ -61,10 +68,13 @@ $liensMediaSite = "../media-site/";
     $liens_css_upload = "../Css/upload.css";
     $liens_css_affichage_youtube = "../Css/youtube.css";
     $liens_css_gestion = "../Css/gestion.css";
+    $liens_css_all = "../Css/all.css";
+    $liens_bootstrap = "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css";
+    $liens_fontawesome ="../Public/fontawesome/all.js";
 
 /* LIENS DOSSIER */
-    $liens_dossier_sous_titre = "../Video/SousTitre/";
-    $require_decodeur_id3 = "../getID3-master/getid3/getid3.php";
+    $liens_dossier_sous_titre = $jsonMultimedia["SousTitre"];
+    $require_decodeur_id3 = "../Outil/getID3-master/getid3/getid3.php";
     $require_write_id3 = "../getID3-master/getid3/write.php";
     $require_javaScript = "../JavaScript/";
 
@@ -73,9 +83,10 @@ $liensMediaSite = "../media-site/";
     $dossier_outil = "../Outil/";
     $dossier_model = "../Model/";
     $dossier_css = "../Css/";
+    $dossier_public = "../Public/";
     $dosier_sous_titre = $liensHomeVideo;
 
 /* ICONE PAGE DU SITE */
-    $IconeSite = "../media-site/icone.png";
+    $IconeSite = "../media-site/icone.ico";
     
 ?>

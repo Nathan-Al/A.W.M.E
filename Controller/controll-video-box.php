@@ -3,6 +3,21 @@ require "../Outil/lecteur-liens.php";
 require $require_lecteur_fichier;
 require $require_lecteur_video;
 
+$meza = $liensHomeVideo;
+$avantdossier = "../";
+$fichiers_raw = chargeLiens($meza);
+$dossier = ScanDossier($meza);
+$inde = 0;
+for($m = 0; $m < sizeof($fichiers_raw); $m++)
+{
+    $name = substr($fichiers_raw[$m],strrpos($fichiers_raw[$m],"/")+1,strlen($fichiers_raw[$m]));
+    if(strpos($name,".")!=0)
+    {
+        $fichiers[$inde] =  $name;
+        $fichiers_liens[$inde] = $fichiers_raw[$m];
+        $inde++;
+    }
+}
 
 if(isset($_GET["video"]))
     {
@@ -18,16 +33,10 @@ if(isset($_GET["video"]))
             $meza = $liensHomeVideo;
         }
 
-        if($_GET["video"]=="default")
-        {
-            $fichiers = ScanFichiers($meza);
-            $dossier = ScanDossier($meza);
-            require $require_vue_affichage_video_box;  
-        }
-        elseif($_GET["video"]!="" && $_GET["video"]!=null)
+        if($_GET["video"]!="" && $_GET["video"]!=null)
         {
             $video = $_GET["video"];
-            $nom = $_GET["dossier"];
+            //$nom = $_GET["dossier"];
             require $require_vue_affichage_lecteur_video;
         }elseif(isset($_GET["dossier"]))
         {
@@ -37,6 +46,10 @@ if(isset($_GET["video"]))
             }
         }
 
+    }else
+    {
+        $vue = CheckLink($require_vue_affichage_video_box);
+        require $vue; 
     }
 
 function BoutonRetour($dosierpressent)
@@ -47,4 +60,6 @@ function BoutonRetour($dosierpressent)
         $rem = str_replace($m, "",$dosierpressent);
         return $rem;
     }
+
+ 
 ?>

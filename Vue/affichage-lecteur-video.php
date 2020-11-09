@@ -2,9 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
     <meta charset="UTF-8">
     <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-
-    <link rel="stylesheet" href="../Css/affichage-video.css" /> <!-- Importations du css -->
-
+    <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
 <head>
 	<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
   
@@ -13,11 +11,11 @@
   </head>
   
   <body>
-	<video id='my-video' class='video-js' controls preload='auto' width='640' height='264'
+	<video id='my-video' class='video-js' controls preload='auto' width='100%' height='100%'
     poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
     <?php
-	  echo "<source src='../Video".$nom."/".$video."' type='video/mp4'>";
-      echo "<source src='../Video".$nom."/".$video."' type='video/webm'>";
+	  echo "<source src='".$video."' type='video/mp4'>";
+      echo "<source src='".$video."' type='video/webm'>";
     ?>
 	  <p class='vjs-no-js'>
 		To view this video please enable JavaScript, and consider upgrading to a web browser that

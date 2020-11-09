@@ -1,16 +1,18 @@
 <?php
-    require "../Outil/lecteur-liens.php";
-    require $require_lecteur_fichier;
-    require $require_lecteur_musique;
-    require $require_model_musique;
-    require_once($require_decodeur_id3);
+   require "../Outil/lecteur-liens.php";
+   require $require_lecteur_fichier;
+   require $require_lecteur_musique;
+   require $require_model_musique;
+   require_once($require_decodeur_id3);
 
    $getID3 = new getID3;
    $PageEncoding = 'UTF-8';
    $cover_musique = array();
    $ValidTagTypes = array('id3v1', 'id3v2.3', 'ape');
-   $fichier = ListerTotalitefichier($liensHomeMusique);
+   //$fichier = ListerTotalitefichier($liensHomeMusique);
+   $fichier = chargeLiens($liensHomeMusique);
    $liens_musique = array();
+   $data_musique = array();
    $cover_musique = array();
    $s = "img-min-liens-musique";
    $liens = "";
@@ -23,55 +25,35 @@
    {
       if($pages_get=1)
          $pages_get=$pages_get-1;
-/*
-   foreach($fichier as $key => $value)
-   {
-      echo ('Key : '.$key.' value : '.$value.' nb : '.$nb.' ');
-      $nb++;
-   }
-   echo('<br>'.count(array_filter($fichier)));
-   */
-  for($e=0;$e<sizeof($fichier); $e++)
-  {
-     $musique_classer[$pages][$e] = $fichier[$nb];
-     if($e==9)
-     {
-        $pages++;
-     }
-     $nb++;
-  }
   
-  //$getID3->setOption(array('encoding'=>$TaggingFormat));
-
-  for($r=0;$r<sizeof($musique_classer);$r++)
+  if($fichier!=false)
   {
-     $Line_liens = $lien_retour_musique.$musique_classer[$pages_get][$r];
-     $s = strrchr($Line_liens,'/');
-     $m = substr($s,1);
-     $liens_musique[$r] = read_mp3_tags($liensHomeMusique. $m,$lien_retour_musique.$m);
-     //getid3_lib::CopyTagsToComments($liens_musique[$r]);
+      $index= 1;
+      for($r=0;$r<sizeof($fichier);$r++)
+      {
+        
+         $Line_liens = $fichier[$r];
+         $s = strrchr($Line_liens,'/');
+         $m = substr($s,1);
+         if(strpos($m,".")!=0)
+         {
+            if(substr($m,strrpos($m,".")+1)=="mp3")
+            {
+               $liens_musique[$index] = str_replace("\\","/", $fichier[$r]);
+               $data_musique[$index] = read_mp3_tags($Line_liens);
+               $index++;
+            }
+           
+         }
+      }
   }
-
-  for($r=0;$r<sizeof($liens_musique); $r++)
+  if(isset($_POST["recup"]))
   {
-     try{
-        //$cover_musique[$r] = GetImageCover($liens_musique[$r], false, $PageEncoding,$s);
-     }
-     catch(Exception $err)
-     {echo $err->getMessage();}
- 
-  }
-
-  if(isset($_GET["musique"]))
-   {
-     if($_GET["musique"])
-     {	
-        $info_music = array();
-        $musique = $lien_retour_musique.$_GET["musique"];
-        $liens = $liensHomeMusique.$_GET["musique"];
-        $info_music = read_mp3_tags($liens,$musique);
-        $image = $info_music[0]->getImage();
-     }
+      $liens_mu = $_POST["recup"];
+      $info_musique = read_mp3_tags($liens_mu);
+      $cover = read_mp3_tags($liens_mu,true);
+      $data = ["titre"=>$info_musique[0]->getTitre(),"album"=>$info_musique[0]->getAlbum(),"artiste"=>$info_musique[0]->getArtiste(),"temps"=>$info_musique[0]->getTemps(),"genre"=>$info_musique[0]->getGenre(),"annee"=>$info_musique[0]->getAnnee(),"cover"=>$cover[0]->getImage()];
+      echo json_encode($data);
   }
   else
   {
@@ -87,6 +69,7 @@
         "",
         "");
   }
+
   if(isset($_POST["modification"]))
   {
      if(isset($_POST["titre"]))
@@ -182,9 +165,10 @@
    {
       throw new Exception ('Page inexistante');
    }
-
-   require $require_vue_affichage_musique;
+   if(!isset($_POST["recup"]))
+   {
+      require $require_vue_affichage_musique;
+   }
 ?>
 
 
-<!-- --------------------------------------------- / --------------------------------------------->

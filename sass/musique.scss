@@ -1,0 +1,212 @@
+audio {
+    width: 100%;
+    height: 100%;
+}
+
+.checkbox-php {
+    color: white;
+    padding: 0%;
+    margin: 0%;
+}
+
+.Lien-nav-Accueil {
+    list-style-type: none;
+    color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    transition: 0.5s all;
+    /*
+    background-color: black;
+    border-style: solid;
+    border-color: brown;*/
+}
+
+.Lien-nav-Accueil a:hover {
+    transition: 0.2s all;
+}
+
+.div-contenue-musique {
+    display: flex;
+    /*
+    border-style: solid;
+    border-color: rgb(216, 203, 21);*/
+    flex-direction: column;
+    background-color: #24445C;
+    width: auto;
+    height: 90%;
+}
+
+.div-navigation {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    background-color: rgb(17, 10, 58);
+    margin: 0%;
+    padding: 0%;
+}
+
+.nav-liens-musique {
+    /*
+    border-style: solid;
+    border-color: rgb(216, 203, 21);*/
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: rgb(39, 39, 39);
+    width: 80%;
+    height: 100%;
+    /*justify-content: space-around;*/
+    overflow-y: scroll;
+    margin: 0%;
+    padding: 0%;
+}
+
+.div-liens-musique {
+    border: 1px solid rgb(87, 87, 87);
+    display: flex;
+    width: 20%;
+    height: 20%;
+}
+
+.div-min-liens-musique {
+    width: 50%;
+    height: auto;
+    border: 2px solid rgb(221, 141, 35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-liens-musique-info {
+    width: 50%;
+    height: 100%;
+    border-left: 1px solid rgb(160, 160, 160);
+    /*margin-left: 1%;*/
+    text-align: center;
+    font-size: 85%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.liens-musique {
+    display: block;
+    /*background-color: rgb(14, 70, 143);*/
+    height: 100%;
+    width: 100%;
+    line-height: 100%;
+    font-size: 90%;
+    color: white;
+    background-color: #086200;
+    &:hover {
+        background-color: #0b8a00;
+    }
+}
+
+.img-min-liens-musique {
+    width: auto;
+    height: 100%;
+}
+
+.div-affichage-musique {
+    /*
+    border-style: solid;
+    border-color: rgb(52, 196, 16);
+    */
+    border-top: 1px solid black;
+    display: flex;
+    /*flex-direction: column;*/
+    width: auto;
+    height: 20%;
+    justify-content: end;
+    justify-items: end;
+}
+
+.div-affichage-info-musique {
+    border-style: solid;
+    border-color: rgb(221, 141, 35);
+    height: 10%;
+    width: 100%;
+}
+
+.gestion-div-info {
+    display: flex;
+    flex-direction: column;
+    /*
+    border-style: solid;
+    border-color: rgb(223, 13, 114);
+    border-bottom: 3px solid black;
+    */
+    width: 20%;
+    height: auto;
+}
+
+.div-img {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #151515;
+    border-bottom: solid 1px #ffbf00;
+    /*
+    border-style: solid;
+    border-color: rgb(68, 236, 222);*/
+}
+
+.img {
+    width: 100%;
+    height: auto;
+}
+
+.img-min-lecteur {
+    width: auto;
+    height: 100%;
+    /*
+    border-style: solid;
+    border-color: rgb(255, 255, 255);*/
+}
+
+.fetche-info {
+    width: 100%;
+    height: 60%;
+}
+
+.musique-info {
+    width: 100%;
+    height: 10%;
+    color: white;
+}
+
+.div-info {
+    width: 100%;
+    height: 80%;
+    text-align: center;
+    background-color: rgb(22, 22, 22);
+    /*
+    border-style: solid;
+    border-color: rgb(236, 21, 21);
+    */
+}
+
+.lecteur-musique {
+    height: 20%;
+}
+
+.div-p-info-musique {
+    width: 100%;
+    height: auto;
+    padding: 0%;
+    margin: 0%;
+    border-bottom: 1px solid rgb(61, 60, 60);
+    color: white;
+}
+
+.div-lecteur-audio {
+    width: 100%;
+    /*height: auto;
+    background-color: rgb(18, 40, 168);*/
+}
+
+
+/* --- A déplacer dans css affichage gestion musique --- */
