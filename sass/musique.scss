@@ -1,58 +1,6 @@
-header {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0%;
-    background-color: #24445C;
-    width: 100%;
-    height: 10%;
-    border-top: 0px;
-    border-bottom: 1% solid black;
-    box-shadow: 0px 5px 10px;
-    display: flex;
-}
-
-body {
-    background-color: rgb(241, 241, 241);
-    /*border-style: solid;
-    border-color: rgb(253, 0, 0);*/
-    width: 100%;
-    height: auto;
-    margin: 0%;
-    padding: 0%;
-}
-
-h1 {
-    color: white;
-    padding-bottom: 0%;
-    padding-top: 0%;
-    margin: 0%;
-}
-
-h2 {
-    margin: 0%;
-}
-
-h1:hover {
-    color: orange;
-}
-
-p {
-    padding: 0%;
-    margin: 0%;
-}
-
-a {
-    color: aliceblue;
-    text-decoration: none;
-}
-
-a:hover {
-    transition: 0.4s all;
-    color: rgb(96, 226, 64);
-}
-
 audio {
     width: 100%;
+    height: 100%;
 }
 
 .checkbox-php {
@@ -100,16 +48,11 @@ audio {
 
 .div-navigation {
     width: 100%;
-    height: 70%;
+    height: 80%;
     display: flex;
     background-color: rgb(17, 10, 58);
     margin: 0%;
     padding: 0%;
-}
-
-.a-boutton {
-    width: 10%;
-    height: 100%;
 }
 
 .nav-liens-musique {
@@ -118,35 +61,35 @@ audio {
     border-color: rgb(216, 203, 21);*/
     display: flex;
     flex-wrap: wrap;
-    /*flex-direction: column;*/
+    flex-direction: column;
     background-color: rgb(39, 39, 39);
     width: 80%;
     height: 100%;
     /*justify-content: space-around;*/
-    overflow-x: scroll;
+    overflow-y: scroll;
     margin: 0%;
     padding: 0%;
 }
 
 .div-liens-musique {
     border: 1px solid rgb(87, 87, 87);
-    margin-bottom: 0%;
-    padding-top: 2%;
-    padding-bottom: 2%;
     display: flex;
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
 }
 
 .div-min-liens-musique {
     width: 50%;
     height: auto;
     border: 2px solid rgb(221, 141, 35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .div-liens-musique-info {
-    width: auto;
-    height: auto;
+    width: 50%;
+    height: 100%;
     border-left: 1px solid rgb(160, 160, 160);
     /*margin-left: 1%;*/
     text-align: center;
@@ -158,14 +101,19 @@ audio {
 .liens-musique {
     display: block;
     /*background-color: rgb(14, 70, 143);*/
-    height: auto;
-    width: auto;
-    line-height: 40px;
+    height: 100%;
+    width: 100%;
+    line-height: 100%;
     font-size: 90%;
+    color: white;
+    background-color: #086200;
+    &:hover {
+        background-color: #0b8a00;
+    }
 }
 
 .img-min-liens-musique {
-    width: 100%;
+    width: auto;
     height: 100%;
 }
 
@@ -178,7 +126,7 @@ audio {
     display: flex;
     /*flex-direction: column;*/
     width: auto;
-    height: auto;
+    height: 20%;
     justify-content: end;
     justify-items: end;
 }
@@ -192,18 +140,24 @@ audio {
 
 .gestion-div-info {
     display: flex;
+    flex-direction: column;
     /*
     border-style: solid;
     border-color: rgb(223, 13, 114);
     border-bottom: 3px solid black;
     */
-    width: 10%;
+    width: 20%;
     height: auto;
 }
 
 .div-img {
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #151515;
+    border-bottom: solid 1px #ffbf00;
     /*
     border-style: solid;
     border-color: rgb(68, 236, 222);*/
@@ -212,22 +166,40 @@ audio {
 .img {
     width: 100%;
     height: auto;
-    border-right: 1px solid rgb(255, 255, 255);
+}
+
+.img-min-lecteur {
+    width: auto;
+    height: 100%;
     /*
     border-style: solid;
     border-color: rgb(255, 255, 255);*/
 }
 
+.fetche-info {
+    width: 100%;
+    height: 60%;
+}
+
+.musique-info {
+    width: 100%;
+    height: 10%;
+    color: white;
+}
+
 .div-info {
-    width: 15%;
-    height: auto;
-    text-align: start;
-    border-right: 1px solid white;
+    width: 100%;
+    height: 80%;
+    text-align: center;
     background-color: rgb(22, 22, 22);
     /*
     border-style: solid;
     border-color: rgb(236, 21, 21);
     */
+}
+
+.lecteur-musique {
+    height: 20%;
 }
 
 .div-p-info-musique {
@@ -240,7 +212,7 @@ audio {
 }
 
 .div-lecteur-audio {
-    width: 80%;
+    width: 100%;
     /*height: auto;
     background-color: rgb(18, 40, 168);*/
 }

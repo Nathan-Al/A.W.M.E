@@ -2,12 +2,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-
-        <link rel="stylesheet" href=<?php echo $liens_css_affichage_youtube ?> /> <!-- Importations du css -->
+        <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
             
             <head>
                 <title>Youtube Playlist</title>
-                
             </head>
 
             <body>
@@ -26,7 +24,8 @@
                             }
                     ?>
                     </div>
-                    
+                    <div class="div-headers-3">
+                    </div>
                 </header>
                 <div class="div-contenue">
                     <div class="div-contenue-playlist">

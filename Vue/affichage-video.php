@@ -6,18 +6,21 @@
                 if($video!="default")
                 {
                     $nom = $dossier;
-                    echo '<title> Video : '.$videosansmp4.'</title>';
-    
+                    ?>
+                        <title> Video : <?php echo $videosansmp4 ?> </title>
+                    <?php
                 }else
                 {
-                        echo '<title>Video</title>';
+                    ?>
+                        <title>Video</title>
+                    <?php
                 }
             }
         ?>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-        <link rel="stylesheet" href=<?php echo $liens_css_video ?> /> <!-- Importations du css -->
+        <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
@@ -31,7 +34,11 @@
                 <a href="../" class="Lien-nav-Accueil"><h1>Menu</h1></a>
             </div>
             <div class="div-headers-2">
-                <p id="titre_video">Vous regardez : </p>
+                <div class="header-contenue">
+                    <p id="titre_video">Vous regardez : </p>
+                </div>
+            </div>
+            <div class="div-headers-3">
             </div>
         </header>
     <div class="div-contenue">
@@ -121,7 +128,7 @@
                 <nav id="para-nav" class="para-nav">JSON Lecteur</nav>
             </div>
 
-            <div class="conteneur-para-contenue" id="conteneur-para-contenue">
+            <div class="conteneur-lecteur-contenue" id="conteneur-para-contenue">
                 <nav class='box-nav-lecteur-video' style='z-index:0;' id="nav-normal-video">
                             
                 </nav>

@@ -1,38 +1,47 @@
 <html> 
     <head>
-        <title>Musique : <?php echo  $info_music[0]->getTitre() ?></title> <!-- Titre de l'onglet de la page web -->
+        <title>Musique</title> <!-- Titre de l'onglet de la page web -->
         <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-        <link rel="stylesheet" href=<?php echo $liens_css_musique ?> /> <!-- Importations du css -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
+        <link rel="stylesheet" href=<?php echo  $liens_bootstrap?> integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     </head>
-        <header>
+    <header>
             <div class="div-headers-1">
                 <a href="../" class="Lien-nav-Accueil"><h1>Menu</h1></a>
+            </div>
+            <div class="div-headers-2">
+                <div class="header-contenue">
+
+                </div>
+            </div>
+            <div class="div-headers-3">
             </div>
         </header>
     <body>
         <div class="div-contenue">
             <div class="div-navigation">
-                <a class="a-boutton" href="">Précédent</a>
                     <nav class="nav-liens-musique">
                         <?php
-                        $iop = 0;
-                        if($fichier!=false)
+                        $iop = 1;
+                        if(isset($data_musique))
+                        if($data_musique!=false)
                         {
-                            for($i=0; $i<10/*sizeof($fichier)*/;$i++)
+                            for($i=1; $i<sizeof($data_musique)+1;$i++)
                             {
-                                echo "<div class='div-liens-musique' >
+                                ?>
+                                <div class='div-liens-musique' >
                                         <div class='div-min-liens-musique'>
-                                            ".$liens_musique[$i][0]->getImage()."
+                                            <img class="img-min-lecteur" src="<?php echo $liensMediaSite."album.png" ?>">
                                         </div>
 
                                         <div class='div-liens-musique-info'>
-                                            <a href='".$controller_musique."?musique=".$fichier[$iop]."' class='liens-musique'>".$fichier[$iop]."</a>
+                                            <button id="button-musique" type="button" data-link='<?php echo $liens_musique[$iop]?>' class='liens-musique'><?php echo $data_musique[$i][0]->getTitre()?></button>
                                         </div>
                                         
-                                    </div>";
+                                    </div>
+                                    <?php
                                 $iop++;
                             }
                         }else
@@ -43,60 +52,35 @@
                         }
                         ?>
                     </nav>
-                <a class="a-boutton" href="">Suivant</a>
-            </div>
-        
-            
-            <div class="div-affichage-musique">
-                <div class="gestion-div-info">
-                        <?php 
-                            if (!isset($image) || $image==null)
-                            {
-                                ?>
-                                    <div class="div-img">
-                                        <img class="img" src= <?php echo $liensMediaSite."album.jpg" ?>>
-                                    </div>
-                                <?php
-                            }else
-                            {
-                                echo $info_music[0]->getImage();
-                            }
+                    <div class="gestion-div-info">
+                        <div class="div-img" id="cover-image">
+                            <img class="img-min-lecteur" src= <?php echo $liensMediaSite."album.png" ?>>
+                        </div>
+                        <div id="info-fetche" class="fetche-info">
 
-                        ?>
-
-
-                </div>
-                    <div class="div-info">
-                        <div class="div-p-info-musique">
-                            <p>Nom de la piste :  <?php echo  $info_music[0]->getTitre() ?></p>
-                        </div>
-                        <div class="div-p-info-musique">
-                            <p>Nom de l'album : <?php echo  $info_music[0]->getAlbum() ?></p> 
-                        </div>
-                        <div class="div-p-info-musique">
-                            <p>Artiste :  <?php echo $info_music[0]->getArtiste() ?></p>
-                        </div>
-                        <div class="div-p-info-musique">
-                            <p>Genre : <?php echo $info_music[0]->getGenre() ?></p> 
-                        </div>
-                        <div class="div-p-info-musique">
-                            <p>Durée :  <?php echo $info_music[0]->getTemps() ?></p>
-                        </div>
-                        <div class="div-p-info-musique">
-                            <p>Date :  <?php echo $info_music[0]->getAnnee() ?></p>
                         </div>
                     </div>
+            </div>
+        
+<!-- PARTIT LECTEUR DE MUSIQUE -->           
+            <div class="div-affichage-musique">
                 <div class="div-lecteur-audio">
-                    <?php
-                        LecteurAudio($musique); 
-                    ?>
+                    <div class="div-info">
+                        <div class="div-p-info-musique">
+                           <?php /*echo  $info_music[0]->getTitre()*/ ?>
+                        </div>
+                    </div>
+                        <div id="lecteur-musique" class="lecteur-musique">
+                            <?php
+                                LecteurAudio(""); 
+                            ?>
+                        </div>
+                    </div> 
                 </div> 
             </div>
-
-
 </div>
 
         </div>
     </body>
-
+    <script src="../Scripts/musique.js"></script>
 </html>

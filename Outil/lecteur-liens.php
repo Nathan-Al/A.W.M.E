@@ -68,6 +68,9 @@ $dossier_image_default = $dossier_multimedia."Image/";
     $liens_css_upload = "../Css/upload.css";
     $liens_css_affichage_youtube = "../Css/youtube.css";
     $liens_css_gestion = "../Css/gestion.css";
+    $liens_css_all = "../Css/all.css";
+    $liens_bootstrap = "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css";
+    $liens_fontawesome ="../Public/fontawesome/all.js";
 
 /* LIENS DOSSIER */
     $liens_dossier_sous_titre = $jsonMultimedia["SousTitre"];

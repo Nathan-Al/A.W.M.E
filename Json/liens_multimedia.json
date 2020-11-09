@@ -1,20 +1,19 @@
 {
-    "Image": [
-        "../Multimedia/Image"
-    ],
     "Document": [
         "../Multimedia/Document"
     ],
-    "Video": [
-        "../Multimedia/Video"
-    ],
-    "SousTitre": [
-        "../Multimedia/Video/Soustitre"
+    "Image": [
+        "../Multimedia/Image"
     ],
     "Musique": [
         "../Multimedia/Musique"
     ],
+    "SousTitre": [],
+    "Video": [
+        "../Multimedia/Video"
+    ],
     "YouTube": [
-
+        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxOyGIW_lJ7pvTZPRaKANlHB",
+        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxNJDZ2H_I6Yt69WTiyZLef1"
     ]
 }

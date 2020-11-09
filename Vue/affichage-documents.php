@@ -2,18 +2,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-
-        <link rel="stylesheet" href=<?php echo $liens_css_document ?> /> <!-- Importations du css -->
-            
+        <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
             <head>
                 <title>Documents</title> <!-- Titre de l'onglet de la page web -->
             </head>
     <body>
+    <header>
+            <div class="div-headers-1">
+                <a href="../" class="Lien-nav-Accueil"><h1>Menu</h1></a>
+            </div>
+            <div class="div-headers-2">
+
+            </div>
+            <div class="div-headers-3">
+
+</div>
+        </header>
         <nav class="Nav-Accueil-Liens">
             <nav class="Nav-Box">
 <!-- BOX DU TITRE -->
                 <nav class="Titre-Nav">
-                    <h1>Dossier</h1>
+                    <h2>Dossier</h2>
                 </nav>
 
                     <nav class="Nav-Dossier">
@@ -27,10 +36,10 @@
                                     ?>
                                         <div class="div-documents">
                                             <?php
-                                             $nb = $o+1;
-                                                echo "<a href='".$lien_retour_documents.$dossier[$liens]."' class='a-doc'>".$nb." :".$dossier[$liens]."</a>";
-                                                echo "<br>";
-                                            ?>
+                                                $nb = $o+1;
+                                             ?>
+                                            <a href=<?php echo $lien_retour_documents.$dossier[$liens] ?> class='a-doc'><?php echo $nb." :".$dossier[$liens]?></a>
+                                            <br>
                                         </div>
                                     <?php
                                 $liens++;    
@@ -44,13 +53,10 @@
                         ?>
                     </nav>
             </nav>
-            <div class="headers-flo">
-                <a href="../" class="a-flo">ACCUEIL</a>
-            </div>
             <nav class="Nav-Box">
 <!-- BOX DU TITRE -->
                 <nav class="Titre-Nav">
-                    <h1>Fichiers</h1>
+                    <h2>Fichiers</h2>
                 </nav>
 
                     <nav class="Nav-Fichiers">
@@ -66,9 +72,9 @@
                                                     <div class="div-documents">
                                                         <?php
                                                             $nb = $o+1;
-                                                            echo "<a href='".$liens_fichiers[$liens]."' class='a-doc'>".$nb." :".$fichiers[$liens]."</a>";
-                                                            echo "<br>";
                                                         ?>
+                                                        <a href=<?php echo $liens_fichiers[$liens]?> class='a-doc'><?php echo $nb." :".$fichiers[$liens]?></a>
+                                                        <br>
                                                     </div>
                                                 <?php
                                             }
@@ -77,11 +83,9 @@
                             }else
                             {
                                 ?>
-                                <h1>AUCUN FICHIERS</h1>
+                                    <h1>AUCUN FICHIERS</h1>
                                 <?php
-                            } 
-                                    //closedir($dir);
-                                
+                            }  
                         ?>
                     </nav>
             </nav>

@@ -365,6 +365,18 @@
         return $lienstrouver;
     }
 
+    function RecupererDataJson($json_link)
+    {
+        $jsonData = file_get_contents(CheckLink($json_link));
+        $final_data = json_decode($jsonData);
+        return $final_data;
+    }
+
+    function ModifierJson($liensJson, $data)
+    {
+        $newJsonString = json_encode($data,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        file_put_contents(CheckLink($liensJson), $newJsonString);
+    }
 
     function renommerfichier ($chemindossier,$anciennom,$nouveauxnom)
     {
@@ -468,42 +480,31 @@
     /* ---------------------- INFORMATIONS FICHIER AUDIO ET VIDEO ----------------------- */
                             /* ---------------------------- */
 
-    
-    function read_mp3_tags($liens,$musique)
+    require_once("../Outil/getID3-master/getid3/getid3.php");
+    function read_mp3_tags($musique, $image = false)
     {
-        include("MP3/Id.php");
+        //include("MP3/Id.php");
         $PageEncoding = 'UTF-8';
         $ValidTagTypes = array('id3v1', 'id3v2.3', 'ape');
         $getID3 = new getID3;
-        $OldThisFileInfo = $getID3->analyze($liens);
-        getid3_lib::CopyTagsToComments($OldThisFileInfo);
+        //$OldThisFileInfo = $getID3->analyze($liens);
+        //getid3_lib::CopyTagsToComments($OldThisFileInfo);
             
         //$ValidTagTypes = ValidTagTypes($OldThisFileInfo);
             
         // Analyze file and store returned data in $ThisFileInfo
+        CheckLink($musique);
         $ThisFileInfo = $getID3->analyze($musique);
 
         getid3_lib::CopyTagsToComments($ThisFileInfo);
         $info_music = array();
-            
-                $c = "img";
-                $titre = (isset($ThisFileInfo['tags']['id3v2']['title'][0]))? $ThisFileInfo['tags']['id3v2']['title'][0]:"Inconnue";
-                $album = (isset($ThisFileInfo['tags']['id3v2']['album'][0]))? $ThisFileInfo['tags']['id3v2']['album'][0]:"Inconnue";
-                $artiste = (isset($ThisFileInfo['comments_html']['artist'][0]))? $ThisFileInfo['comments_html']['artist'][0]:"Inconnue";
-                $band = (isset($ThisFileInfo['comments_html']['band'][0]))? $ThisFileInfo['comments_html']['band'][0]:"Inconnue";
-                $genre = (isset($ThisFileInfo['comments_html']['genre'][0]))? $ThisFileInfo['comments_html']['genre'][0]:"Inconnue";
-                $time = (isset($ThisFileInfo['playtime_string']))? $ThisFileInfo['playtime_string']:"Inconnue";
-                $date = (isset($ThisFileInfo['comments_html']['year'][0]))? $ThisFileInfo['comments_html']['year'][0]:"Inconnue";
-                $image = (isset($ThisFileInfo['comments']['picture'][0]))? GetImageCover($ThisFileInfo['comments']['picture'][0], false, $PageEncoding,$c):false;
-                $arara = array('Data'=>GetDataImage($ThisFileInfo, false, $PageEncoding));
-                $format_file = (isset($ThisFileInfo['fileformat']))? $ThisFileInfo['fileformat']:"Inconnue";
-                $format_size = (isset($ThisFileInfo['filesize']))? $ThisFileInfo['filesize']:"Inconnue";
-                $bitrate = (isset($ThisFileInfo['audio']['bitrate']))? $ThisFileInfo['audio']['bitrate']:"Inconnue";
-
-                $Data = $arara['Data'];
-                $return_music =  Verify($titre , $album , $artiste , $genre , $time , $date , $image, $format_file , $format_size ,$bitrate, $band);
-    
-                $info_music [] =  new Musique (
+        if($image)
+        {
+            $c = "img-min-lecteur";
+            $image = (isset($ThisFileInfo['comments']['picture'][0]))? GetImageCover($ThisFileInfo['comments']['picture'][0], false, $PageEncoding,$c):false;
+            $arara = array('Data'=>GetDataImage($ThisFileInfo, false, $PageEncoding));
+            $return_music =  Verify("", "", "", "", "", "", $image, "", "","", "");
+            $info_music [] =  new Musique (
                 $return_music [0],
                 $return_music [1],
                 $return_music [2],
@@ -514,8 +515,43 @@
                 $return_music [7],
                 $return_music [8],
                 $return_music [9]);
+            return $info_music;
+        }else if(!$image)
+        {
+            $titre = (isset($ThisFileInfo['tags']['id3v2']['title'][0]))? $ThisFileInfo['tags']['id3v2']['title'][0]:"Inconnue";
+            $album = (isset($ThisFileInfo['tags']['id3v2']['album'][0]))? $ThisFileInfo['tags']['id3v2']['album'][0]:"Inconnue";
+            $artiste = (isset($ThisFileInfo['comments_html']['artist'][0]))? $ThisFileInfo['comments_html']['artist'][0]:"Inconnue";
+            $band = (isset($ThisFileInfo['comments_html']['band'][0]))? $ThisFileInfo['comments_html']['band'][0]:"Inconnue";
+            $genre = (isset($ThisFileInfo['comments_html']['genre'][0]))? $ThisFileInfo['comments_html']['genre'][0]:"Inconnue";
+            $time = (isset($ThisFileInfo['playtime_string']))? $ThisFileInfo['playtime_string']:"Inconnue";
+            $date = (isset($ThisFileInfo['comments_html']['year'][0]))? $ThisFileInfo['comments_html']['year'][0]:"Inconnue";
+            $image = "";
+            $arara = "";
+            $format_file = (isset($ThisFileInfo['fileformat']))? $ThisFileInfo['fileformat']:"Inconnue";
+            $format_size = (isset($ThisFileInfo['filesize']))? $ThisFileInfo['filesize']:"Inconnue";
+            $bitrate = (isset($ThisFileInfo['audio']['bitrate']))? $ThisFileInfo['audio']['bitrate']:"Inconnue";
 
-        return $info_music;
+            if($arara!="" || $arara!=null)
+                $Data = $arara['Data'];
+            else
+                $Data = "";
+            $return_music =  Verify($titre , $album , $artiste , $genre , $time , $date , $image, $format_file , $format_size ,$bitrate, $band);
+
+            $info_music [] =  new Musique (
+            $return_music [0],
+            $return_music [1],
+            $return_music [2],
+            $return_music [3],
+            $return_music [4],
+            $return_music [5],
+            $return_music [6],
+            $return_music [7],
+            $return_music [8],
+            $return_music [9]);
+
+            return $info_music;
+        }
+        
     }
 
     function modif_mp3_tags($dir)
@@ -539,7 +575,7 @@
                             }catch(Exception $e){
                                 throw $e;
                             }
-                            $returnstring .= '</td>'."\n".'<td><img class="'.$classimage.'" src="data:'.$variable['image_mime'].';base64,'.$base64Image.'" width="'.$imagechunkcheck[0].'" height="'.$imagechunkcheck[1].'"></td></tr>'."\n";
+                            $returnstring .= '</td>'."\n".'<td><img class="'.$classimage.'" src="data:'.$variable['image_mime'].';base64,'.$base64Image.'"></td></tr>'."\n";
                         } else {
                             $returnstring .= '</td>'."\n".'<td><i>invalid image data</i></td></tr>'."\n";
                         }

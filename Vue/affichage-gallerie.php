@@ -4,14 +4,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
         <meta charset="UTF-8">
         <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-        <link rel="stylesheet" href=<?php echo $liens_css_gallery ?> /> <!-- Importations du css -->
+        <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
     </head>
 
     <body>
         <header>
             <div class="div-headers-1">
-                    <a href="../" class="Lien-nav-Accueil"><h1>Menu</h1></a>
-                <div class="div-separation"></div>
+                <a href="../" class="Lien-nav-Accueil"><h1>Menu</h1></a>
             </div>
             <div class="div-headers-2">
                 <?php
@@ -19,7 +18,11 @@
                     {
                         if(isset($nbpage))
                         {
-                            echo "<p>Page ".$page."/".$nbpage."</p>";
+                            ?>
+                                <div class="header-contenue">
+                                    <p>Page <?php echo $page."/".$nbpage ?></p>
+                                </div>
+                            <?php
                         }
                     }
                 ?>
@@ -66,7 +69,7 @@
 ?>
         <div id="conteneur-1" class="conteneur-1">
             <div id="conteneur-2" class="conteneur-2">
-                <div id="conteneur-3" class="conteneur-3">
+                <div id="conteneur-3" class="conteneur-3" style="filter: blur(0);">
                     <?php
                     //echo $tabliens[0][1];
                     if($page!=null)
@@ -85,15 +88,15 @@
                                             <div id="affichage-div-image" class="affichage-div-image">
                                                 
                                                     <!--<a class="a-image" href="<?php //echo $controller_affichage_image."?nomimage=".$tabliens[$liens][$page]."&page=".$page ?>"> -->
-                                                        <div id="a-image-background" class="a-image-background">
+                                                        <div id="a-image-background" class="a-image-background" data-target="div-image-<?php echo $f?>">
                                                             <!-- Background nom image (apparait en hover) -->
                                                             <span id="image-span" class="div-image-span"><?php $nom_fichier = explode("/",$tabliens[$page][$f]); echo $nom_fichier[sizeof($nom_fichier)-1]; ?></span>
                                                         </div>
                                                     <!--</a>-->
                                                 
                                                                                     
-                                                <div id="div-image" class="div-image">
-                                                    <img class="Min-Image" id="<?php echo $f?>" src="<?php echo $tabliens[$page][$f] ?>"/>
+                                                <div id="div-image-<?php echo $f?>" class="div-image" style="background-image: url(<?php echo $tabliens[$page][$f] ;?>); ">
+                                                    <!-- <img class="Min-Image" id="<?php //echo $f; ?>" src="<?php //echo $tabliens[$page][$f] ?>"/> -->
                                                 </div>
                                             </div>
                                         <?php
@@ -127,7 +130,7 @@
                                         if($lien_retour_images.$tabliens[$liens]!=$lien_retour_images)
                                         {
                                             ?>
-                                                <div class="div-image">
+                                                <div class="div-image" style="background-image= url(<?php echo $lien_retour_images.$tabliens[$liens] ?>);">
                                                     <img class="Min-Image" src="<?php echo $lien_retour_images.$tabliens[$liens] ?>"/>
                                                 </div>
                                             <?php
@@ -139,14 +142,8 @@
 
                     ?>
                 </div>
-                <div id="conteneur-4" class="conteneur-4">
-
-                </div>
             </div>
         </div>
-<?php
-    //}
-?>
         <script src="../Scripts/gallerie.js"></script>
     </body>
     

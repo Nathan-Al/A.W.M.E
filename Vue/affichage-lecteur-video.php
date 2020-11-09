@@ -2,9 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-10646"/>
     <meta charset="UTF-8">
     <LINK rel="icon" type="image/png" href=<?php echo $IconeSite ?> /> <!-- Icone de l'onglet de la page web -->
-
-    <link rel="stylesheet" href="../Css/affichage-video.css" /> <!-- Importations du css -->
-
+    <link rel="stylesheet" href=<?php echo $liens_css_all ?> /> <!-- Importations du css -->
 <head>
 	<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
   
