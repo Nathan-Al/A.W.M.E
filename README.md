@@ -9,6 +9,10 @@ Php, javaScript, Css, Saas, JQuery
 # Version
 1.0.0
 
+# Module / Autre
+* GetID3 version 1.9.20
+* Video.js CDN version 7.8.4
+
 ## Fonctionnement de A.W.M.E
 ### Informations générale
 Dans le dossier du site il y a un dossier multimédia, quand la page upload est utiliser c’est là qu’elle enverra tous les fichiers (chacun dans un dossier approprier).
@@ -30,7 +34,7 @@ La même chose que pour la page vidéo mais optimiser pour le navigateur d’un 
 ### Document
 Cliquer sur l’un des liens qui ont le nom des fichiers pour qu’il l’ouvre.
 Même chose pour les dossiers.
-###Musique
+### Musique
  ! Nécésite getid3
 -----------------------------------
 Cliquer sur le nom d’un des chansons pour immédiatement la faire jouer.
@@ -40,6 +44,7 @@ Les liens noirs en haut de la page représentent chacune des playlist, cliqué d
 # Note
 Ceci est la première version du site.  <br />
 Par la suite il va transposer entant qu’application / logiciel. <br />
+Pour le bon fonctionement du site n'oublier pas de récupérer getid3 a https://www.getid3.org/ et de déplacer le dossier `getID3-master` dans le dossier Outil.
 
 # Beug
 Dans la version 1.0.0 il est impossible d'ouvrir les dossier pour les documents. Ce beug cera corriger dans la prochaine version.
