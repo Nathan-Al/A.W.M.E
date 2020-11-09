@@ -105,7 +105,7 @@
                                 ?>
                                     
                                         <?php
-                                            echo "<a class='a-liens-video' href='".$controller_video_box."?video=".$fichiers[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
+                                            echo "<a class='a-liens-video' href='".$controller_video_box."?video=".$fichiers_liens[$liens]."' class='a-doc'>".$o." :".$fichiers[$liens]."</a>";
                                             echo "<br>";
                                             $liens++;
                                         ?>

@@ -11,11 +11,11 @@
   </head>
   
   <body>
-	<video id='my-video' class='video-js' controls preload='auto' width='640' height='264'
+	<video id='my-video' class='video-js' controls preload='auto' width='100%' height='100%'
     poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
     <?php
-	  echo "<source src='../Video".$nom."/".$video."' type='video/mp4'>";
-      echo "<source src='../Video".$nom."/".$video."' type='video/webm'>";
+	  echo "<source src='".$video."' type='video/mp4'>";
+      echo "<source src='".$video."' type='video/webm'>";
     ?>
 	  <p class='vjs-no-js'>
 		To view this video please enable JavaScript, and consider upgrading to a web browser that
