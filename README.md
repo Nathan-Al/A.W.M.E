@@ -45,7 +45,7 @@ Cliquer sur le nom d’un des chansons pour immédiatement la faire jouer.
 Les liens noirs en haut de la page représentent chacune des playlist, cliqué dessus pour la faire se charger aux milieux de la page.
 # Note
 Ceci est la première version du site.  <br />
-Par la suite il va transposer entant qu’application / logiciel. <br />
+Par la suite il être va tranformer en application / logiciel. <br />
 
 # Beug
 Dans la version 1.0.0 il est impossible d'ouvrir les dossier pour les documents. Ce beug cera corriger dans la prochaine version.
