@@ -4,7 +4,7 @@
    require $require_lecteur_musique;
    require $require_model_musique;
    require_once($require_decodeur_id3);
-
+   
    $getID3 = new getID3;
    $PageEncoding = 'UTF-8';
    $cover_musique = array();
