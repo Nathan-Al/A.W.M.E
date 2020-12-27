@@ -84,6 +84,7 @@ $dossier_image_default = $dossier_multimedia."Image/";
     $dossier_model = "../Model/";
     $dossier_css = "../Css/";
     $dossier_public = "../Public/";
+    $dossier_cover = $dossier_public."Cover/";
     $dosier_sous_titre = $liensHomeVideo;
 
 /* ICONE PAGE DU SITE */

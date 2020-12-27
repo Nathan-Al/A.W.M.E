@@ -13,54 +13,10 @@
                 <a href="../" class="Lien-nav-Accueil"><h1>Menu</h1></a>
             </div>
             <div class="div-headers-2">
-                <?php
-                    if(isset($page))
-                    {
-                        if(isset($nbpage))
-                        {
-                            ?>
-                                <div class="header-contenue">
-                                    <p>Page <?php echo $page."/".$nbpage ?></p>
-                                </div>
-                            <?php
-                        }
-                    }
-                ?>
+                
             </div>
             <div class="div-headers-3">
-                <form action="<?php echo $controller_affichage_gallery ?>?chgp=chercher" method="post" class="form-recherche">
-                    <div class="div-input-search">
-                        <input type="search" name="searchEngine" placeholder="Recherche..." />
-                        <input type="submit" value="Valider" />
-                    </div>
-                </form>
-<!-- Bouton de changements de pages -->
-                <div class="div-container-bouton-page">
-                    <?php
-                        if($page>1)
-                        {
-                    ?>
-                        <div class="div-a-page">
-                            <a href="<?php echo $controller_affichage_gallery ?>?page=<?php echo $_GET["page"]-1 ?>" class="a-chgp">Précédent</a>
-                        </div>
-                        <div class="div-a-page">
-                            <a href="<?php echo $controller_affichage_gallery ?>?page=1" class="a-accueil">Première page</a>
-                        </div>
-
-                    <?php
-                        }
-                    ?>
-                     <?php
-                        if($page>0 && $page<$nbpage)
-                        {
-                    ?>
-                        <div class="div-a-page">            
-                            <a href="<?php echo $controller_affichage_gallery ?>?page=<?php echo $_GET["page"]+1 ?>" class="a-chgp">Suivant</a>
-                        </div>
-                    <?php
-                        }
-                    ?>
-                </div>
+                
             </div>
         </header>
         <div id="conteneur-1" class="conteneur-1">
@@ -81,12 +37,7 @@
                                             <div id="affichage-div-image" class="affichage-div-image">
                                                 <div id="a-image-background" class="a-image-background" data-target="div-image-<?php echo $f?>">
                                                     <!-- Background nom image (apparait en hover) -->
-                                                    <span id="image-span" class="div-image-span">
-                                                        <?php 
-                                                            $nom_fichier = str_replace("%20"," ",explode("/",$tabliens[$page][$f])); 
-                                                            echo $nom_fichier[sizeof($nom_fichier)-1]; 
-                                                        ?>
-                                                    </span>
+                                                    <span id="image-span" class="div-image-span"><?php $nom_fichier = str_replace("%20"," ",explode("/",$tabliens[$page][$f])); echo $nom_fichier[sizeof($nom_fichier)-1]; ?></span>
                                                 </div>                               
                                                 <div id="div-image-<?php echo $f?>" class="div-image" style="background-image: url(<?php echo $tabliens[$page][$f] ;?>); ">
 

@@ -8,7 +8,7 @@
     <LINK rel="icon" type="image/png" href="media-site/icone.ico" />
     <!-- Icone de l'onglet de la page web -->
     <!-- Importations du css -->
-    <link rel="stylesheet" href="Css/All.css" />
+    <link rel="stylesheet" href="Css/all.css" />
     <!-- EXTERNAL LINK-->
 	<script defer src="Public/fontawesome/all.js"></script> <!--load all styles -->
 </head>
