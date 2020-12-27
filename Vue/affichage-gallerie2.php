@@ -37,7 +37,7 @@
                                             <div id="affichage-div-image" class="affichage-div-image">
                                                 <div id="a-image-background" class="a-image-background" data-target="div-image-<?php echo $f?>">
                                                     <!-- Background nom image (apparait en hover) -->
-                                                    <span id="image-span" class="div-image-span"><?php $nom_fichier = explode("/",$tabliens[$page][$f]); echo $nom_fichier[sizeof($nom_fichier)-1]; ?></span>
+                                                    <span id="image-span" class="div-image-span"><?php $nom_fichier = str_replace("%20"," ",explode("/",$tabliens[$page][$f])); echo $nom_fichier[sizeof($nom_fichier)-1]; ?></span>
                                                 </div>                               
                                                 <div id="div-image-<?php echo $f?>" class="div-image" style="background-image: url(<?php echo $tabliens[$page][$f] ;?>); ">
 

@@ -25,7 +25,7 @@ for($m = 0; $m < sizeof($liens_fichiers_raw); $m++)
     {
         if(strrpos($name,"."))
         {
-            $liens_fichiers[$inde] = $liens_fichiers_raw[$m];
+            $liens_fichiers[$inde] = str_replace(" ","%20",$liens_fichiers_raw[$m]);
             $inde++;
         }
     }
