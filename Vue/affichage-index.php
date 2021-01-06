@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="Css/all.css" />
     <!-- EXTERNAL LINK-->
 	<script defer src="Public/fontawesome/all.js"></script> <!--load all styles -->
+    <link rel="manifest" href="manifest.json"></link>
 </head>
 
 <body class="Menu-Body" id="Body">
@@ -119,7 +120,18 @@
         </div>
     </div>
     <script src="Scripts/jquery.js"></script>
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) 
+        {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js');
+            });
+        }
+    </script>
     <script src="Scripts/index.js"></script>
+    
 </body>
 
 </html>

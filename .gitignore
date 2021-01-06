@@ -22,6 +22,8 @@ Test/
 
 old/
 
+Old/
+
 Multimedia/
 
 startbootstrap-freelancer-gh-pages/
@@ -29,3 +31,5 @@ startbootstrap-freelancer-gh-pages/
 Json/
 
 Public/Cover/
+
+sassCommand.bat

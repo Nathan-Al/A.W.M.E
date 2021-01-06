@@ -1,0 +1,14 @@
+{
+    "name": "A.W.M.E",
+    "short_name": "AWME",
+    "start_url": "/index.php",
+    "display": "standalone",
+    "background_color": "#4A4ACD",
+    "description": "Progressive app de connection a un serveur distant",
+    "lang": "Fr-fr",
+    "icons": [{
+        "src": "PWA/Public/server.svg",
+        "sizes": "150x150",
+        "type": "image/svg+xml"
+    }]
+}
