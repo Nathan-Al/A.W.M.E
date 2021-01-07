@@ -4,6 +4,10 @@
 |----------------------------------------------------|
 */
 
+body {
+    height: auto !important;
+}
+
 .Lien-nav-Accueil {
     list-style-type: none;
     color: white;
@@ -118,7 +122,7 @@
     padding: 0%;
     display: block;
     width: 100%;
-    height: 89%;
+    height: auto;
     /*border: 2px solid rgb(205, 226, 17);*/
 }
 
@@ -126,7 +130,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 100%;
+    height: auto;
     /*border: 4px solid rgb(245, 5, 97);*/
 }
 
@@ -138,7 +142,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 100%;
+    height: auto;
     align-items: center;
     justify-content: center;
     /*overflow-y: scroll;*/
@@ -151,8 +155,7 @@
     display: flex;
     margin: 0%;
     padding: 0%;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
     transition-duration: 0.5s;
     /*border: 2px solid rgb(13, 240, 44);*/
 }
@@ -186,19 +189,22 @@
 }
 
 .affichage-div-image {
-    width: auto;
-    height: auto;
+    width: 15vh;
+    height: 15vh;
     /*------------------*/
     cursor: pointer;
     white-space: nowrap;
     /*display: table-cell;*/
     display: flex;
     flex-direction: column;
+    /*
     -webkit-box-shadow: 0px 0px 13px 7px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 13px 7px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 13px 7px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 13px 7px rgba(0, 0, 0, 0.75);*/
     background-color: blueviolet;
-    margin-right: 1%;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid black;
     /*border: solid 2px yellow;*/
 }
 
@@ -249,8 +255,8 @@
     /* Required for text-overflow to do anything */
     white-space: nowrap;
     overflow: hidden;
-    width: 300px;
-    height: 200px;
+    width: 15vh;
+    height: 15vh;
     background-position: 100% 100%;
     background-image: url(../media-site/background-image.png);
     z-index: 1;
@@ -268,20 +274,6 @@
 
 .a-image-background:hover {
     opacity: 1;
-}
-
-.div-image-span {
-    line-height: 18em;
-    color: white;
-    font-size: 90%;
-    display: inline-block;
-    height: 20%;
-    width: 100%;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 
@@ -327,9 +319,9 @@
 
 .div-image-2 {
     height: 100%;
-    text-align: center;
     padding: 0%;
     margin: 0%;
+    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -347,6 +339,31 @@
 }
 
 .div-image-3 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.div-image-3-Bis {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.562);
+    opacity: 50%;
+    transition: 0.5s;
+}
+
+.div-image-3-Bis:hover {
+    opacity: 100%;
+}
+
+.div-image-span {
+    color: white;
+    transition: 0.5s;
+}
+
+.div-image-4 {
     padding: 0%;
     margin: 0%;
     width: 100%;

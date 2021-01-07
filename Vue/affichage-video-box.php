@@ -98,6 +98,7 @@
                         }
                     }else
                     {
+                        if(isset($fichiers))
                         if($fichiers!=false)
                         {
                             for($o = 0; $o < sizeof($fichiers); $o++)  

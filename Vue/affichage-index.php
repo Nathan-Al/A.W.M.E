@@ -21,11 +21,12 @@
                 <img id="parameter_DIV" src="media-site/menu.png" class="icone" />
             </div>
         </div>
-        <div class="div-headers-2">
+        <div class="div-headers-2 centre">
             <h1> Bienvenue sur la page de gestion de A.W.M.E </h1>
         </div>
-        <div class="div-headers-3">
-            
+        <div id="floatPWA" class="div-headers-3" style="visibility: hidden;">
+            <p>Voulez vous installer l'application ?</p>
+            <button id="install_button" hidden>Install</button>
         </div>
     </header>
 
@@ -118,6 +119,7 @@
         <div id="Menu-comp" class="Menu-comp">
             <!-- Partit créer en script Javascript -->
         </div>
+        
     </div>
     <script src="Scripts/jquery.js"></script>
     <script>

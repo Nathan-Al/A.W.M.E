@@ -1,16 +1,17 @@
 <?php
     require "../Outil/lecteur-liens.php";
     include $require_lecteur_fichier;
+    $tabliens = array();
+    $tabliens_raw = chargeLiens($liensHomeImage);
 
-    if(isset($_GET["page"]))
+    if($tabliens_raw!=false)
     {
-        $tabliens = array();
-        $tabliens_raw = chargeLiens($liensHomeImage);
+        /*
         $page=$_GET["page"];
         
         $file = array();
+        $pages = 1;*/
         $liens = 0;
-        $pages = 1;
         for($p = 1; $p < sizeof($tabliens_raw); $p++)
         {
             $a = explode("/",$tabliens_raw[$p]);
@@ -19,17 +20,11 @@
             {
                 if(strpos($a[sizeof($a)-1],".")!=0 || strpos($a[sizeof($a)-1],".")==false)
                 {
-                    $tabliens[$pages][$liens] = str_replace(" ","%20",$tabliens_raw[$p]);
+                    $tabliens[$liens] = str_replace("\\","/",str_replace(" ","%20",$tabliens_raw[$p]));
                     $liens++;
-                    if($liens==15)
-                    {
-                        $pages++;
-                        $liens = 0;
-                    }
                 }
             }
         }
-        $nbpage = sizeof($tabliens);
         if($tabliens!=false)
         {
             if(isset($_GET["chgp"]) && $_GET["chgp"]=="chercher")
@@ -50,6 +45,7 @@
                 }
             }
         }
+        
         $vue = CheckLink($require_vue_affichage_gallery);
         require $vue;    
     }

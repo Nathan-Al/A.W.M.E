@@ -3,7 +3,9 @@
         "../Multimedia/Document"
     ],
     "Image": [
-        "../Multimedia/Image"
+        "../Multimedia/Image",
+        "C:\\Users\\allan\\Pictures\\Genshin impact",
+        "C:\\Users\\allan\\Pictures\\fond ecran"
     ],
     "Musique": [
         "../Multimedia/Musique"
