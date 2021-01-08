@@ -126,10 +126,14 @@
         // Check that service workers are supported
         if ('serviceWorker' in navigator) 
         {
+            console.log("Service Worker decter.")
             // Use the window load event to keep the page load performant
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('service-worker.js');
             });
+        }else
+        {
+            consù.log("Aucun service worker detecter")
         }
     </script>
     <script src="Scripts/index.js"></script>
