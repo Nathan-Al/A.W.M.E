@@ -3,7 +3,7 @@
         "../Multimedia/Document"
     ],
     "Image": [
-        "../Multimedia/Image",
+        "../Multimedia/Image"
     ],
     "Musique": [
         "../Multimedia/Musique"
