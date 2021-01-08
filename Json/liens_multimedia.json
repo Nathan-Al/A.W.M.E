@@ -4,8 +4,6 @@
     ],
     "Image": [
         "../Multimedia/Image",
-        "C:\\Users\\allan\\Pictures\\Genshin impact",
-        "C:\\Users\\allan\\Pictures\\fond ecran"
     ],
     "Musique": [
         "../Multimedia/Musique"
@@ -15,6 +13,6 @@
         "../Multimedia/Video"
     ],
     "YouTube": [
-        "https://www.youtube.com/embed/videoseries?list=PLznMX96ZqSxM6yhjpckya-n4WORH3USEJ"
+        ""
     ]
 }
